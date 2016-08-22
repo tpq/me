@@ -102,6 +102,12 @@ title: "Curriculum Vitae"
 
 ### Presentations
 
+**Quinn TP**, Tylee DS, Bichindaritz IB, & Glatt SJ. April 2016. Constructing Generalizable Classifiers for the Classification of Complex Biological Disorders. Poster presented at SUNY Upstate Medical University Student Research Day in Syracuse, New York.
+
+Tylee DS, Hess JL, **Quinn TP**, Barve R, & Glatt SJ. April 2016. Transcriptome-wide mega-analysis of blood-based microarray data comparing individuals with autism and typically developing subjects. Poster presented at SUNY Upstate Medical University Student Research Day in Syracuse, New York.
+
+**Quinn TP**, Tylee DS, Bichindaritz IB, & Glatt SJ. March 2016. Constructing Generalizable Classifiers for the Classification of Complex Biological Disorders. Poster presented at The NYAS Annual Machine Learning Symposium in New York, New York.
+
 Tylee DS, Hess JL, **Quinn TP**, Barve R, & Glatt SJ. October 2015. Transcriptome-wide mega-analysis of blood-based microarray data comparing individuals with autism and typically developing subjects. Poster presented at World Congress of Psychiatric Genetics in Toronto, Ontario.
 
 Tylee DS, **Quinn TP**, & Glatt SJ. June 2015. Improving SVM classifiers using resampling and aggregation: A blood-based transcriptomic study of children with autism. Poster presented at Cold Spring Harbor Workshop on Autism Spectrum Disorders in Cold Spring Harbor, New York.

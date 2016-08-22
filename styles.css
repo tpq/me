@@ -1,0 +1,43 @@
+body {
+  background-color: black;
+}
+
+h1 {
+  text-transform: uppercase;
+}
+
+h2 {
+  color: LightBlue;
+  font-weight: normal;
+  font-size: medium;
+  margin-bottom: -4em;
+}
+
+h3 {
+  color: LightBlue;
+}
+
+h4 {
+  color: LightBlue;
+  font-weight: normal;
+  font-size: medium;
+}
+
+h5 {
+  color: Gray;
+  font-weight: normal;
+  font-size: medium;
+}
+
+h6 {
+  color: Gray;
+	margin-left: 50px;
+	font-weight: normal;
+	font-size: medium;
+}
+
+p {
+  color: Gray;
+  font-weight: normal;
+  font-size: medium;
+}

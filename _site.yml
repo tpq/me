@@ -7,7 +7,7 @@ navbar:
     - text: "CURRICULUM VITAE"
       href: cv.html
     - text: "MUSINGS"
-      href: blog.html
+      href: musings.html
 output:
   html_document:
     theme: cosmo

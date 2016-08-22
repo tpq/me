@@ -1,0 +1,9 @@
+---
+title: "About Me"
+---
+
+### Welcome
+
+Hey there! Thanks for stopping by. My name is Thom Quinn and I am a career student of medicine and life. Currently, I am pursuinig a PhD at Deakin University in Australia and trying to learn as much as I can about bioinformatics and medical genomics. I am motivated by the possibility that we can soon harness next-generation biotechnology to revolutionize medical prognostics, diagnostics, and therapeutics. Lately, I am intrigued by the theory and practice behind how scientists construct disease nosology and differentiate cases from controls. Other key interests include machine learning and knowledge integration.
+
+<br>

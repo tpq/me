@@ -1,0 +1,137 @@
+---
+title: "Curriculum Vitae"
+---
+
+### Education
+
+## PhD
+
+###### **Deakin University:** September 2016 to present
+
+###### Currently pursuing a Doctor of Philosophy with a concentration in bioinformatics and medical genomics
+
+## MD
+
+###### **SUNY Upstate Medical University:** August 2011 to May 2016
+
+###### Graduated with a Medicinae Doctor, devoting credited hours to research in bioinformatics and medical genomics
+
+## BS
+
+###### **SUNY New Paltz:** August 2009 to May 2011
+
+###### Graduated *summa cum laude*, obtaining a Bachelor’s Degree in Biology with a concentration in biotechnology
+
+## AS
+
+###### **SUNY Orange:** January 2007 to May 2009
+
+###### Graduated *summa cum laude*, obtaining an Associate’s Degree in Science with a concentration in biology
+
+<br>
+
+### Professional skills
+
+##### **R/Bioconductor**
+
+###### Fluency in the R scripting language with experience using several Bioconductor packages. Some bioinformatic programming projects include the development of tools for predicting transcription factor binding motif disruptions by disorder-associated SNPs, mapping molecular interactions using multiple databases, and implementing high-throughput supervised machine learning with sample bootstrapping.
+
+##### **Bioinformatics**
+
+###### Familiarity using public data repositories including dbGAP, NCBI GEO, BioMart, and UCSC Genome Browser. Extensive time devoted to applying supervised machine learning in the classification of patients based on gene expression data, including the exploration of novel feature selection methods. Familiarity with clustering algorithms including hierarchical clustering and k-means clustering. Experience visualizing high-dimensional data through dimension reduction with methods such as principal components analysis.
+
+<br>
+
+### Professional experience
+
+#### In industry,
+
+##### **Adveq Management:** April 2016 to present
+
+###### Worked to develop an object-oriented back-end in R for organizing, modeling, and analyzing transactions between financial institutions. Position held as a short-term, free-lance contract.
+
+#### In research,
+
+##### **SUNY Upstate Medical University:** August 2012 to May 2016
+
+###### Worked in a psychiatric genetics lab under Dr. Stephen Glatt to study the molecular underpinnings of psychiatric disorders. Efforts largely included the development of bioinformatic tools for the analysis of single nucleotide polymorphisms and microarray-based gene expression data. Extensive time devoted to the implementation machine learning for the classification of autism spectrum disorder using genomic data.
+
+##### **SUNY New Paltz:** September 2009 to August 2010
+
+###### Worked in an organic chemistry lab under Dr. Frantz Folmer-Andersen to study synthetic diamine macrocycles which have the capability to distinguish between mirror image molecules.
+
+##### **SUNY Purchase:** May 2009 to July 2009
+
+###### Worked in an environmental science lab under oceanographer Dr. Kristopher Baker to study the impact of anthropogenic input on the biodiversity of the Hudson River estuary. Investigation presented as lecture.
+
+#### In education,
+
+##### **Coursera:** September 2016 to October 2016
+
+###### Employed as a graduate assistant to Dr. Isabelle Bichindaritz for an online course in Bioinformatics.
+
+##### **SUNY New Paltz:** September 2009 to May 2011
+
+###### Employed as a teaching assistant for an undergraduate organic chemistry laboratory class. Periodically employed as a tutor to undergraduate students in the subjects of mathematics, biology, and chemistry.
+
+##### **SUNY Orange:** September 2008 to August 2009
+
+###### Employed in a math learning center to assist students in need of help in college mathematics courses. Periodically employed as a tutor to undergraduate students in the subjects of mathematics, biology, and chemistry.
+
+<br>
+
+### Awards and scholarships
+
+2014 Student Research Celebration Presenter Research Project Award
+
+2010 New Paltz Student Undergraduate Research Experience (SURE) stipend
+
+2009 Purchase Bridges to Baccalaureate Program stipend
+
+2009 Outgoing Faculty Annual Scholarship awarded by SUNY Orange
+
+2009 Outgoing William F. Ehlers Jr. Memorial Scholarship for excellence in anthropology awarded by SUNY Orange
+
+2009 Outgoing Dr. Cortland R. Mapes Scholarship for excellence in biology awarded by SUNY Orange
+
+2008 American Chemical Society award for excellence in chemistry
+
+2007-2009 Recipient of President’s Scholarship for Outstanding Academic Achievement at SUNY Orange
+
+<br>
+
+### Presentations
+
+Tylee DS, Hess JL, **Quinn TP**, Barve R, & Glatt SJ. October 2015. Transcriptome-wide mega-analysis of blood-based microarray data comparing individuals with autism and typically developing subjects. Poster presented at World Congress of Psychiatric Genetics in Toronto, Ontario.
+
+Tylee DS, **Quinn TP**, & Glatt SJ. June 2015. Improving SVM classifiers using resampling and aggregation: A blood-based transcriptomic study of children with autism. Poster presented at Cold Spring Harbor Workshop on Autism Spectrum Disorders in Cold Spring Harbor, New York.
+
+Tylee DS, **Quinn TP**, & Glatt SJ. October 2014. Improving SVM classifiers using resampling and aggregation: A blood-based transcriptomic study of children with autism. Poster presented at World Congress of Psychiatric Genetics in Copenhagen, Denmark.
+
+Glatt SJ, **Quinn TP**, & Tylee DS. October 2014. Building better classifiers: optimizing models of heterogeneous neuropsychiatric disorders derived from high-dimensional data. Poster presented at World Congress of Psychiatric Genetics in Copenhagen, Denmark.
+
+**Quinn TP**, Hess JL, & Glatt SJ. April 2014. In silico discovery of transcription factor-binding motifs disrupted by single nucleotide polymorphisms associated with multiple psychiatric disorders. Poster presented at SUNY Upstate Medical University Student Research Day in Syracuse, New York.
+
+**Quinn TP**, Minicozzi M, & Mass S. April 2011. Biometrics of metamorphosed and neotenic axolotls. Poster presented at SUNY New Paltz Student Research Symposium in New Paltz, New York.
+
+**Quinn TP**. September 2010. New chiral shift reagents. Lecture presented through the SUNY New Paltz Student Undergraduate Research Experience (SURE) Program in New Paltz, New York.
+
+**Quinn TP** & Folmer-Andersen J. April 2010. New macrocycles as chiral shift reagents. Poster presented at SUNY New Paltz Student Research Symposium in New Paltz, New York.
+
+**Quinn TP** & Folmer-Andersen J. April 2010. New macrocycles as chiral shift reagents. Poster presented at Bard University in Red Hook, New York.
+
+**Quinn TP**. July 2009. Anthropogenic inputs in the Hudson River estuary. Lecture presented through the SUNY Purchase Bridges to Baccalaureate Program in Harrison, New York.
+
+**Quinn TP**. July 2009. The Role of Horizontal and Vertical Learning in Chimpanzee Populations. Lecture presented at Beacon Conference for Student Scholars at Two-Year Colleges in Takoma Park, MD.
+
+<br>
+
+### Publications
+
+Bichindaritz IB, Cole E, Keshan N, Parimi P, & **Quinn TP**. 2016. Machine Learning Based Automatic Multilevel Stress Detection from ECG Signals. IJCAI 2016: Workshop on Knowledge Discovery in Healthcare Data.
+
+Hess JL, **Quinn TP**, Akbarian S, & Glatt SJ. 2015. Bioinformatic analyses and conceptual synthesis of evidence linking ZNF804A to risk for schizophrenia and bipolar disorder. American Journal of Medical Genetics B Neuropsychiatric Genetics 168(1):14-35.
+
+**Quinn TP**, Atwood PD, Tanski JM, Moore TF, & Folmer-Andersen J. 2011. Aza-crown macrocycles as chiral solvating agents for mandelic acid derivatives. Journal of Organic Chemistry 76(24):10020-30.
+
+<br>

@@ -2,8 +2,8 @@ name: "tpq.me"
 navbar:
   title: "THOM QUINN"
   left:
-    - text: "ABOUT"
-      href: about.html
+    - text: "ABOUT ME"
+      href: about-me.html
     - text: "CURRICULUM VITAE"
       href: curriculum-vitae.html
     - text: "MUSINGS"

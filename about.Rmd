@@ -1,9 +1,0 @@
----
-title: "About"
----
-
-### Welcome
-
-Hey there! Thanks for stopping by. My name is Thom and I am a student of medicine and life. Currently residing in Geelong, Australia, I am working towards a PhD focused on the application of data science to medical genomics. To this end, I am motivated by the prospect that we may someday soon harness genomic data to revolutionize medical prognostics, diagnostics, and therapeutics. Lately, I am intrigued by the theory and practice behind how scientists define disease constructs, then differentiate diseased cases from controls. Other key interests include machine learning, knowledge integration, and the DIY ethic.
-
-<br>

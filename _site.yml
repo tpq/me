@@ -12,5 +12,6 @@ output:
   html_document:
     theme: cosmo
     include:
+      in_header: header.html
       after_body: footer.html
     css: styles.css

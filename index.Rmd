@@ -2,4 +2,4 @@
 title: "Thom Quinn"
 ---
 
-[PLACEHOLDER]
+![Enjoying a coconut in Singapore.](home.png)

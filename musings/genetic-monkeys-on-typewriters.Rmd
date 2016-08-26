@@ -1,0 +1,116 @@
+---
+title: "Genetic Monkeys on Typewriters"
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(cache = TRUE)
+```
+
+### Random rules
+
+I have heard that an infinite number of monkeys can write Shakespeare in finite time, so maybe, just maybe, a finite number of monkeys can write Shakespeare in infinite time. But can a finite number of monkeys write Shakespeare in finite time? Well, at least under the constraints of evolutionary mechanics, I think yes.
+
+See, randomness solves problems. How? You guessed it: with enough guesses, you can guess anything right. Trying every possible solution is a well known approach to finding the correct solution (take [bogosort](https://en.wikipedia.org/wiki/Bogosort) for example).
+
+But this takes time and since we never seem to have enough of that, we usually want the right answer right away. The problem is that solving a problem is hard when you do not know much about the problem you are trying to solve. So what happens when you do not have the perfect solution, but trying every solution would take too long?
+
+### The fittest algorithm
+
+Nature has discovered its own powerful optimization algorithm that successfully balances trial with speed: the process of evolution by natural selection. If you conceive of genes as an attempted "solution" to the "problem" of survival until reproduction, then every organism is a guess as to the answer of life.
+
+From this perspective, genomes that lead to reproduction work well. Genomes that lead to reproductive offspring work even better. Likewise, the best solutions would lead to reproduction until the end of time. It would then seem that the Archae, microscopic organisms that have undergone virtually no change for billions of years, have maybe found a near perfect solution to life up until now.
+
+Within genomes, mutations occur randomly; however, through the process of natural selection, only the fitter mutations get to propogate. In other words, the successful parts of the previous solution seeds the next set of solutions.
+
+**Genetic algorithms** borrow from nature by []. Two key principals in biology underly the behavior of genetic algorithms: mutation and crossing over.
+
+### Digital genes
+
+Instead of As, Gs, Ts, and Cs, these genes store bits of information: 1s and 0s. Unlike biological genes which can grow and shrink from insertions and deletions, digital genes have a fixed size. However, like biological genes, we require a key that translates gene transcripts (comprised of "codons") into a functional sequence (comprised of "building blocks") (i.e., analogous to the [DNA codon table](https://en.wikipedia.org/wiki/DNA_codon_table)).
+
+First, we will build the most basic "codon table": one that translates a *binary sequence* (i.e., analogous to a genetic codon) into a *decimal sequence* (i.e., analogous to an amino acid). The decimal sequences will eventually get put to the test by a **fitness function** (i.e., analogous to survival until reproduction) which scores the "fitness" of the digital gene. In this paradigm, more fit solutions (i.e., those with higher scores) have an increased probability of seeding the next generation of solutions.
+
+
+
+```{r}
+translate <- function(codon){
+  
+  strtoi(codon, base = 2)
+}
+```
+
+### 
+
+In nature, each codon consists of three bases which exist in one of four states. Since we can represent four states using two bits, each natural codon contains $3*2$ bits of information. We will follow this trend and use 6 bit codons, allowing for $2^6$ values.
+
+So a digital gene with two 6 bit codons might look like this:
+
+```{r}
+twoCodons <- 101001001010
+```
+
+Above, I introduced a function that translated a digital codon. However, in order to perform real work, we will want to harness the power of multiple genes. Within in the cell, the **ribosome** organelle serves the role of translating a series of 
+
+We can create our own digital ribosome thusly:
+
+```{r}
+ribosome <- function(string, nbits = 6, how = translate){
+  
+  if(!is.character(string)){
+    
+    string <- as.character(string)
+  }
+  
+  if(nchar(string) %% nbits != 0){
+    
+    stop("Digital gene not evenly divisible by chosen codon size.")
+  }
+  
+  output <- vector("list", nchar(string)/nbits)
+  for(i in 0:(nchar(string)/nbits - 1)){
+    
+    codon <- substr(string, i*nbits + 1, i*nbits + nbits)
+    output[[i+1]] <- do.call(how, list(codon))
+  }
+  
+  return(output)
+}
+
+ribosome(twoCodons)
+```
+
+### The battle arena
+
+Now, we need to put the translated gene to the test. For this, we define a fitness function:
+
+By convention, the fitness function is written as a function of the binary input.
+
+
+
+```{r}
+fitness <- function(binary){
+  
+  AA <- ribosome(as.character(binary), nbits = 6, how = translate)
+  
+  
+}
+```
+
+### da
+
+If we need larger numbers as input into the fitness function, all we would have to do is increase the size of the codons used. If we expect more 
+
+<!--or the purpose of this example, we will construct a problem that has one and only one solution. Of course, many problems in science (as in nature), have more than one correct solution.-->
+
+```{r}
+
+```
+
+### Letters to []
+
+
+
+
+###
+
+"But after a month, the Sulawesi crested macaques had only succeeded in partially destroying the machine, using it as a lavatory, and mostly typing the letter "s"." [http://news.bbc.co.uk/2/hi/3013959.stm] To give credit to the monkeys, this is []

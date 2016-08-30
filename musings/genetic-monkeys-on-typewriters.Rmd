@@ -84,18 +84,20 @@ ribosome(twoCodons)
 
 Now, we need to put the translated gene to the test. For this, we define a fitness function which scores the "fitness" of a digital genome. In this paradigm, more fit solutions (i.e., those with higher scores) have an increased probability of seeding the next generation of solutions. By convention, the fitness function calculates the *survival score* based on a binary vector input. Therefore, we embed our ribosome within the fitness function.
 
-As an example, we solve the simple equation $a^2 + b = 308$ for integers $0<a<65$ and $0<b<65$.
+As an example, we solve the simple equation $a^2+b=308$ for integers $0<a<65$ and $0<b<65$.
 
 ```{r}
 fitness <- function(binary){
   
-  AA <- ribosome(binary, nbits = 6, how = translate)
+  AA <- ribosome(binary, nbits = 6, how = table)
   solution <- AA[[1]]^2 + AA[[2]]
   atan(1 / abs(308 - solution))
 }
 ```
 
 If we want to change the range of values for $a$ or $b$, we just need to change the "codon table" function. If we want to add more possible values for $a$ or $b$, we just need to increase the size of the codon. If we want to add more values beyond $a$ or $b$, we just need to increase the size of the genome. In this way, we have a tremendous amount of control over the kinds of solutions tested. Meanwhile, through careful crafting of the fitness function, we maintain total control over how the solutions get tested.
+
+In addition, we need to provide two additional parameters. The first, `nBits`, equals the total length of the "digital genome" expected by the "digital ribosome" and fitness function. The second, `maxiter`, equals the total number of generations (i.e., reproductive cycles) used by the algorithm. Running an algorithm with fewer iterations will finish sooner, but will carry an increased risk of not having converged onto the optimal solution.
 
 ```{r}
 library(GA)
@@ -114,7 +116,7 @@ ribosome(solution)
 
 ### More than one answer
 
-This mock example also highlights how the same genetic algorithm, while still trending toward a "best" solution, may not arrive at the same result. By starting with a different genetic stock (a different primordial Eve), or by drifting through a different genetic path, genetic algorithms may converge on different "best" solution.
+This mock example will also highlights how the same genetic algorithm, when executed twice, may not arrive at the same result each time. By starting with a different genetic stock (a different primordial Eve), or by drifting through a different genetic path, genetic algorithms may converge on different "best" solution.
 
 ```{r}
 set.seed(2)
@@ -122,17 +124,50 @@ res <- ga(type = "binary", fitness = fitness, nBits = 2*3*2, maxiter = 100)
 ribosome(summary(res)$solution)
 ```
 
-### Letters to []
+### Literary genes
 
-We can represent nearly anything in binary.
+Since we can represent nearly any type of input as a binary string, genetic algorithms offer a tremendous amount of flexibiliy when solving problems. In this next example, we will use genetic algorithms to draft a line from Shakespeare. By constructing a fitness function that rewards digital genes that most closely approximate Shakesperean verse, we guide an otherwise chaotic process toward coherency. Then, just like the proverbial monkey striking away on a typewriter, we author something poetically sensible out of nothing more than fragments of nonsense.
 
-All we need to do is change the "codon table" to translate from binary to character.
+First, however, we need a new "codon table" that translates binary strings to alphanumeric characters. To do this, we will convert *binary* to *decimal*, then *decimal* to *raw*, and finally *raw* to *character*.
 
 ```{r}
 table <- function(codon){
   
-  strtoi(codon, base = 2)
+  dec <- strtoi(codon, base = 2)
+  rawToChar(as.raw(dec))
 }
 ```
 
-"But after a month, the Sulawesi crested macaques had only succeeded in partially destroying the machine, using it as a lavatory, and mostly typing the letter "s"." [http://news.bbc.co.uk/2/hi/3013959.stm] To give credit to the monkeys, this is []
+Using the same digital ribosome from above, we will convert [].
+
+However, in order to ensure that a codon can become any and every letter, these codons will need to contain 7-bits of information each.
+
+Then, we will set a [] of Shakespeare against which each random digital genome will get compared. Through these comparisons, we ensure that only the most prosaic randomness have the opportunity for reproduction.
+
+```{r}
+prose <- "that which we call a rose by any other name would smell as sweet"
+```
+
+```{r}
+fitness <- function(binary){
+  
+  AA <- ribosome(binary, nbits = 7, how = table)
+  sum(unlist(AA) == unlist(strsplit(prose, "")))
+}
+```
+
+In order to run the algorithm, we again need to supply arguments to the `nBits` and `maxiter` parameters. Since we need 7-bits for each letter in the final result, we set `nBits` equal to `nchar(prose)*7`.
+
+Then, in testing this script previously, I found that 100,000 generations achieved [] results.
+
+```{r}
+set.seed(1)
+res <- ga(type = "binary", fitness = fitness, nBits = nchar(prose)*7, maxiter = 100000)
+ribosome(summary(res)$solution)
+```
+
+### Afterward
+
+In [honor of] full disclosure, I must bring attention to the reader that the monkey-on-typewriter proverb does not [] to members of the monkey species. Monkeys do not operate as a random[], but rather have their own [], talent, desires, and aesthetic. In fact, researchers have put monkeys to the test by providing them with typewriters, food, and time (the bare minimum for artistic pursuits). However, as noted by a prestigious scientific journalist, "after a month, the Sulawesi crested macaques had only succeeded in partially destroying the machine, using it as a lavatory, and mostly typing the letter '(s)[http://news.bbc.co.uk/2/hi/3013959.stm]'." To give credit where credit is due, 
+
+A piece with more integrity than some of the hackneyed [modern art] I have seen in museums.

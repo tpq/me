@@ -138,11 +138,9 @@ table <- function(codon){
 }
 ```
 
-Using the same digital ribosome from above, we will convert [].
+Using this new "codon table" with the same digital ribosome from above, we can convert a digital genome into a literary paragraph. However, in order to ensure that each codon could eventually become any letter, these codons need to contain 7-bits of information each.
 
-However, in order to ensure that a codon can become any and every letter, these codons will need to contain 7-bits of information each.
-
-Then, we will set a [] of Shakespeare against which each random digital genome will get compared. Through these comparisons, we ensure that only the most prosaic randomness have the opportunity for reproduction.
+Next, we need a way to evaluate the fitness, or literary quality, of the translated binary strings. In theory, an experience user could incorporate some kind of sentiment analysis, machine learning, or Markov modelling, to guide the algorithm toward novel speech. In this contrived example, though, we will excerpt a quote from Shakespeare against which we compare []. Effectively, this fitness function will measure the similarity between Shakespeare and [random nonsense]. Then, through the [power of genetic algorithms], we ensure that only the most prosaic randomness have the opportunity for reproduction.
 
 ```{r}
 prose <- "that which we call a rose by any other name would smell as sweet"
@@ -156,7 +154,7 @@ fitness <- function(binary){
 }
 ```
 
-In order to run the algorithm, we again need to supply arguments to the `nBits` and `maxiter` parameters. Since we need 7-bits for each letter in the final result, we set `nBits` equal to `nchar(prose)*7`.
+Now, in order to run the algorithm, we just need to supply arguments to the `nBits` and `maxiter` parameters. Since we need 7-bits for each letter in the final result, we set `nBits` equal to `nchar(prose)*7`.
 
 Then, in testing this script previously, I found that 100,000 generations achieved [] results.
 

@@ -154,14 +154,30 @@ fitness <- function(binary){
 }
 ```
 
-Now, in order to run the algorithm, we just need to supply arguments to the `nBits` and `maxiter` parameters. Since we need 7-bits for each letter in the final result, we set `nBits` equal to `nchar(prose)*7`.
-
-Then, in testing this script previously, I found that 100,000 generations achieved [] results.
+Now, in order to run the algorithm, we just need to supply arguments to the `nBits` and `maxiter` parameters. Since we need 7-bits for each letter in the final result, we set `nBits` equal to `nchar(prose)*7`. Next, we set `maxiter` to 100,000 generations, a value which tended to achieve optimal results during prior testing.
 
 ```{r}
 set.seed(1)
-res <- ga(type = "binary", fitness = fitness, nBits = nchar(prose)*7, maxiter = 100000)
-ribosome(summary(res)$solution)
+res <- ga(type = "binary", fitness = fitness, nBits = nchar(prose)*7, maxiter = 100)#100000)
+```
+
+Sometimes, the genetic algorithms result object includes many equally fit solutions. In these cases, I usually collapse all "best" solutions into an "average best" solution.
+
+```{r}
+allsol <- summary(res)$solution
+if(nrow(allsol) > 1){
+  
+  final <- round(colSums(allsol) / nrow(allsol))
+}else{
+  
+  final <- allsol[1, ]
+}
+```
+
+Finally, we join the characters together to draft .
+
+```{r}
+paste(ribosome(final, nbits = 7), collapse = "")
 ```
 
 ### Afterward

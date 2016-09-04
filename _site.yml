@@ -11,6 +11,7 @@ navbar:
 output:
   html_document:
     theme: cosmo
+    highlight: haddock
     include:
       in_header: header.html
       after_body: footer.html

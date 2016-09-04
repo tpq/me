@@ -4,4 +4,4 @@ title: "Musings"
 
 ### 2016
 
-##### [**Genetic Monkeys on Typewriters**](musings/genetic-monkeys-on-typewriters.html)
+##### [**Genetic Monkeys on Typewriters**](genetic-monkeys-on-typewriters.html)

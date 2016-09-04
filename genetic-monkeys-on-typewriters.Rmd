@@ -96,7 +96,7 @@ fitness <- function(binary){
 
 In order to execute the algorithm, we need to provide two additional parameters. The first, `nBits`, equals the total length of the *digital genome* expected by the *digital ribosome* and *fitness function*. The second, `maxiter`, equals the total number of generations (i.e., reproductive cycles) until the algorithm terminates. Running an algorithm with fewer iterations will finish sooner, but will carry an increased risk of not having converged onto a "best" solution.
 
-```{r}
+```{r, messages = FALSE, results = "hide"}
 library(GA)
 set.seed(1)
 res <- ga(type = "binary", fitness = fitness, nBits = 2*3*2, maxiter = 100)
@@ -115,7 +115,7 @@ ribosome(solution)
 
 This mock example highlights how the same genetic algorithm, when executed twice, may arrive at different solutions each time. By starting with a different genetic stock (i.e., a different primordial Eve), or by drifting through a different genetic path, genetic algorithms may converge on a different "best" solution.
 
-```{r}
+```{r, results = "hide"}
 set.seed(2)
 res <- ga(type = "binary", fitness = fitness, nBits = 2*3*2, maxiter = 100)
 ribosome(summary(res)$solution)
@@ -153,7 +153,7 @@ fitness <- function(binary){
 
 In order to execute the algorithm, we again need to supply arguments for the `nBits` and `maxiter` parameters. Since we need 7-bits to represent each letter in the final result, we set `nBits` equal to `nchar(prose)*7`. Next, we set `maxiter` to 100,000 generations, a value which led to promising results during prior testing.
 
-```{r}
+```{r, results = "hide"}
 set.seed(1)
 res <- ga(type = "binary", fitness = fitness, nBits = nchar(prose)*7, maxiter = 100)#100000)
 ```
@@ -179,4 +179,4 @@ paste(ribosome(final, nbits = 7), collapse = "")
 
 ### Afterward
 
-Finally, I should remind the reader that the monkey-on-typewriter proverb does not accurately portray the simian creative process. Monkeys do not operate as random text generators, but rather have their own hopes, dreams, goals, desires, and even their own aesthetic. In fact, researchers have put monkeys to the test by providing them with typewriters, food, and time and waiting for Shakespeare to flow from their fingers. However, as noted by a prestigious journalist, "after a month, the Sulawesi crested macaques had only succeeded in partially destroying the machine, using it as a lavatory, and mostly typing the letter '(s)[http://news.bbc.co.uk/2/hi/3013959.stm]'." Although, this is really just about all I manage to get done most months.
+Finally, I should remind the reader that the monkey-on-typewriter proverb does not accurately portray the simian creative process. Monkeys do not operate as random text generators, but rather have their own hopes, dreams, goals, desires, and even their own aesthetic. In fact, researchers have put monkeys to the test by providing them with typewriters, food, and time and waiting for Shakespeare to flow from their fingers. However, as noted by a prestigious journalist, "after a month, the Sulawesi crested macaques had only succeeded in partially destroying the machine, using it as a lavatory, and mostly typing the letter [s](http://news.bbc.co.uk/2/hi/3013959.stm)." Although, most months it feels like that is just about all I can muster together myself.

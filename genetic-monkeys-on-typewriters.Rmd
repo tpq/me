@@ -96,7 +96,7 @@ fitness <- function(binary){
 
 In order to execute the algorithm, we need to provide two additional parameters. The first, `nBits`, equals the total length of the *digital genome* expected by the *digital ribosome* and *fitness function*. The second, `maxiter`, equals the total number of generations (i.e., reproductive cycles) until the algorithm terminates. Running an algorithm with fewer iterations will finish sooner, but will carry an increased risk of not having converged onto a "best" solution.
 
-```{r, messages = FALSE, results = "hide"}
+```{r, message = FALSE, results = "hide"}
 library(GA)
 set.seed(1)
 res <- ga(type = "binary", fitness = fitness, nBits = 2*3*2, maxiter = 100)
@@ -155,7 +155,7 @@ In order to execute the algorithm, we again need to supply arguments for the `nB
 
 ```{r, results = "hide"}
 set.seed(1)
-res <- ga(type = "binary", fitness = fitness, nBits = nchar(prose)*7, maxiter = 100)#100000)
+res <- ga(type = "binary", fitness = fitness, nBits = nchar(prose)*7, maxiter = 100000)
 ```
 
 Sometimes, the genetic algorithms result object contains *multiple* equally fit solutions. In these cases, I usually collapse all "best" solutions into an "average best" solution.

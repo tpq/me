@@ -21,11 +21,11 @@ insert <- function(file, after, what){
   close(con)
 }
 
-newMusing <- function(blog.title = "New Title", after = "### 2016"){
+newMusings <- function(blog.title = "New Title", after = "### 2016"){
   
   # Write custom blog template to new file
   blog.name <- gsub("\\s", "-", stringr::str_to_lower(blog.title))
-  blog.file <- paste0(getwd(), "/musings/", blog.name, ".Rmd")
+  blog.file <- paste0(getwd(), "/", blog.name, ".Rmd")
   blog.new <- file(blog.file)
   
   blog.template <-
@@ -48,7 +48,7 @@ Placeholder
   
   # Add blog index to musings.html
   insert("musings.Rmd", after = after, what = "")
-  blog.link <- paste0("##### [**", blog.title, "**](", "musings/", blog.name, ".html)")
+  blog.link <- paste0("##### [**", blog.title, "**](", blog.name, ".html)")
   insert("musings.Rmd", after = after, what = blog.link)
   insert("musings.Rmd", after = after, what = "")
 }
@@ -57,7 +57,7 @@ newFiction <- function(blog.title = "New Title", after = "### Poetry"){
   
   # Write custom blog template to new file
   blog.name <- gsub("\\s", "-", stringr::str_to_lower(blog.title))
-  blog.file <- paste0(getwd(), "/fiction/", blog.name, ".Rmd")
+  blog.file <- paste0(getwd(), "/", blog.name, ".Rmd")
   blog.new <- file(blog.file)
   
   blog.template <-
@@ -76,7 +76,7 @@ Placeholder
   
   # Add blog index to musings.html
   insert("fiction.Rmd", after = after, what = "")
-  blog.link <- paste0("##### [**", blog.title, "**](", "fiction/", blog.name, ".html)")
+  blog.link <- paste0("##### [**", blog.title, "**](", blog.name, ".html)")
   insert("fiction.Rmd", after = after, what = blog.link)
   insert("fiction.Rmd", after = after, what = "")
 }

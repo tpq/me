@@ -22,7 +22,7 @@ From this perspective, genomes that lead to *reproduction* represent solutions t
 
 When an organism reproduces, the offspring incurs random mutations to their inherited genome. Then, through the process of evolution by natural selection, the fittest of these mutations get passed along to the next generation, allowing the most successful prior "solutions" to seed the next solution set. Some organisms have an additional layer of randomization: *recombination*. During this stage of reproduction (colloquially known as sex), the genomes of two parent organisms *recombine* with one another through a process called *crossing over*. Specifically, the genes of one (presumably successful) parent intermingles with the genes of another (presumably successful) parent, allowing an opportunity for the best (or the worst) traits from each parent to join together.
 
-(Note that on an individual basis, *crossing-over* does not guarentee more successful offspring. However, it appears to have some kind of longitudinal benefit as evidenced by the sheer number of complex organisms that engage in sexual reproduction. In fact, some hermaphroditic organisms, notably flowering plants, will even cross-over with themselves in what is called *autogamy*.)
+(Note that on an individual basis, *crossing-over* does not guarantee more successful offspring. However, it appears to have some kind of longitudinal benefit as evidenced by the sheer number of complex organisms that engage in sexual reproduction. In fact, some hermaphroditic organisms, notably flowering plants, will even cross-over with themselves in what is called *autogamy*.)
 
 ### Digital genes
 
@@ -30,7 +30,7 @@ Of course, genetic algorithms cannot capture the total complexity of biological 
 
 On the other hand, like biological genes, digital genes require a key that translates the gene transcripts (comprised of evenly spaced "codons") into a functional sequence (comprised of protein-like "building blocks"). This key, analogous to the [DNA codon table](https://en.wikipedia.org/wiki/DNA_codon_table), is a user-defined function that ultimately tells the genetic algorithm how to make sense of (pseudo-)random binary strings.
 
-To demonstrate a basic "codon table", I introduce a function below that translates a *binary sequence* (analogous to a genetic codon) into a *decimal sequence* (analogous to an amino acid). Amino acids, the "building blocks" of the cell, conventially represent the functional level upon which natural selection works. Then, just as amino acids undergo the test of life to determine the fitness of that organism, these translated decimal sequences will undergo their own test to determine their "fitness" as a solution.
+To demonstrate a basic "codon table", I introduce a function below that translates a *binary sequence* (analogous to a genetic codon) into a *decimal sequence* (analogous to an amino acid). Amino acids, the "building blocks" of the cell, conventionally represent the functional level upon which natural selection works. Then, just as amino acids undergo the test of life to determine the fitness of that organism, these translated decimal sequences will undergo their own test to determine their "fitness" as a solution.
 
 ```{r}
 table <- function(codon){
@@ -115,7 +115,7 @@ ribosome(solution)
 
 ### More than one answer
 
-This mock example highlights how the same genetic algorithm, when executed twice, may arrive at different solutions each time. By starting with a different genetic stock (i.e., a different primordial Eve), or by drifting through a different genetic path, genetic algorithms may converge on a different "best" solution.
+This mock example highlights how the same genetic algorithm, when executed twice, may arrive at different solutions each time. By starting with a different genetic stock (i.e., a different primordial Eve), or by drifting through a different genetic path, a genetic algorithm may converge on a different "best" solution.
 
 ```{r, results = "hide"}
 set.seed(2)
@@ -125,7 +125,7 @@ ribosome(summary(res)$solution)
 
 ### Literary genes
 
-Since we can represent nearly any type of input as a binary string, genetic algorithms offer a tremendous amount of flexibiliy when solving problems. Next, we will use genetic algorithms to draft a line from Shakespeare. By constructing a fitness function that rewards digital genes that most closely approximate Shakesperean verse, we guide an otherwise chaotic process toward coherency. Then, just like the proverbial monkey striking away on a typewriter, we author something poetically sensible out of nothing more than fragments of nonsense.
+Since we can represent nearly any type of input as a binary string, genetic algorithms offer a tremendous amount of flexibility when solving problems. Next, we will use genetic algorithms to draft a line from Shakespeare. By constructing a fitness function that rewards digital genes that most closely approximate Shakespearean verse, we guide an otherwise chaotic process toward coherency. Then, just like the proverbial monkey striking away on a typewriter, we author something poetically sensible out of nothing more than fragments of nonsense.
 
 First, however, we need a new "codon table" that translates binary strings to alphanumeric characters. To do this, we will convert *binary* to *decimal*, then *decimal* to *raw*, and finally *raw* to *character*.
 
@@ -181,4 +181,4 @@ paste(ribosome(final, nbits = 7), collapse = "")
 
 ### Afterward
 
-Finally, I should remind the reader that the monkey-on-typewriter proverb does not accurately portray the simian creative process. Monkeys do not operate as random text generators, but rather have their own hopes, dreams, goals, desires, and even their own aesthetic. In fact, researchers have put monkeys to the test, providing them with typewriters, food, and time (the raw materials of fiction), then waiting for *Hamlet* to happen. However, as noted by a prestigious journalist, "after a month, the Sulawesi crested macaques had only succeeded in partially destroying the machine, using it as a lavatory, and mostly typing the letter [s](http://news.bbc.co.uk/2/hi/3013959.stm)," which is about all I muster together myself some months.
+Finally, I should remind the reader that the monkey-on-typewriter proverb does not accurately portray the simian creative process. Monkeys do not operate as random text generators, but rather have their own hopes, dreams, goals, desires, and even their own aesthetic. In fact, researchers have put monkeys to the test, providing them with typewriters, food, and time (the raw materials of fiction), and then waited for *Hamlet* to happen. However, as noted by a prestigious journalist, "after a month, the Sulawesi crested macaques had only succeeded in partially destroying the machine, using it as a lavatory, and mostly typing the letter [s](http://news.bbc.co.uk/2/hi/3013959.stm)," which is about all I can muster together myself most months.

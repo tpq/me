@@ -8,29 +8,29 @@ knitr::opts_chunk$set(cache = TRUE)
 
 ### Random rules
 
-If an infinite number of monkeys can write Shakespeare in finite time, then a finite number of monkeys can probably write Shakespeare in infinite time. But can a finite number of monkeys write Shakespeare in finite time?
+If a finite number of monkeys can write [Shakespeare](https://en.wikipedia.org/wiki/Infinite_monkey_theorem) in infinite time, then an infinite number of monkeys can probably write Shakespeare in finite time. But can a finite number of monkeys write Shakespeare in finite time?
 
-Tentatively, yes. See, randomness solves problems. How? You guessed it: with enough guesses, you can guess anything right. Trying every possible solution is a well known approach to finding the correct solution (take [bogosort](https://en.wikipedia.org/wiki/Bogosort) for example). But guessing takes time and since we never seem to have enough of that, we usually want the right answer right away. The problem is that solving a problem is hard when you do not know much about the problem you are trying to solve. So what happens when you do not know the optimal solution, but to try *every* solution would take too long?
+Tentatively, yes. See, randomness solves problems. How? You guessed it: with enough guesses, you can guess anything right. Trying every possible solution is a well known approach to finding the correct solution (take [bogosort](https://en.wikipedia.org/wiki/Bogosort) for example). But guessing takes time and since we never seem to have enough of that, we usually want the right answer right away. The problem is that solving a problem is hard when you do not know much about the problem you are trying to solve. So what happens when you do not know how to implement the optimal solution, but to try *every* solution would take too long?
 
 ### The fittest algorithm
 
-Nature has discovered its own powerful optimization algorithm that successfully balances trial-and-error with speed: the process of evolution by natural selection. If you can conceive of genes as an attempted "solution" to the "problem" of survival until reproduction, then every organism is a guess as to the answer for life.
+Nature has discovered its own powerful optimization algorithm that successfully balances trial-and-error with speed: *the process of evolution by natural selection*. If you can conceive of genes as an attempted "solution" to the "problem" of survival until reproduction, then every organism is a guess as to the answer for life.
 
-From this perspective, genomes that led to *reproduction* represent solutions that worked well. Likewise, genomes that led to *reproductive offspring* represent solutions that worked even better. Meanwhile, the best solutions would lead to *perpetual reproduction*. It would seem then that the *Archae*, microscopic organisms with genomes that have remained nearly constant for billions of years, represent a nearly perfect solution to life up until now.
+From this perspective, genomes that lead to *reproduction* represent solutions that work well. Likewise, genomes that lead to *reproductive offspring* represent solutions that work even better. Meanwhile, the best solutions would lead to *perpetual reproduction*. It would seem then that the *Archae*, microscopic organisms with genomes that have remained nearly constant for billions of years, represent a nearly perfect solution to life up until now.
 
 **Genetic algorithms** borrow from nature to provide a framework for solving problems through evolutionary discovery. In simple terms, these algorithms offer a construct for iteratively testing the quality of randomly generated solutions, whereby each subsequent generation of solutions derive partially from the best performing solutions of the previous generation. It achieves this by simultaneously exploiting two core principals of natural evolution: (1) mutation and (2) sexual reproduction.
 
-When an organism reproduces, the offspring incurs random mutations to the inherited genome. Then, through the process of evolution by natural selection, the fittest of these mutations get passed along to the next generation, allowing the successful parts of the previous solution to seed the next set of solutions. Some organisms have an additional layer of randomization: *recombination*. During this stage of reproduction (colloquially known as sex), the genomes of two parent organisms *recombine* with one another through a process called *crossing over*. Specifically, the genes of one (presumably successful) parent intermingles with the genes of another (presumably successful) parent, allowing an opportunity for the best (or the worst) traits from each parent to join together.
+When an organism reproduces, the offspring incurs random mutations to their inherited genome. Then, through the process of evolution by natural selection, the fittest of these mutations get passed along to the next generation, allowing the most successful prior "solutions" to seed the next solution set. Some organisms have an additional layer of randomization: *recombination*. During this stage of reproduction (colloquially known as sex), the genomes of two parent organisms *recombine* with one another through a process called *crossing over*. Specifically, the genes of one (presumably successful) parent intermingles with the genes of another (presumably successful) parent, allowing an opportunity for the best (or the worst) traits from each parent to join together.
 
-(Note that on an individual basis, *crossing-over* does not guarentee more successful offspring. However, it appears to have some kind of longitudinal benefit as evidenced by the sheer number of complex organisms that engage in sexual reproduction. In fact, some hermaphroditic organisms, especially flowering plants, will even cross-over with themselves in what is called *autogamy*.)
+(Note that on an individual basis, *crossing-over* does not guarentee more successful offspring. However, it appears to have some kind of longitudinal benefit as evidenced by the sheer number of complex organisms that engage in sexual reproduction. In fact, some hermaphroditic organisms, notably flowering plants, will even cross-over with themselves in what is called *autogamy*.)
 
 ### Digital genes
 
-Of course, genetic algorithms cannot capture the total complexity of biological systems. As such, *digital genes* differ somewhat from their biological counterpart. First, unlike biological genes, which store information as `A`s, `G`s, `T`s, and `C`s, digital genes store bits of information as `1`s and `0`s. Second, unlike biological genes which can grow and shrink from insertions and deletions, digital genes have a fixed size. Third, unlike biological genes which have layers upon layers of higher-order regulation, digital genes tend to have only the simplest expression profiles.
+Of course, genetic algorithms cannot capture the total complexity of biological systems. As such, *digital genes* differ somewhat from their biological counterpart. First, unlike biological genes, which store information as `A`s, `G`s, `T`s, and `C`s, digital genes store bits of information as `1`s and `0`s. Second, unlike biological genes which can grow and shrink from insertions and deletions, digital genes have a fixed size. Third, unlike biological genes which have layers upon layers of higher-order regulation, digital genes have only the simplest expression profiles.
 
 On the other hand, like biological genes, digital genes require a key that translates the gene transcripts (comprised of evenly spaced "codons") into a functional sequence (comprised of protein-like "building blocks"). This key, analogous to the [DNA codon table](https://en.wikipedia.org/wiki/DNA_codon_table), is a user-defined function that ultimately tells the genetic algorithm how to make sense of (pseudo-)random binary strings.
 
-To demonstrate a basic "codon table", I introduce below a function that translates a *binary sequence* (analogous to a genetic codon) into a *decimal sequence* (analogous to an amino acid). Amino acids, the "building blocks" of the cell, conventially represent the functional level upon which natural selection works. Just as amino acids undergo the test of life to determine the fitness of that organism, these translated decimal sequences will eventually undergo their own test to determine the fitness of that solution.
+To demonstrate a basic "codon table", I introduce a function below that translates a *binary sequence* (analogous to a genetic codon) into a *decimal sequence* (analogous to an amino acid). Amino acids, the "building blocks" of the cell, conventially represent the functional level upon which natural selection works. Then, just as amino acids undergo the test of life to determine the fitness of that organism, these translated decimal sequences will undergo their own test to determine their "fitness" as a solution.
 
 ```{r}
 table <- function(codon){
@@ -41,13 +41,13 @@ table <- function(codon){
 
 ### Digital ribosomes
 
-In nature, each codon consists of three bases which exist in one of four states. Since we can represent four states using two bits, each natural codon contains $3(2)$ bits of information. We will follow this standard by using 6-bit codons, allowing for $2^6$ values per codon. An example of a digital gene with two 6-bit codons might look like this:
+In nature, each codon consists of three bases which exist in one of four states. Since we can represent four states using two bits, each natural codon contains $3(2)$ bits of information. We will follow this convention for now by using 6-bit *digital codons*, allowing for $2^6$ values per codon. An example of a digital gene with two 6-bit codons might look like this:
 
 ```{r}
 twoCodons <- c(1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0)
 ```
 
-Before, I shared a function that translates a single *digital gene* into a decimal sequence. However, in order to perform real work, we need to harness the power of multiple genes by translating an entire *digital genome*. Within the cell, the **ribosome** organelle holds the machinery that translates genes into functional proteins. To reinforce analogy, we will embed our custom "codon table" within a *digital ribosome*.
+Above, I introduced a function that translates a single *digital codon* into a decimal sequence. However, in order to perform real work, we need to harness the power of multiple codons by translating an entire *digital genome*. Within the cell, the **ribosome** organelle holds the machinery that translates genes into functional proteins. To reinforce analogy, we will embed our custom "codon table" within a *digital ribosome*.
 
 ```{r}
 ribosome <- function(string, nbits = 6, how = table){
@@ -81,9 +81,11 @@ ribosome(twoCodons)
 
 ### Digital fitness
 
-Now, we need to put the translated gene to the test. For this, we define a fitness function which scores the "fitness" of a digital genome. In this paradigm, more fit solutions (i.e., those with higher scores) have an increased probability of seeding the next generation of solutions. By convention, the fitness function calculates the *survival score* based on a binary vector input. Therefore, we should embed *digital ribosome* within the fitness function itself. As an example, we define a fitness function to solve the simple equation $a^2+b=308$. When using two 6-bit codons, the genetic algorithm will attempt solutions such that $0<a<65$ and $0<b<65$.
+Now, we need to put the translated gene to the test. For this, we define a *fitness function* that will score the "fitness" of a digital genome. In this paradigm, I find it helpful to think of "fitness" as a measure of the proximity of an outcome to an intended result. By convention, the fitness function will convert a binary vector input into a *survival score*, such that higher scores signify greater fitness. Then, through simulated evolution, the more fit solutions (i.e., those with higher scores) will have an increased probability of seeding the next generation of solutions.
 
-(Note that if we wanted to change the range of values for $a$ or $b$, we just need to change the "codon table" function. If we wanted to add more possible values for $a$ or $b$, we just need to increase the size of the codon. If we wanted to add more values beyond $a$ or $b$, we just need to increase the size of the genome. In this way, we have a tremendous amount of control over the kinds of solutions tested. Meanwhile, through careful crafting of the fitness function, we maintain total control over how the solutions get tested.)
+In the example below, we define a fitness function that solves the simple equation $a^2+b=308$. Since the fitness function expects binary vector input, we embed our *digital ribosome* within the fitness function itself. Then, based on our choice of genome size and ribosome configuration, the genetic algorithm will attempt solutions for $0<a<65$ and $0<b<65$. 
+
+(Note that if we wanted to change the range of values for $a$ or $b$, we just need to change the "codon table" function. If we wanted to add more possible values for $a$ or $b$, we just need to increase the size of the codon. If we wanted to add more variables, we just need to increase the size of the genome. In this way, we have a tremendous amount of control over the kinds of solutions tested. Meanwhile, through careful crafting of the fitness function, we maintain total control over how the solutions get tested.)
 
 ```{r}
 fitness <- function(binary){
@@ -94,7 +96,7 @@ fitness <- function(binary){
 }
 ```
 
-In order to execute the algorithm, we need to provide two additional parameters. The first, `nBits`, equals the total length of the *digital genome* expected by the *digital ribosome* and *fitness function*. The second, `maxiter`, equals the total number of generations (i.e., reproductive cycles) until the algorithm terminates. Running an algorithm with fewer iterations will finish sooner, but will carry an increased risk of not having converged onto a "best" solution.
+In order to execute the algorithm, we need to provide two additional parameters. The first, `nBits`, equals the total length of the *digital genome* expected by the *digital ribosome* and *fitness function*. The second, `maxiter`, equals the total number of generations (i.e., reproductive cycles) until the algorithm terminates. Running an algorithm with fewer iterations will finish sooner, but will carry an increased risk of not converging onto a "best" solution.
 
 ```{r, message = FALSE, results = "hide"}
 library(GA)
@@ -179,4 +181,4 @@ paste(ribosome(final, nbits = 7), collapse = "")
 
 ### Afterward
 
-Finally, I should remind the reader that the monkey-on-typewriter proverb does not accurately portray the simian creative process. Monkeys do not operate as random text generators, but rather have their own hopes, dreams, goals, desires, and even their own aesthetic. In fact, researchers have put monkeys to the test by providing them with typewriters, food, and time and waiting for Shakespeare to flow from their fingers. However, as noted by a prestigious journalist, "after a month, the Sulawesi crested macaques had only succeeded in partially destroying the machine, using it as a lavatory, and mostly typing the letter [s](http://news.bbc.co.uk/2/hi/3013959.stm)." Although, most months it feels like that is just about all I can muster together myself.
+Finally, I should remind the reader that the monkey-on-typewriter proverb does not accurately portray the simian creative process. Monkeys do not operate as random text generators, but rather have their own hopes, dreams, goals, desires, and even their own aesthetic. In fact, researchers have put monkeys to the test, providing them with typewriters, food, and time (the raw materials of fiction), then waiting for *Hamlet* to happen. However, as noted by a prestigious journalist, "after a month, the Sulawesi crested macaques had only succeeded in partially destroying the machine, using it as a lavatory, and mostly typing the letter [s](http://news.bbc.co.uk/2/hi/3013959.stm)," which is about all I muster together myself some months.

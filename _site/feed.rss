@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+
+<channel>
+  <title>tpq.me</title>
+  <link>http://www.tpq.me</link>
+  <description>Personal website of Thom Quinn</description>
+  <item>
+    <title>Genetic Monkeys on Typewriters</title>
+    <link>http://www.http://tpq.me/genetic-monkeys-on-typewriters.html</link>
+    <description>This new entry explores the efficacy of genetic algorithms and their implementation in the R programming language</description>
+  </item>
+</channel>
+
+</rss>

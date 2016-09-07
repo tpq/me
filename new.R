@@ -51,6 +51,17 @@ Placeholder
   blog.link <- paste0("##### [**", blog.title, "**](", blog.name, ".html)")
   insert("musings.Rmd", after = after, what = blog.link)
   insert("musings.Rmd", after = after, what = "")
+  
+  # Add blog index to feed.rss
+  rss.loc <- "<description>Personal website of Thom Quinn</description>"
+  insert("feed.rss", after = rss.loc, what = "  </index>")
+  insert("feed.rss", after = rss.loc, what = "    <description>[PLACEHOLDER]</description>")
+  warning("Make sure to edit the RSS feed (feed.rss) with a proper description!")
+  rss.link <- paste0("    <link>http://www.http://tpq.me/", blog.name, ".html</link>")
+  insert("feed.rss", after = rss.loc, what = rss.link)
+  rss.title <- paste0("    <title>", blog.title, "</title>")
+  insert("feed.rss", after = rss.loc, what = rss.title)
+  insert("feed.rss", after = rss.loc, what = "  <index>")
 }
 
 newFiction <- function(blog.title = "New Title", after = "### Poetry"){

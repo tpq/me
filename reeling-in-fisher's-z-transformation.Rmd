@@ -1,0 +1,124 @@
+---
+title: "Reeling in Fisher's Z Transformation"
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(cache = TRUE)
+```
+
+### A Fisher to fry
+
+I write now as a corollary to another project rooted in the construction of an empiric distribution for a novel measure of dependence. For my own sake, I set out here to demonstrate empirically Fisher's observation that (1) the `arctanh` transformation of a distribution of correlation coefficients approximates a normal distribution, and (2) the standard error about that distribution approximately equals $\frac{1}{\sqrt{N-3}}$.
+
+### Starting somewhere
+
+We begin by calculating the correlation between two randomly distributed variables, $X$ and $Y$, containing $N=1000$ elements each.
+
+```{r}
+N <- 1000
+X <- rnorm(N)
+Y <- rnorm(N)
+cor(X, Y)
+```
+
+Yet, a single correlation coefficient is not sufficient to put Fisher's z-transformation to the test. Instead, we must establish a distribution of correlation coefficients. For this, we replicate the above code chunk an abitrarily large number of times to build a sample set of correlation coefficients between 5000 pairs of $N=1000$ sized vectors.
+
+```{r}
+N <- 1000
+res <- sapply(rep(N, 5000), function(N) cor(rnorm(N), rnorm(N)))
+```
+
+Now, to apply Fisher's z-transformation, we simply calculate the $arctanh(\rho)$ for this sample set of correlation coefficients. The Shapiro-Wilk normality test confirms that the z-transformed data follows a normal distribution.
+
+```{r}
+plot(density(atanh(res)))
+shapiro.test(atanh(res))
+```
+
+Finally, we can compare the empiric standard error for this z-transformed distribution with the standard error predicted by the formula $\frac{1}{\sqrt{N-3}}$.
+
+```{r}
+sd(atanh(res))
+1/(sqrt(N-3))
+```
+
+### One size may not fit all
+
+Everything checks out so far, but does Fisher's z-transformation rule hold true for all $N$-sized vectors? To test this, we embed the command that calculates 5000 correlation coefficients for two $N$-sized vectors within a loop that iterates across several values of $N$.
+
+```{r}
+N.all <- seq(from = 100, to = 1000, by = 100)
+distrs <-
+  lapply(N.all,
+         function(N){
+           
+           sapply(rep(N, 5000), function(N) cor(rnorm(N), rnorm(N)))
+         })
+```
+
+Using this `list` of distributions, we can easily calculate both the empiric standard error and the predicted standard error for all $N$.
+
+```{r}
+sd.empiric <- sapply(distrs, function(d) sd(atanh(d)))
+sd.predict <- sapply(N.all, function(N) 1/(sqrt(N-3)))
+```
+
+We can compare these two quantitatively by calculating the mean of the absolute difference between them.
+
+```{r}
+mean(abs(sd.empiric - sd.predict))
+```
+
+### Positively certain
+
+Now, all that is left to do is convince myself the approximate equality between the empiric standard error and the predicted standard error is not just an artifact of the distribution of the random variables $X$ and $Y$. To do this, we repeat the same pipeline established above for two positively correlated random variables. First, however, we will define a function that creates two positively correlated random variables, $X$ and $Y$, containing $N$ elements each, and then calculates the correlation between them.
+
+```{r}
+newCor <- function(N){
+  
+  v <- seq(from = 5, to = 15, length.out = N)
+  X <- v * rnorm(N, mean = 1, sd = 0.1)
+  Y <- v * rnorm(N, mean = 1, sd = 0.1)
+  cor(X, Y)
+}
+```
+
+We now have a tidy way of generating a distribution of positive correlation coefficients. 
+
+```{r}
+N <- 1000
+res <- sapply(rep(N, 5000), newCor)
+```
+
+Again, the Shapiro-Wilk normality test confirms that the z-transformed data follows a normal distribution.
+
+```{r}
+plot(density(atanh(res)))
+shapiro.test(atanh(res))
+```
+
+Next, we generate a distribution of positive correlations between two $N$-sized random variables across a range of $N$.
+
+```{r}
+N.all <- seq(100, 1000, 100)
+distrs <-
+  lapply(N.all,
+         function(N){
+           
+           sapply(rep(N, 5000), newCor)
+         })
+```
+
+As above, we compare the empiric standard error with the predicted standard error...
+
+```{r}
+sd.empiric <- sapply(distrs, function(d) sd(atanh(d)))
+sd.predict <- sapply(N.all, function(N) 1/(sqrt(N-3)))
+mean(abs(sd.empiric - sd.predict))
+```
+
+...and breathe a sign of relief.
+
+### Final thoughts
+
+Fisher's z-transformation makes it possible to use correlation coefficients in a hypothesis testing framework by providing a wway to calculate standard error from only a point estimate (i.e., the correlation coefficient) and the sample size. Typically, standard error requires a knowing only the correlation coefficient and the the sample size.

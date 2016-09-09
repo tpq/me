@@ -30,14 +30,14 @@ Placeholder
   
   # Add blog index to feed.rss
   rss.loc <- "<description>Personal website of Thom Quinn</description>"
-  miSciTools::insert("feed.rss", after = rss.loc, what = "  </index>")
+  miSciTools::insert("feed.rss", after = rss.loc, what = "  </item>")
   miSciTools::insert("feed.rss", after = rss.loc, what = "    <description>[PLACEHOLDER]</description>")
   warning("Make sure to edit the RSS feed (feed.rss) with a proper description!")
   rss.link <- paste0("    <link>http://www.http://tpq.me/", blog.name, ".html</link>")
   miSciTools::insert("feed.rss", after = rss.loc, what = rss.link)
   rss.title <- paste0("    <title>", blog.title, "</title>")
   miSciTools::insert("feed.rss", after = rss.loc, what = rss.title)
-  miSciTools::insert("feed.rss", after = rss.loc, what = "  <index>")
+  miSciTools::insert("feed.rss", after = rss.loc, what = "  <item>")
 }
 
 newFiction <- function(blog.title = "New Title", after = "### Poetry"){

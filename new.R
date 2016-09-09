@@ -47,7 +47,6 @@ Placeholder
   close(blog.new)
   
   # Add blog index to musings.html
-  insert("musings.Rmd", after = after, what = "")
   blog.link <- paste0("##### [**", blog.title, "**](", blog.name, ".html)")
   insert("musings.Rmd", after = after, what = blog.link)
   insert("musings.Rmd", after = after, what = "")
@@ -86,7 +85,6 @@ Placeholder
   close(blog.new)
   
   # Add blog index to musings.html
-  insert("fiction.Rmd", after = after, what = "")
   blog.link <- paste0("##### [**", blog.title, "**](", blog.name, ".html)")
   insert("fiction.Rmd", after = after, what = blog.link)
   insert("fiction.Rmd", after = after, what = "")

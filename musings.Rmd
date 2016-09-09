@@ -4,6 +4,6 @@ title: "Musings"
 
 ### 2016
 
-##### [**Reeling in Fisher's Z Transformation**](reeling-in-fisher's-z-transformation.html)
+##### [**Reeling in Fisher's Z Transformation**](reeling-in-fisher_s-z-transformation.html)
 
 ##### [**Genetic Monkeys on Typewriters**](genetic-monkeys-on-typewriters.html)

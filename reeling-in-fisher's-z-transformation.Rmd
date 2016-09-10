@@ -14,7 +14,7 @@ This transformation, known as the [Fisher z-transformation](https://en.wikipedia
 
 In this report, I demonstrate empirically that (1) the z-transformation of a distribution of sample correlation coefficients has a normal distribution, and (2) the standard error about that distribution approximately equals $\frac{1}{\sqrt{N-3}}$. Although not discussed further, do take note that Fisher's hypothesis presupposes that the two correlated variables are independent and follow a bivariate normal distribution.
 
-### Starting somewhere
+### It begins with the first step
 
 We begin by calculating the correlation between two randomly distributed $N$-sized vectors, $X$ and $Y$.
 
@@ -60,14 +60,14 @@ distrs <-
          })
 ```
 
-Using this result, we can easily calculate both the empiric standard error and the predicted standard error for all $N$.
+Using this result, we can calculate both the empiric standard error and the predicted standard error for all $N$.
 
 ```{r}
 sd.empiric <- sapply(distrs, function(d) sd(atanh(d)))
 sd.predict <- sapply(N.all, function(N) 1/(sqrt(N-3)))
 ```
 
-We compare these quantitatively by calculating the mean of the absolute difference between them.
+Finally, we compare these quantitatively by calculating the mean of the absolute difference between them.
 
 ```{r}
 mean(abs(sd.empiric - sd.predict))
@@ -80,21 +80,21 @@ Now, all that is left to do is convince myself that the approximate equality bet
 ```{r}
 newCor <- function(N){
   
-  v <- seq(from = 5, to = 15, length.out = N)
-  X <- v * rnorm(N, mean = 1, sd = 0.1)
-  Y <- v * rnorm(N, mean = 1, sd = 0.1)
+  v <- rnorm(N, mean = 10)
+  X <- v + rnorm(N, sd = 0.25)
+  Y <- v + rnorm(N, sd = 0.25)
   cor(X, Y)
 }
 ```
 
-We now have a tidy way of generating a distribution of positive correlation coefficients.
+Using this formula, we now have a tidy way of generating a distribution of positive correlation coefficients.
 
 ```{r}
 N <- 1000
 res <- sapply(rep(N, 5000), newCor)
 ```
 
-Again, the Shapiro-Wilk normality test confirms that these z-transformed data follow a normal distribution.
+Again, the Shapiro-Wilk normality test confirms that the z-transformed data follow a normal distribution.
 
 ```{r}
 plot(density(atanh(res)))

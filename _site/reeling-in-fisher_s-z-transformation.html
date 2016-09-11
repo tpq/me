@@ -258,8 +258,8 @@ res &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="kw
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span>/(<span class="kw">sqrt</span>(N<span class="dv">-3</span>))</code></pre></div>
 <pre><code>## [1] 0.03167032</code></pre>
 </div>
-<div id="one-size-may-not-fit-all" class="section level3">
-<h3>One size may not fit all</h3>
+<div id="one-size-to-fit-all" class="section level3">
+<h3>One size to fit all</h3>
 <p>Everything checks out so far, but does Fisher’s z-transformation rule hold true for all <span class="math inline">\(N\)</span>-sized vectors? To test this, we embed the code that calculates correlation between 5000 pairs of <span class="math inline">\(N\)</span>-sized vectors within a loop that iterates across several values of <span class="math inline">\(N\)</span>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">N.all &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">100</span>, <span class="dt">to =</span> <span class="dv">1000</span>, <span class="dt">by =</span> <span class="dv">100</span>)
 distrs &lt;-
@@ -271,9 +271,9 @@ distrs &lt;-
 <p>Using this result, we can calculate both the empiric standard error and the predicted standard error for all <span class="math inline">\(N\)</span>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sd.empiric &lt;-<span class="st"> </span><span class="kw">sapply</span>(distrs, function(d) <span class="kw">sd</span>(<span class="kw">atanh</span>(d)))
 sd.predict &lt;-<span class="st"> </span><span class="kw">sapply</span>(N.all, function(N) <span class="dv">1</span>/(<span class="kw">sqrt</span>(N<span class="dv">-3</span>)))</code></pre></div>
-<p>Finally, we compare these quantitatively by calculating the mean of the absolute difference between them.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(<span class="kw">abs</span>(sd.empiric -<span class="st"> </span>sd.predict))</code></pre></div>
-<pre><code>## [1] 0.0004821896</code></pre>
+<p>Finally, we compare these quantitatively by calculating the mean of the percent difference between them.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(<span class="kw">abs</span>(sd.empiric -<span class="st"> </span>sd.predict)/sd.predict*<span class="dv">100</span>)</code></pre></div>
+<pre><code>## [1] 0.9554196</code></pre>
 </div>
 <div id="positively-certain" class="section level3">
 <h3>Positively certain</h3>
@@ -308,8 +308,8 @@ distrs &lt;-
 <p>As above, we compare the empiric standard error with the predicted standard error…</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sd.empiric &lt;-<span class="st"> </span><span class="kw">sapply</span>(distrs, function(d) <span class="kw">sd</span>(<span class="kw">atanh</span>(d)))
 sd.predict &lt;-<span class="st"> </span><span class="kw">sapply</span>(N.all, function(N) <span class="dv">1</span>/(<span class="kw">sqrt</span>(N<span class="dv">-3</span>)))
-<span class="kw">mean</span>(<span class="kw">abs</span>(sd.empiric -<span class="st"> </span>sd.predict))</code></pre></div>
-<pre><code>## [1] 0.0004163318</code></pre>
+<span class="kw">mean</span>(<span class="kw">abs</span>(sd.empiric -<span class="st"> </span>sd.predict)/sd.predict*<span class="dv">100</span>)</code></pre></div>
+<pre><code>## [1] 0.8095219</code></pre>
 <p>…and breathe a sigh of relief.</p>
 </div>
 

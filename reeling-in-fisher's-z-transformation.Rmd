@@ -46,7 +46,7 @@ sd(atanh(res))
 1/(sqrt(N-3))
 ```
 
-### One size may not fit all
+### One size to fit all
 
 Everything checks out so far, but does Fisher's z-transformation rule hold true for all $N$-sized vectors? To test this, we embed the code that calculates correlation between 5000 pairs of $N$-sized vectors within a loop that iterates across several values of $N$.
 
@@ -67,10 +67,10 @@ sd.empiric <- sapply(distrs, function(d) sd(atanh(d)))
 sd.predict <- sapply(N.all, function(N) 1/(sqrt(N-3)))
 ```
 
-Finally, we compare these quantitatively by calculating the mean of the absolute difference between them.
+Finally, we compare these quantitatively by calculating the mean of the percent difference between them.
 
 ```{r}
-mean(abs(sd.empiric - sd.predict))
+mean(abs(sd.empiric - sd.predict)/sd.predict*100)
 ```
 
 ### Positively certain
@@ -118,7 +118,7 @@ As above, we compare the empiric standard error with the predicted standard erro
 ```{r}
 sd.empiric <- sapply(distrs, function(d) sd(atanh(d)))
 sd.predict <- sapply(N.all, function(N) 1/(sqrt(N-3)))
-mean(abs(sd.empiric - sd.predict))
+mean(abs(sd.empiric - sd.predict)/sd.predict*100)
 ```
 
 ...and breathe a sigh of relief.

@@ -46,7 +46,7 @@ sd(atanh(res))
 1/(sqrt(N-3))
 ```
 
-### One size to fit all
+### One size to fit them all
 
 Everything checks out so far, but does Fisher's z-transformation rule hold true for all $N$-sized vectors? To test this, we embed the code that calculates correlation between 5000 pairs of $N$-sized vectors within a loop that iterates across several values of $N$.
 

@@ -258,8 +258,8 @@ res &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="kw
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span>/(<span class="kw">sqrt</span>(N<span class="dv">-3</span>))</code></pre></div>
 <pre><code>## [1] 0.03167032</code></pre>
 </div>
-<div id="one-size-to-fit-all" class="section level3">
-<h3>One size to fit all</h3>
+<div id="one-size-to-fit-them-all" class="section level3">
+<h3>One size to fit them all</h3>
 <p>Everything checks out so far, but does Fisher’s z-transformation rule hold true for all <span class="math inline">\(N\)</span>-sized vectors? To test this, we embed the code that calculates correlation between 5000 pairs of <span class="math inline">\(N\)</span>-sized vectors within a loop that iterates across several values of <span class="math inline">\(N\)</span>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">N.all &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">100</span>, <span class="dt">to =</span> <span class="dv">1000</span>, <span class="dt">by =</span> <span class="dv">100</span>)
 distrs &lt;-

@@ -182,3 +182,5 @@ paste(ribosome(final, nbits = 7), collapse = "")
 ### Afterward
 
 Finally, I should remind the reader that the monkey-on-typewriter proverb does not accurately portray the simian creative process. Monkeys do not operate as random text generators, but rather have their own hopes, dreams, goals, desires, and even their own aesthetic. In fact, researchers have put monkeys to the test, providing them with typewriters, food, and time (the raw materials of fiction), and then waited for *Hamlet* to happen. However, as noted by a prestigious journalist, "after a month, the Sulawesi crested macaques had only succeeded in partially destroying the machine, using it as a lavatory, and mostly typing the letter [s](http://news.bbc.co.uk/2/hi/3013959.stm)," which is about all I can muster together myself most months.
+
+<br>

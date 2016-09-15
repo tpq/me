@@ -17,6 +17,8 @@ knitr::opts_chunk$set(cache = TRUE)
 ### Placeholder
 
 Placeholder
+
+<br>
 "
            )
   
@@ -55,6 +57,8 @@ title: \"", blog.title, "\"
 ### Placeholder
 
 Placeholder
+
+<br>
 "
     )
   

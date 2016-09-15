@@ -4,6 +4,10 @@ title: "Musings"
 
 ### 2016
 
+##### [**R Parallelization through Batch Processing**](r-parallelization-through-batch-processing.html)
+
 ##### [**Reeling in Fisher's Z Transformation**](reeling-in-fisher_s-z-transformation.html)
 
 ##### [**Genetic Monkeys on Typewriters**](genetic-monkeys-on-typewriters.html)
+
+<br>

@@ -6,6 +6,11 @@
   <link>http://www.tpq.me</link>
   <description>Personal website of Thom Quinn</description>
   <item>
+    <title>R Parallelization through Batch Processing</title>
+    <link>http://www.http://tpq.me/r-parallelization-through-batch-processing.html</link>
+    <description>This new entry explores how to parallelize tasks from within R using a batch processing software like TORQUE</description>
+  </item>
+  <item>
     <title>Reeling in Fisher's Z Transformation</title>
     <link>http://www.http://tpq.me/reeling-in-fisher_s-z-transformation.html</link>
     <description>This new entry explores the Fisher z-transformation, demonstrating it empirically using the R programming language</description>

@@ -6,39 +6,28 @@ title: "R Parallelization through Batch Processing"
 knitr::opts_chunk$set(cache = TRUE)
 ```
 
-[DURING EDITING, REMEMBER THAT R HAS A CONSOLE TOO]
-
 ### R: an unparalleled success
 
-Although R as a data science tool surpasses its alphabetical and reptilian competitors across several dimensions, its performance suffers tremendously from a lack of native parallel support. A few packages (e.g., []) have gone a long way in providing a front-end for parallel computing with R.
+R as a data science tool has surpassed its alphabetical and reptilian competitors across many domains. However, its performance suffers tremendously from a lack of native parallel support. Although some packages (e.g., `foreach` and `doParallel`) have gone a long way in providing parallel computing for R, these plug-and-play parallelization packages have some key disadvantages. First, these packages often use special syntax that may require heavy revision of already drafted code. Second, without extreme attention to detail, these packages tend to invoke scope errors in the setting of layered dependencies. Third, these packages use frameworks that do not necessarily scale to large multi-core clusters.
 
-However, these plug-and-play parallelization packages have some key limitations. First, these packages tend to rely on special syntax that may require heavy revision of already drafted R code. Second, without extreme attention to detail, these packages tend to invoke scope errors when parallelzing code with layers of package dependencies and [dynamically] objects. Third, these packages use frameworks that do not necessarily scale completely to large multi-core clusters. Fourth, these packages occupy the R working environment [] and interfere with efficient code development [multi-tasking].
+In this article, we introduce another way to parallelize: through *batch processing*. With batch processing, instead of executing a large task as one multi-threaded process, we break up the task into multiple single-threaded processes called *jobs*. We then pass each job to a batch processing *job manager* to hold in a queue until resources become available. This allows each single-threaded process to eventually get its own node for analysis. Although job managers are most often used in high-performance computing as a convenient way of sharing a single resource among multiple users, it is possible to set up a job manager like *TORQUE* on a personal computer. Unfortunately, for Ubuntu users like myself, *TORQUE* lacks an easy installation, so I put together [adapted](https://jabriffa.wordpress.com/2015/02/11/installing-torquepbs-job-scheduler-on-ubuntu-14-04-lts/) this run-at-your-own-risk [script](https://www.tpq.me/scripts/torque.bash) to install *TORQUE* on a fresh instance of Ubuntu 16.04.
 
-A potential solution involves *batch processing* single-threaded R processes. [In other words, running several single-threaded scripts simultaneously rather than executing running a task as a multi-threaded process] {to do this, we need a [batch ...]}
+Although a complete review of batch processing is beyond the scope of this article (and frankly beyond the scope of my expertise), this tutorial will hopefully show you how easy it is to harness *TORQUE* to parallelize R scripts. However, keep in mind that the method discussed here relies on the R `system` function to execute bash commands in the OS console. As such, this pipeline may not work outside of the Linux environment. Also, if you ever encounter a connection error, you may need to reconfigure the `/etc/hosts` file with an updated public IP address.
 
-A *[batch ..]* is commonly harnessed by cluster computers as a convenient way of sharing a single resource among multiple users. However, with a little work, it is possible to set up a [batch ...] on a personal computer. For example, I run the open-source [batch ...], *TORQUE*, on my home server. Unfortunately, for Ubuntu users like myself, it lacks a straight-forward [and user-friendly] installation.
+### From cluster to cluster
 
-Although a complete tutorial on [batch ...] is beyond the scope of this discussion (and frankly beyond the scope of my expertise), I have assembled for myself this run-at-your-own-risk bash script that installs *TORQUE* on a fresh instance of Ubuntu 16.04 (derived heavily from this [] post here). Maybe it will help someone else out, too.
+Parallelization of R through batch processing involves two steps. First, we obviate the burden of having to write a parallel-process script by writing a script that writes single-process scripts. Second, we deliver each new script to the batch processing queue where it will wait to get executed on an unoccupied node.
 
-```{bash}
-# LINK INSTEAD OF INCLUDING IN LONG FORM?
-```
+In this endeavor, we make use of two helper functions, `writeR` and `qsub`, that simplify these two steps, respectively. I have made these available through the `miSciTools` package, an R library that bundles miscellaneous software tools to expedite scientific analyses. We can install `miSciTools` directly from GitHub using the `devtools` package.
 
-At any rate, do take note that the pipeline discussed here relies on the R `system` function to execute *TORQUE* commands in the OS console. For this reason, the pipeline may not work outside of the Linux environment.
-
-### []
-
-Successful parallelization of R through batch processing involves two steps. First, we obviate the burden of having to write a parallel-process script by writing a script that writes single-process scripts. Second, we deliver each new script to the batch processing queue where it waits to get executed on an unoccupied core.
-
-In this endeveor, we will make use of two helper functions, `writeR` and `qsub`, that simplify these two steps. I have made these available through the `miSciTools` package, an R library that bundles miscellaneous tools to expedite scientific analyses. We can install `miSciTools` directly from GitHub.
-
-```{r}
+```{r, eval = FALSE}
 devtools::install_github("tpq/miSciTools")
+library(miSciTools)
 ```
 
-Next, to show the logic behind *batch parallelization*, we will consider a computationally expensive `for`-loop that clusters 10 different large datasets. In this example, parallelization is easy enough to implement using an R parallelization package. However, for illustration purposes, we will instead parallelize this task through batch processing. Take a look at the single-threaded loop below.
+Next, to show the logic behind *batch parallelization*, we create a computationally expensive `for`-loop that clusters 10 large mock datasets. In this example, parallelization is easy enough to implement using an R package like `foreach`. However, for illustration purposes, we will instead parallelize this task through batch processing. Consider the single-threaded loop below.
 
-```{r}
+```{r, eval = FALSE}
 for(i in 1:10){
   
   N <- 2000
@@ -50,19 +39,13 @@ for(i in 1:10){
 }
 ```
 
-During each pass through the loop, a large dataset is created. For a more realistic use case, perhaps a dataset is imported and pre-processed (e.g., normalized and feature reduced). Next, the distance matrix of the data is hierarchically clustered. Finally, the dendrogram is cut to make 10 clusters with the class labels for each element saved.
-
-<!--Taken together, this `for`-loop clusters the data without any major side-effects. Yet, if the complexity of this task were to expand, it would become no more difficult to parallelize through batch processing.
-
-For example, it may make sense to import and bootstrap the data outside of the -->
+During each pass through the loop, a large dataset is created, clustered, and labelled. In a more realistic scenario, each iteration might import and pre-process a different dataset. Since calculating the Euclidean distance of a dataset carries a high computational burden, we will almost certainly benefit here from parallelization.
 
 ### R writing R
 
-In this example, we will break up the task into 10 parallel parts by preparing 10 separate scripts. Each script will generate a random matrix, cluster the data into 10 groups, and then save the class labels.
+In this example, we break up the task into 10 parallel parts by writing a single script that writes 10 separate scripts. Each script will generate a random matrix, cluster the data into 10 groups, and then save the cluster labels. We simplify this task by using `writeR` which creates an R script from any number of "free text" representations of R code with intermingled variables from the *parent environment* (i.e., the environment where the new script is written). To generate a preview of how the R script will appear when saved, we toggle the argument `preview = TRUE`. The excerpt below will hopefully clarify the behavior of this function in a way that practical English cannot. Keep in mind that extraneous space does not impact R code in any way.
 
-To use `writeR`, we provide any number of "free text" representations of R code as function arguments. In addition, we can intermingle variable text from the *parent environment* (i.e., the environment where the new script is written). Then, to generate a preview of how the R script will appear when saved, we simply toggle the argument `preview = TRUE`. The excerpt below will hopefully clarify the behavior of this function in a way that practical English cannot. Keep in mind that extraneous space does not impact R code in any way.
-
-```{r}
+```{r, eval = FALSE}
 outsideCode = "something else from outside"
 file <- writeR('
           this = "the first line of code"
@@ -72,27 +55,25 @@ file <- writeR('
   , preview = TRUE)
 ```
 
-We see in this preview an additional line of code that we did not provide explicitly. The `load()` command is added to each new script to automatically load the *parent environment*. This ensures that any variables (or functions or packages) not explicitly passed to the new script will still []. Take note that the new script saves the *parent environment* at the time in which the script is written, which you can exploit in order to create a unique *child environment* for each script.
+We see in this preview an additional line of code that we did not provide explicitly. The `load()` command is added to each new script so that it automatically loads the *parent environment*. This ensures that any variables (or functions or packages) not explicitly passed to the new script will remain available to procedures within the `for`-loop. Note that the new script saves the *parent environment* at the time in which the script is written, which you can exploit in order to create a unique *child environment* for each script.
 
-The `writeR` function also accepts the optional argument, `file`, which allows the user to change the location and name of the temporary R script. By default, all new R scripts (along with the .RData file from the *parent environment*) are saved in a temporary directory. Take note that this directory, and its contents, gets deleted upon termination of the parent R session.
+The `writeR` function also accepts the optional argument, `file`, which allows the user to change the location and name of the temporary R script. By default, all new R scripts (along with the .RData file from the *parent environment*) are saved in a temporary directory. Note that this directory, along with its contents, gets deleted upon termination of the parent R session.
 
-Finally, take note that `writeR` generates a new file with (escaped)["https:WIKIPEDIA ESCAPE"] text (e.g., try running `cat("\"Quotes\" and Tabs?\n\tYes.")` in the R console). New lines and blank space included in the "free text" R code will get written to the new file automatically. However, since you need to wrap the "free text" R code within a set of quotes, you may need to use escaped quotations if you use more than one quotation style within your code (i.e., double quotes *and* single quotes). To avoid having to escape quotations, stick to one style when writing R code for batch processing.
+Finally, keep in mind that `writeR` generates a new file using [escaped](https://en.wikipedia.org/wiki/Escape_character) text (e.g., try running `cat("\"Quotes\" and Tabs?\n\tYes.")` in the R console). Since you need to wrap the "free text" R code within a set of quotes, you may need to use escaped quotations if you use more than one quotation style within your code (i.e., double quotes *and* single quotes). To avoid having to escape quotations, stick to one style when writing R code for batch processing. Otherwise, new lines and blank space included in the "free text" R code will get written to the new file automatically.
 
 ### R bashing R
 
-To use `qsub`, we provide either a "free text" bash command *or* the location of an R script. The function will then deliver this command (or script) to the batch processing *queue*. In the latter case, this function exploits the R `system` function to pipe an `R CMD BATCH` bash command to the `qsub` bash command.
+To use `qsub`, we can provide either a "free text" bash command or the file location of an R script. The function will then deliver this command (or script) to the batch processing *queue*. In the latter case, this function pipes an `R CMD BATCH` bash command to the `qsub` bash command.
 
 To test that `qsub` works properly on your machine, try the following function call. If successful, a new process should appear in the queue. You view the queue from the OS console using the `qstat` bash command.
 
-```{r}
+```{r, eval = FALSE}
 qsub("sleep 30")
 ```
 
-###
+Now, we can use `qsub` to put `writeR` to work. Note that we supply `i` from outside of the `writeR` environment. However, because each new `writeR` script imports the working directory of the parent script, we could just as well have named the output files using `file = paste0("cluster-", i, ".csv")`.
 
-Now, we can put `writeR` and `qsub` to work. Take note that we supply `i` from outside of the `writeR` environment. However, because each new `writeR` script imports the working directory of the parent script, we could just as well have named the output files using `file = paste0("cluster-", i, ".csv")`.
-
-```{r}
+```{r, eval = FALSE}
 for(i in 1:10){
   
   cmd <- writeR('
@@ -104,20 +85,17 @@ for(i in 1:10){
             file = paste0("cluster-", ', i, ', ".csv"))
   ')
   
-  bash(cmd)
+  qsub(cmd)
 }
 ```
 
 ### A place in the queue
 
-At the end of this `for`-loop, you will have 10 single-process R scripts delivered to the queue. From the console, you can check the *TORQUE* queue using the `qstat` command. In addition, you can use the `qdel` commnand to remove a queued job and the `qrun` command to force the execution of a queued job.
+When this `for`-loop completes, 10 single-process R scripts will have joined the queue. From the console, you can check the *TORQUE* queue using the `qstat` bash command. In addition, you can use the `qdel` bash command to remove a queued job and the `qrun` bash command to force the execution of a queued job.
 
-As prepared, each script to save results in a comma-delimited (i.e., `.csv`) file in the working directory. By default, the working directory of batch processed R scripts is the home directory of the computer.
+In this example, each script saves the cluster labels as a comma-delimited file in the working directory. By default, the working directory of batch processed R scripts is the home directory of the computer. To combine the results from the parallelized processes, we could write a simple loop that reads in the `.csv` file and joins the contents.
 
-
-To integrate the results from each parallelized processes, we could write a simple loop that reads in the `.csv` file and joins the contents.
-
-```{r}
+```{r, eval = FALSE}
 files <- vector("list", 10)
 for(i in 1:10){
   
@@ -127,10 +105,10 @@ for(i in 1:10){
 do.call(rbind, files)
 ```
 
-### Scaling on a real []
+### Scaling to an HPC
 
-The pipeline discussed above []. When using a [batch ...] on a cluster computer, system administrators often request that users provide [settings/parameters] to help guide the [batch ...] toward optimal performance. The `qsub` function for R will pass along any number of specified *TORQUE* parameters to the OS console: simply provide them as additional arguments following the executable bash command or R script location. For example, to replicate the *TORQUE* command `qsub -M thom@tpq.me [someBashCmd]`, call instead the R function `qsub(someBashCmd, M = "thom@tpq.me")`.
+When using a job manager on a high-performance computer (HPC), system administrators often request that users provide additional parameters that help guide optimal resource utilization. This includes, for example, the anticipated run time or expected RAM overhead. The `qsub` function for R will pass along any number of specified *TORQUE* parameters to the OS console: simply provide them as additional arguments. For example, to replicate the *TORQUE* command `qsub -M thom@tpq.me [someBashCmd]`, call instead the R function `qsub(someBashCmd, M = "thom@tpq.me")`.
 
-{{{{Then, depending on how you access the cluster, you can execute the completed script-that-writes-scripts from the OS console using `R CMD BATCH script-that-writes-scripts.R`}}}
+Depending on how you access the HPC, you may not have an R IDE like RStudio. Instead, you may need to use the OS console to run the master script-that-writes-scripts. To do this, simply call `R CMD BATCH script-that-writes-scripts.R` from the OS console. This will execute the R script and pass the individual processes to the job manager.
 
 <br>

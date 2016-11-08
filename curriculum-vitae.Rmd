@@ -82,6 +82,8 @@ title: "Curriculum Vitae"
 
 ### Awards and scholarships
 
+2016 CSL Travel Award to 2nd Bioconductor Asia-Pacific Developers' Meeting
+
 2014 Student Research Celebration Presenter Research Project Award
 
 2010 New Paltz Student Undergraduate Research Experience (SURE) stipend
@@ -101,6 +103,8 @@ title: "Curriculum Vitae"
 <br>
 
 ### Presentations
+
+**Quinn T**, Richardson M, Lovell D, & Crowley T. October 2016. propr: An R Package for Identifying Proportionally Expressed Genes using Compositional Data Analysis. Poster presented at Australasian Genomic Technologies Association in Auckland, New Zealand.
 
 **Quinn TP**, Tylee DS, Bichindaritz IB, & Glatt SJ. April 2016. Constructing Generalizable Classifiers for the Classification of Complex Biological Disorders. Poster presented at SUNY Upstate Medical University Student Research Day in Syracuse, New York.
 
@@ -133,6 +137,8 @@ Glatt SJ, **Quinn TP**, & Tylee DS. October 2014. Building better classifiers: o
 <br>
 
 ### Publications
+
+**Quinn T**, Tylee D, & Glatt S. 2016. exprso: an R-package for the rapid implementation of machine learning algorithms. F1000Research 5:2588.
 
 Bichindaritz IB, Cole E, Keshan N, Parimi P, & **Quinn TP**. 2016. Machine Learning Based Automatic Multilevel Stress Detection from ECG Signals. IJCAI 2016: Workshop on Knowledge Discovery in Healthcare Data.
 

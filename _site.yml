@@ -8,6 +8,8 @@ navbar:
       href: curriculum-vitae.html
     - text: "MUSINGS"
       href: musings.html
+    - text: "FICTION"
+      href: fiction.html
 output:
   html_document:
     theme: cosmo

@@ -1,0 +1,198 @@
+---
+title: "The Ubiquitous Dot Product"
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(cache = TRUE)
+```
+
+### The dot in-common
+
+Through my years of training in biomedicine, and despite taking a number of mathematics and statistics courses, I have somehow missed out on formal education in linear algebra. I feel that this has put me at a disadvantage in the age of next-generation sequencing where linear algebra plays an important role in analyzing large multi-dimensional vectors of genetic data. As part of catching up on a missed opportunity, I wanted to share what I have learned about the dot product and its ubiquity in statistical computing. In doing so, I hope the reader and writer can gain a better intuition of this fascinating operation.
+
+### Sum definitions
+
+Wikipedia offers a number of definitions for the dot product. Let us look at the algebraic definition:
+
+$$\mathbf{a} \cdot \mathbf{b} = \sum_{i=1}^na_ib_i = a_1b_1+a_2b_2+\dots+a_nb_n$$
+
+The dot product operates on two vectors to sum the element-wise product of those vectors. This appears as a simple call in the natively vectorized R programming language.
+
+```{r}
+a <- rnorm(100)
+b <- rnorm(100)
+sum(a * b)
+```
+
+Alternatively, we could use the base R operator for the dot product.
+
+```{r}
+a %*% b
+```
+
+Below, we will see how the dot product appears in many of the statistical methods we use routinely. But what does the dot product signify? Gaining an intuition for this operation is considerably difficult. Several introductory websites provide a number of geometric explanations. For example, the [Brilliant](https://brilliant.org/wiki/dot-product-distance-between-point-and-a-line/) website provides a helpful interactive graph to illustrate how changing the direction or magnitude of two-dimensional vectors can change the dot product of those vectors.
+
+Otherwise, I find it helpful to think of the dot product as a weighted measure of the "agreement" between the two vectors in their joint departure from zero. Consider the case where the absolute value of every element in the vector $\mathbf{b}$ is less than or equal to the corresponding element in $\mathbf{a}$: if $\mathbf{b}$ approaches $\mathbf{a}$, then $\mathbf{a} \cdot \mathbf{b}$ will approach the sum of the squares of $\mathbf{a}$. On the other hand, if $\mathbf{b}$ approaches the opposite of $\mathbf{a}$, then $\mathbf{a} \cdot \mathbf{b}$ will approach the negative sum of the squares of $\mathbf{a}$.
+
+### Euclidean distance
+
+We will first take a look at Euclidean distance between two vectors, calculated as the square root of the element-wise differences squared. Let us look at the algebraic definition:
+
+$$d(\mathbf{a}, \mathbf{b}) = \sqrt{\sum_{i=1}^n(a_i - b_i)^2} = \sqrt{\sum_{i=1}^n(a_i^2 + b_i^2 - 2a_ib_i)}$$
+
+In the second formulation, we see that if we break up the summation into three separate parts (i.e., $\sum_ia_i^2$, $\sum_ib_i^2$, and $\sum_i2a_ib_i$), we can rewrite Euclidean distance quite neatly using the dot product:
+
+$$d(\mathbf{a}, \mathbf{b}) = \sqrt{\mathbf{a} \cdot \mathbf{a} + \mathbf{b} \cdot \mathbf{b} - 2\mathbf{a}\cdot\mathbf{b}}$$
+
+We can calculate Euclidean distance between two vectors in R using the `dist` function. We compare this to the distance computed using the dot product.
+
+```{r}
+dist(t(data.frame(a, b)))
+sqrt(a %*% a + b %*% b - 2 * a %*% b)
+```
+
+### Variance
+
+Variance, or standard deviation squared, is fundamental to statistics, making up the foundation of hypothesis testing. Let us look at the algebraic definition:
+
+$$\sigma^2 = \frac{\sum_i(a_i-\mu)^2}{N}$$
+
+Variance requires knowledge about two constants: the mean ($\mu$) and vector length ($N$). The mean used here is the sum of the elements divided by the total number of elements. When calculating variance, we substract this constant from each element in the vector. In a way, we can think of this as "scaling" the original vector (i.e., $\mathbf{a}_S = \mathbf{a} - \mu_\mathbf{a}$) so that the new mean equals zero.
+
+```{r}
+round(mean(a - mean(a)))
+```
+
+From here, we can describe variance using the dot product:
+
+$$\sigma^2 = \frac{\mathbf{a}_S \cdot \mathbf{a}_S}{N} = \frac{(\mathbf{a} - \mu_\mathbf{a}) \cdot (\mathbf{a} - \mu_\mathbf{a})}{N}$$
+
+We often calculate the dot product of a vector with itself. We can use the notation $|\mathbf{a}|^2 = \mathbf{a} \cdot \mathbf{a}$ (called a *norm*) to simplify this routine procedure. This allows us to define variance succintly:
+
+$$\sigma^2 = \frac{|\mathbf{a} - \mu_\mathbf{a}|^2}{N}$$
+
+We can calculate variance in R using the `var` function. We compare this to the variance computed using the dot product. Note that, by default, the `var` function in R computes *sample variance*. This means it uses $N - 1$ instead of $N$ as the denominator.
+
+```{r}
+var(a)
+(a - mean(a)) %*% (a - mean(a)) / (length(a) - 1)
+```
+
+### Covariance
+
+Covariance is an extension of variance involving two vectors. Let us look at the algebraic definition:
+
+$$\textrm{cov}(\mathbf{a}, \mathbf{b})= \frac{\sum_i(a_i-\mu_\mathbf{a})(b_i - \mu_\mathbf{b})}{N}$$
+
+Conceiving of $\mathbf{a} - \mu_\mathbf{a}$ and $\mathbf{b} - \mu_\mathbf{b}$ as "scaled" vectors, we can rewrite covariance as a dot product:
+
+$$\textrm{cov}(\mathbf{a}, \mathbf{b})= \frac{(\mathbf{a} - \mu_\mathbf{a}) \cdot (\mathbf{b} - \mu_\mathbf{b})}{N}$$
+
+We can calculate covariance in R using the `cov` function. We compare this to the covariance computed using the dot product. Note that, like `var`, the `cov` function in R computes *sample covariance* with $N-1$ as the denominator.
+
+```{r}
+cov(a, b)
+(a - mean(a)) %*% (b - mean(b)) / (length(a) - 1)
+```
+
+### Correlation
+
+Pearson's correlation coefficient is really just a modification to covariance that "scales" it by the product of the individual variances. As such, we can substitute the equation below to define Pearson's correlation coefficient in terms of the dot product:
+
+$$\rho(\mathbf{a}, \mathbf{b}) = \frac{\textrm{cov}(\mathbf{a}, \mathbf{b})}{\sigma_\mathbf{a}\sigma_\mathbf{b}}$$
+
+### Logical intersections
+
+Interestingly, if we use $\mathbf{a}$ and $\mathbf{b}$ to denote binary vectors, then we can use the dot product to count the frequency of the logical intersections between the vectors. For example, given a set with as many as $N$ elements (where the vector $\mathbf{a}$ indicates whether the i-th element belongs to set $\mathbf{A}$), we can use the dot product to tabulate the intersection of two sets $\mathbf{A}$ and $\mathbf{B}$:
+
+$$|\mathbf{A} \cap \mathbf{B}| = \sum_{i=1}^na_i \land b_i = \mathbf{a} \cdot \mathbf{b}$$
+
+We can calculate this in R by computing on a boolean vector. We compare this to using the dot product.
+
+```{r}
+a <- sample(c(FALSE, TRUE), 100, replace = TRUE)
+b <- sample(c(FALSE, TRUE), 100, replace = TRUE)
+sum(a & b)
+a %*% b
+```
+
+This is equivalent to the tabulation provided by the `table` function in R. To use the dot product to tally the other frequencies from this table, we just repeat the calculation on the logically negated vectors (i.e., $!\mathbf{a}$ or $!\mathbf{b}$).
+
+```{r}
+table(a, b)
+TT <- a %*% b
+TF <- a %*% (1 - b)
+FT <- (1 - a) %*% b
+FF <- (1 - a) %*% (1 - b)
+mat <- matrix(c(FF, TF, FT, TT), nrow = 2)
+mat
+```
+
+This contingency table (analogous to a confusion matrix) serves as the basis for the Fisher's Exact Test as well as the $\chi^2$ Test. Stated broadly, these test for a significant association between two (or more) presumedly independent sets.
+
+```{r}
+fisher.test(mat)
+```
+
+### Logical unions
+
+We can also use the dot product to tabulate the frequency of the logical unions between two vectors:
+
+$$|\mathbf{A} \cup \mathbf{B}| = \sum_{i=1}^na_i \lor b_i = \mathbf{a} \cdot \mathbf{a} + \mathbf{b} \cdot \mathbf{b} - \mathbf{a} \cdot \mathbf{b}$$
+
+We can calculate this in R by computing on a boolean vector. We compare this to using the dot product.
+
+```{r}
+sum(a | b)
+a %*% a + b %*% b - a %*% b
+```
+
+### Overlap coefficient
+
+The dot product also appears in the lesser known, but still important, overlap coefficient. This metric measures the degree to which two sets overlap. The overlap coefficient equation plays a role in network analysis where each "set" represents the connectivity of one element (called a *node*) to all other elements. This provides a way to quantify the amount of common "links" between any two nodes in a network (Ravasz 2002).
+
+The overlap coefficient is useful when analyzing biological networks because distinct biological features (e.g., genes) might have similar functional roles if they share a large number of overlapping partners (even if two do not interact directly). A high overlap coefficient means that the two nodes belong to the same "neighborhood", regardless of whether the nodes are "neighbors" themselves (Yip 2007). For two binary vectors, the overlap coefficient equals the frequency of the logical intersections as "scaled" by the maximum possible number of intersections:
+
+$$\textrm{overlap}(\mathbf{A},\mathbf{B}) = \frac{|\mathbf{A} \cap \mathbf{B}|}{\textrm{min}(|\mathbf{A}|,|\mathbf{B}|)}$$
+
+Here, the notation $|\mathbf{A}| = \sqrt{\mathbf{A} \cdot \mathbf{A}}$ (yet another *norm*) denotes the sum of the absolute value of the elements in the vector.
+
+### Inner product
+
+Finally, I want to mention that although we discussed the dot product as it pertains to vectors, this operation applies to matrices as well. The dot product of two matrices, called the **inner product**, is defined as the dot product of the i-th **row** vector of the first matrix and the j-th **column** vector of the second matrix (for each row of the first matrix and each column of the second matrix). This means that, unlike the vector dot product, the matrix inner product is not commutative: $\mathbf{A}\cdot\mathbf{B}\neq\mathbf{B}\cdot\mathbf{A}$. Its definition also requires the first matrix to have the same number of columns as the second has rows.
+
+Given a matrix $\mathbf{A}$ with $m$ columns and a matrix $\mathbf{B}$ with $m$ rows, the i,j-th result of the inner product equals the dot product of the i-th row of $\mathbf{A}$ and the j-th column of $\mathbf{B}$:
+
+$$(\mathbf{A}\mathbf{B})_{i,j} = \mathbf{A}_{i,} \cdot \mathbf{B}_{, j}$$
+
+This might look less cryptic in R code. Note that we use the same `%*%` operator for matrix multiplication.
+
+```{r}
+A <- matrix(rnorm(5^2), 5, 5)
+B <- matrix(rnorm(5^2), 5, 5)
+(A %*% B)[1, 2]
+A[1, ] %*% B[, 2]
+```
+
+As an example, we will show how to use the inner product to repeat a calculation across the combination of every column vector. Specifically, we will calculate all covariances for a matrix. This is akin to what is achieved by the `cov` function in R.
+
+```{r}
+cov(A)
+```
+
+To calculate covariance, we first need to "scale" each column by the column mean. We can do this using the `apply` function. Next, since the inner product computes **rows** by **columns**, and we want to compute **columns** by **columns**, we need to transpose the first matrix (i.e., in order to have the rows contain column data). Then, we use the `%*%` operator to compute the covariance matrix.
+
+```{r}
+As <- apply(A, 2, function(x) x - mean(x))
+t(As) %*% As / (nrow(As) - 1)
+```
+
+Note that using the dot product in R is much faster than nested `for` loops. In fact, the performance gain from the dot product can hold true even for low level languages like C++ if using a highly optimized linear algebra library (e.g., see `RcppEigen`). In cases where a specific function like `cov` is not available, dot products can make code run faster and look neater. Nevertheless, thinking in terms of the dot product offers a useful way to unify seemingly disparate statistical concepts.
+
+### References
+
+1. Ravasz, E., A. L. Somera, D. A. Mongru, Z. N. Oltvai, and A.-L. Barabási. “Hierarchical Organization of Modularity in Metabolic Networks.” Science 297, no. 5586 (August 30, 2002): 1551–55. http://dx.doi.org/10.1126/science.1073374.
+
+2. Yip, Andy M., and Steve Horvath. “Gene Network Interconnectedness and the Generalized Topological Overlap Measure.” BMC Bioinformatics 8 (2007): 22. http://dx.doi.org/10.1186/1471-2105-8-22.
+
+<br>

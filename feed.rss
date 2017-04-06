@@ -6,6 +6,11 @@
   <link>http://www.tpq.me</link>
   <description>Personal website of Thom Quinn</description>
   <item>
+    <title>The Ubiquitous Dot Product</title>
+    <link>http://www.tpq.me/the-ubiquitous-dot-product.html</link>
+    <description>This new entry explores the ubiquity of the dot product in many statistical methods</description>
+  </item>
+  <item>
     <title>R Parallelization through Batch Processing</title>
     <link>http://www.tpq.me/r-parallelization-through-batch-processing.html</link>
     <description>This new entry explores how to parallelize tasks from within R using a batch processing software like TORQUE</description>

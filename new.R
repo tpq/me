@@ -1,4 +1,4 @@
-newMusings <- function(blog.title = "New Title", after = "### 2016"){
+newMusings <- function(blog.title = "New Title", after = "### 2017"){
   
   # Write custom blog template to new file
   blog.name <- gsub("\\s", "-", stringr::str_to_lower(blog.title))

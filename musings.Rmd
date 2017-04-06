@@ -6,6 +6,8 @@ title: "Musings"
 
 ##### [**The Ubiquitous Dot Product**](the-ubiquitous-dot-product.html)
 
+<br>
+
 ### 2016
 
 ##### [**R Parallelization through Batch Processing**](r-parallelization-through-batch-processing.html)

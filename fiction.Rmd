@@ -2,6 +2,22 @@
 title: "Fiction"
 ---
 
+### The Quiet Room
+
+##### [**Settling**](settling.html)
+
+##### [**Predication**](predication.html)
+
+##### [**Resolute**](resolute.html)
+
+##### [**Ingenuinity**](ingenuinity.html)
+
+##### [**Jet-lagged**](jet-lagged.html)
+
+##### [**Tinged**](tinged.html)
+
+<br>
+
 ### Transitions
 
 ##### [**The Giving Tree (Foreword)**](the-giving-tree-foreword.html)

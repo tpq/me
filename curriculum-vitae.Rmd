@@ -32,7 +32,7 @@ title: "Curriculum Vitae"
 
 ### Open source software
 
-#### R packages I authored and maintain,
+#### R packages authored and maintained,
 
 ##### **exprso** | [CRAN](https://cran.r-project.org/web/packages/exprso/index.html)
 

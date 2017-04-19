@@ -34,15 +34,15 @@ title: "Curriculum Vitae"
 
 #### R packages authored and maintained,
 
-##### **exprso** | [CRAN](https://cran.r-project.org/web/packages/exprso/index.html)
+##### **exprso** | [CRAN](https://CRAN.R-project.org/package=exprso)
 
 ###### This package introduces a framework for the rapid implementation of high-throughput supervised machine learning built with the biologist user in mind. Written by biologists, for biologists, this package provides a user-friendly interface that empowers investigators to execute state-of-the-art binary and multi-class classification, including deep learning, with minimal programming experience necessary.
 
-##### **peakRAM** | [CRAN](https://cran.r-project.org/web/packages/peakRAM/index.html)
+##### **peakRAM** | [CRAN](https://CRAN.R-project.org/package=peakRAM)
 
 ###### When working with big data sets, RAM conservation is critically important. However, it is not always enough to just monitor the size of the objects created. So-called "copy-on-modify" behavior, characteristic of R, means that some expressions or functions may require an unexpectedly large amount of RAM overhead. For example, replacing a single value in a matrix duplicates that matrix in the back-end, making this task require twice as much RAM as that used by the matrix itself. This package makes it easy to monitor the total and peak RAM used so that developers can quickly identify and eliminate RAM hungry code.
 
-##### **propr** | [CRAN](https://cran.r-project.org/web/packages/propr/index.html)
+##### **propr** | [CRAN](https://CRAN.R-project.org/package=propr)
 
 ###### The bioinformatic evaluation of gene co-expression often begins with correlation-based analyses. However, this approach lacks statistical validity when applied to relative data. This includes, for example, biological count data produced by high-throughput RNA-sequencing, chromatin immunoprecipitation (ChIP), ChIP-sequencing, Methyl-Capture sequencing, and other techniques. This package implements several measures of dependence between relative features using compositional data analysis.
 

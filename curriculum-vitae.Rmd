@@ -92,7 +92,9 @@ title: "Curriculum Vitae"
 
 ### Awards and scholarships
 
-2016 CSL Travel Award to 2nd Bioconductor Asia-Pacific Developers' Meeting
+2017 Travel Award to Winter School in Mathematical & Computational Biology
+
+2016 Travel Award to 2nd Bioconductor Asia-Pacific Developers' Meeting
 
 2014 Student Research Celebration Presenter Research Project Award
 
@@ -113,6 +115,10 @@ title: "Curriculum Vitae"
 <br>
 
 ### Publications
+
+Erb I, **Quinn T**, Lovell D, & Notredame C. 2017. Differential Proportionality - A Normalization-Free Approach To Differential Gene Expression. bioRxiv 134536. http://dx.doi.org/10.1101/134536.
+
+Tylee DS, Kikinis Z, **Quinn TP**, et al., & Makris N. 2017. Machine-learning classification of 22q11.2 deletion syndrome: A diffusion tensor imaging study. NeuroImage: Clinical 15(1):832-42. http://dx.doi.org/10.1016/j.nicl.2017.04.029.
 
 **Quinn T**, Richardson MF, Lovell D, & Crowley T. 2017. propr: An R-package for Identifying Proportionally Abundant Features Using Compositional Data Analysis. bioRxiv 104935. http://dx.doi.org/10.1101/104935.
 

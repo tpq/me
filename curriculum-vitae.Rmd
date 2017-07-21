@@ -32,7 +32,7 @@ title: "Curriculum Vitae"
 
 ### Open source software
 
-#### R packages authored and maintained,
+#### R packages which I designed and maintain,
 
 ##### **exprso** | [CRAN](https://CRAN.R-project.org/package=exprso)
 
@@ -45,6 +45,16 @@ title: "Curriculum Vitae"
 ##### **propr** | [CRAN](https://CRAN.R-project.org/package=propr)
 
 ###### The bioinformatic evaluation of gene co-expression often begins with correlation-based analyses. However, this approach lacks statistical validity when applied to relative data. This includes, for example, biological count data produced by high-throughput RNA-sequencing, chromatin immunoprecipitation (ChIP), ChIP-sequencing, Methyl-Capture sequencing, and other techniques. This package implements several measures of dependence between relative features using compositional data analysis.
+
+#### R packages to which I contributed,
+
+##### **ALDEx2** | [Bioconductor](https://www.bioconductor.org/packages/devel/bioc/html/ALDEx2.html)
+
+###### This package performs a differential abundance analysis of biological count data using log-ratio transformations.
+
+##### **catmap** | [CRAN](https://CRAN.R-project.org/package=catmap)
+
+###### This package conducts a meta-analysis on combined case-control and family-based (TDT) genetic data.
 
 <br>
 
@@ -72,9 +82,9 @@ title: "Curriculum Vitae"
 
 #### In education,
 
-##### **Deakin University:** March 2017 to June 2017
+##### **Deakin University:** March 2017 to present
 
-###### Employed as a graduate assistant for an undergraduate course titled, *Principles of Pharmacology*.
+###### Employed as a graduate assistant for two courses titled, *Principles of Pharmacology* and *Therapeutic Development*.
 
 ##### **Coursera:** September 2016 to October 2016
 

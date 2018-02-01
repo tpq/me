@@ -64,43 +64,55 @@ title: "Curriculum Vitae"
 
 ##### **Adveq Management:** April 2016 to August 2017
 
-###### Worked to develop an object-oriented back-end in R for organizing, modeling, and analyzing transactions between financial institutions. Position held as a short-term, free-lance contract.
+###### Employed as a **Data Scientist** to develop an object-oriented back-end in R for organizing, modeling, and analyzing transactions between financial institutions. Position held as a short-term, free-lance contract.
 
 #### In research,
 
 ##### **Deakin University:** January 2018 to present
 
-###### Employed as a Casual Research Fellow in the Centre for Pattern Recognition and Data Analysis (PRaDA) lab under Dr. Svetha Venkatesh to study autism spectrum disorder. This role involved pre-processing genomic data, building and deploying classifiers based on gene expression signatures, and supervising a research assistant.
+###### Employed as a **Casual Research Fellow** in the Pattern Recognition and Data Analysis (PRaDA) lab under Dr. Svetha Venkatesh to study autism spectrum disorder. This role involved pre-processing genomic data, building and deploying classifiers based on gene expression signatures, and supervising a research assistant.
 
 ##### **SUNY Upstate Medical University:** August 2012 to May 2016
 
-###### Employed as a Student Research Assistant in the Psychiatric Genetic Epidemiology and Neurobiology (PsychGENe) lab under Dr. Stephen Glatt to study the molecular underpinnings of psychiatric disorders. This role involved the development of bioinformatic tools for the analysis of single nucleotide polymorphisms and microarray-based gene expression data. Extensive time devoted to the implementation machine learning for the classification of autism spectrum disorder using genomic data.
+###### Employed as a **Student Research Assistant** in the Psychiatric Genetic Epidemiology and Neurobiology (PsychGENe) lab under Dr. Stephen Glatt to study the molecular underpinnings of psychiatric disorders. This role involved the development of bioinformatic tools for the analysis of single nucleotide polymorphisms and microarray-based gene expression data. Extensive time devoted to the implementation machine learning for the classification of autism spectrum disorder.
 
 ##### **SUNY New Paltz:** September 2009 to August 2010
 
-###### Employed as a Student Research Assistant in an organic chemistry lab under Dr. Frantz Folmer-Andersen to study synthetic diamine macrocycles which have the capability to distinguish between mirror image molecules.
+###### Employed as a **Student Research Assistant** in an organic chemistry lab under Dr. Frantz Folmer-Andersen to study synthetic diamine macrocycles which have the capability to distinguish between mirror image molecules.
 
 ##### **SUNY Purchase:** May 2009 to July 2009
 
-###### Employed as a Student Research Assistant in an environmental science lab under Dr. Kristopher Baker to study the impact of anthropogenic input on the biodiversity of the Hudson River estuary.
+###### Employed as a **Student Research Assistant** in an environmental science lab under Dr. Kristopher Baker to study the impact of anthropogenic input on the biodiversity of the Hudson River estuary.
 
 #### In education,
 
 ##### **Deakin University:** March 2017 to present
 
-###### Employed as a graduate assistant for two courses titled, *Principles of Pharmacology* and *Therapeutic Development*.
+###### Employed as a **Graduate Assistant** for two courses titled, *Principles of Pharmacology* and *Therapeutic Development*.
 
 ##### **Coursera:** September 2016 to October 2016
 
-###### Employed as a graduate assistant for an online course titled, *Big Data, Genes, and Medicine*.
+###### Employed as a **Graduate Assistant** for an online course titled, *Big Data, Genes, and Medicine*.
 
 ##### **SUNY New Paltz:** September 2009 to May 2011
 
-###### Employed as a teaching assistant for an undergraduate organic chemistry laboratory class. Periodically employed as a tutor to undergraduate students in the subjects of mathematics, biology, and chemistry.
+###### Employed as a **Teaching Assistant** for an undergraduate organic chemistry laboratory class.
 
 ##### **SUNY Orange:** September 2008 to August 2009
 
-###### Employed in a math learning center to assist students in need of help in college mathematics courses. Periodically employed as a tutor to undergraduate students in the subjects of mathematics, biology, and chemistry.
+###### Employed as a **Tutor** in a university math learning center.
+
+<br>
+
+### Community service and engagement
+
+##### **Hacky Hour Geelong:** October 2017 to present
+
+###### Co-founder of the Hacky Hour Geelong chapter where researchers help other researchers learn to program.
+
+##### **VeganSci:** October 2017 to present
+
+###### Co-host of a podcast discussing vegan research and research related to veganism.
 
 <br>
 
@@ -152,7 +164,7 @@ Tylee DS, Hess JL, **Quinn TP**, et al., & Glatt SJ. 2016. Blood transcriptomic 
 
 **Quinn T**, Tylee D, & Glatt S. 2016. exprso: an R-package for the rapid implementation of machine learning algorithms. F1000Research 5:2588. http://dx.doi.org/10.12688/f1000research.9893.1.
 
-Bichindaritz IB, Cole E, Keshan N, Parimi P, & **Quinn TP**. 2016. Machine Learning Based Automatic Multilevel Stress Detection from ECG Signals. IJCAI Workshop on Knowledge Discovery in Healthcare Data. http://sites.google.com/site/ijcai2016kdhealth/accepted-papers.
+Bichindaritz IB, Cole E, et al., & **Quinn TP**. 2016. Machine Learning Based Automatic Multilevel Stress Detection from ECG Signals. IJCAI 2016: Workshop on Knowledge Discovery in Healthcare Data. http://sites.google.com/site/ijcai2016kdhealth/accepted-papers.
 
 Hess JL, **Quinn TP**, Akbarian S, & Glatt SJ. 2015. Bioinformatic analyses and conceptual synthesis of evidence linking ZNF804A to risk for schizophrenia and bipolar disorder. American Journal of Medical Genetics B Neuropsychiatric Genetics 168(1):14-35. http://dx.doi.org/10.1002/ajmg.b.32284.
 

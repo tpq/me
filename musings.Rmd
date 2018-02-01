@@ -4,6 +4,8 @@ title: "Musings"
 
 ### 2017
 
+##### [**Algebra Is for Those Without Algorithms**](algebra-is-for-those-without-algorithms.html)
+
 ##### [**The Ubiquitous Dot Product**](the-ubiquitous-dot-product.html)
 
 <br>

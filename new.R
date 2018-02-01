@@ -1,4 +1,4 @@
-newMusings <- function(blog.title = "New Title", after = "### 2017"){
+newMusings <- function(blog.title = "New Title", after = "### 2018"){
   
   # Write custom blog template to new file
   blog.name <- gsub("\\s", "-", stringr::str_to_lower(blog.title))
@@ -42,7 +42,7 @@ Placeholder
   miSciTools::insert("feed.rss", after = rss.loc, what = "  <item>")
 }
 
-newFiction <- function(blog.title = "New Title", after = "### Poetry"){
+newFiction <- function(blog.title = "New Title", after = "### Post-Space Postage"){
   
   # Write custom blog template to new file
   blog.name <- gsub("\\s", "-", stringr::str_to_lower(blog.title))

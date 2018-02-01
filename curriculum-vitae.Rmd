@@ -62,23 +62,27 @@ title: "Curriculum Vitae"
 
 #### In industry,
 
-##### **Adveq Management:** April 2016 to present
+##### **Adveq Management:** April 2016 to August 2017
 
 ###### Worked to develop an object-oriented back-end in R for organizing, modeling, and analyzing transactions between financial institutions. Position held as a short-term, free-lance contract.
 
 #### In research,
 
+##### **Deakin University:** January 2018 to present
+
+###### Employed as a Casual Research Fellow in the Centre for Pattern Recognition and Data Analysis (PRaDA) lab under Dr. Svetha Venkatesh to study autism spectrum disorder. This role involved pre-processing genomic data, building and deploying classifiers based on gene expression signatures, and supervising a research assistant.
+
 ##### **SUNY Upstate Medical University:** August 2012 to May 2016
 
-###### Worked in a psychiatric genetics lab under Dr. Stephen Glatt to study the molecular underpinnings of psychiatric disorders. Efforts largely included the development of bioinformatic tools for the analysis of single nucleotide polymorphisms and microarray-based gene expression data. Extensive time devoted to the implementation machine learning for the classification of autism spectrum disorder using genomic data.
+###### Employed as a Student Research Assistant in the Psychiatric Genetic Epidemiology and Neurobiology (PsychGENe) lab under Dr. Stephen Glatt to study the molecular underpinnings of psychiatric disorders. This role involved the development of bioinformatic tools for the analysis of single nucleotide polymorphisms and microarray-based gene expression data. Extensive time devoted to the implementation machine learning for the classification of autism spectrum disorder using genomic data.
 
 ##### **SUNY New Paltz:** September 2009 to August 2010
 
-###### Worked in an organic chemistry lab under Dr. Frantz Folmer-Andersen to study synthetic diamine macrocycles which have the capability to distinguish between mirror image molecules.
+###### Employed as a Student Research Assistant in an organic chemistry lab under Dr. Frantz Folmer-Andersen to study synthetic diamine macrocycles which have the capability to distinguish between mirror image molecules.
 
 ##### **SUNY Purchase:** May 2009 to July 2009
 
-###### Worked in an environmental science lab under oceanographer Dr. Kristopher Baker to study the impact of anthropogenic input on the biodiversity of the Hudson River estuary. Investigation presented as lecture.
+###### Employed as a Student Research Assistant in an environmental science lab under Dr. Kristopher Baker to study the impact of anthropogenic input on the biodiversity of the Hudson River estuary.
 
 #### In education,
 
@@ -142,11 +146,13 @@ Tylee DS, Kikinis Z, **Quinn TP**, et al., & Makris N. 2017. Machine-learning cl
 
 **Quinn T**, Richardson MF, Lovell D, & Crowley T. 2017. propr: An R-package for Identifying Proportionally Abundant Features Using Compositional Data Analysis. Scientific Reports 7:16252. http://dx.doi.org/10.1038/s41598-017-16520-0.
 
+Englebert C, **Quinn T**, & Bichindaritz I. 2017. Feature selection for survival analysis in bioinformatics. CEUR Workshop Proceedings 1942:30-35. http://ceur-ws.org/Vol-1942/paper5.pdf.
+
 Tylee DS, Hess JL, **Quinn TP**, et al., & Glatt SJ. 2016. Blood transcriptomic comparison of individuals with and without autism spectrum disorder: A combined-samples mega-analysis. American Journal of Medical Genetics B Neuropsychiatric Genetics. Rapid Publication. http://dx.doi.org/10.1002/ajmg.b.32511.
 
 **Quinn T**, Tylee D, & Glatt S. 2016. exprso: an R-package for the rapid implementation of machine learning algorithms. F1000Research 5:2588. http://dx.doi.org/10.12688/f1000research.9893.1.
 
-Bichindaritz IB, Cole E, Keshan N, Parimi P, & **Quinn TP**. 2016. Machine Learning Based Automatic Multilevel Stress Detection from ECG Signals. IJCAI 2016: Workshop on Knowledge Discovery in Healthcare Data.
+Bichindaritz IB, Cole E, Keshan N, Parimi P, & **Quinn TP**. 2016. Machine Learning Based Automatic Multilevel Stress Detection from ECG Signals. IJCAI Workshop on Knowledge Discovery in Healthcare Data. http://sites.google.com/site/ijcai2016kdhealth/accepted-papers.
 
 Hess JL, **Quinn TP**, Akbarian S, & Glatt SJ. 2015. Bioinformatic analyses and conceptual synthesis of evidence linking ZNF804A to risk for schizophrenia and bipolar disorder. American Journal of Medical Genetics B Neuropsychiatric Genetics 168(1):14-35. http://dx.doi.org/10.1002/ajmg.b.32284.
 

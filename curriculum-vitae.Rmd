@@ -148,9 +148,11 @@ title: "Curriculum Vitae"
 
 ### Publications
 
-**Quinn TP**, Crowley TM, & Richardson MF. 2017. Differential expression analysis of log-ratio transformed counts: benchmarking methods for RNA-Seq data. bioRxiv 231175. https://doi.org/10.1101/231175.
+Lee SC+, **Quinn TP+**, et al., & Nguyen T. 2018. Solving for X: evidence for sex-specific autism biomarkers across multiple transcriptomic studies. bioRxiv 309518. https://doi.org/10.1101/309518.
 
-**Quinn TP**, Erb I, Richardson MF, & Crowley TM. 2017. Understanding sequencing data as compositions: an outlook and review. bioRxiv 206425. http://dx.doi.org/10.1101/206425.
+**Quinn TP**, Erb I, Richardson MF, & Crowley TM. 2018. Understanding sequencing data as compositions: an outlook and review. Bioinformatics. Advanced Access Publication. https://doi.org/10.1093/bioinformatics/bty175.
+
+**Quinn TP**, Crowley TM, & Richardson MF. 2017. Differential expression analysis of log-ratio transformed counts: benchmarking methods for RNA-Seq data. bioRxiv 231175. https://doi.org/10.1101/231175.
 
 Erb I, **Quinn T**, Lovell D, & Notredame C. 2017. Differential Proportionality - A Normalization-Free Approach To Differential Gene Expression. Proceedings of CoDaWork 2017, The 7th Compositional Data Analysis Workshop; available under bioRxiv 134536. http://dx.doi.org/10.1101/134536.
 
@@ -160,9 +162,9 @@ Tylee DS, Kikinis Z, **Quinn TP**, et al., & Makris N. 2017. Machine-learning cl
 
 Englebert C, **Quinn T**, & Bichindaritz I. 2017. Feature selection for survival analysis in bioinformatics. CEUR Workshop Proceedings 1942:30-35. http://ceur-ws.org/Vol-1942/paper5.pdf.
 
-Tylee DS, Hess JL, **Quinn TP**, et al., & Glatt SJ. 2016. Blood transcriptomic comparison of individuals with and without autism spectrum disorder: A combined-samples mega-analysis. American Journal of Medical Genetics B Neuropsychiatric Genetics. Rapid Publication. http://dx.doi.org/10.1002/ajmg.b.32511.
+**Quinn T**, Tylee D, & Glatt S. 2017. exprso: an R-package for the rapid implementation of machine learning algorithms [version 2; referees: 2 approved]. F1000Research 5:2588. http://dx.doi.org/10.12688/f1000research.9893.1.
 
-**Quinn T**, Tylee D, & Glatt S. 2016. exprso: an R-package for the rapid implementation of machine learning algorithms. F1000Research 5:2588. http://dx.doi.org/10.12688/f1000research.9893.1.
+Tylee DS, Hess JL, **Quinn TP**, et al., & Glatt SJ. 2016. Blood transcriptomic comparison of individuals with and without autism spectrum disorder: A combined-samples mega-analysis. American Journal of Medical Genetics B Neuropsychiatric Genetics. Rapid Publication. http://dx.doi.org/10.1002/ajmg.b.32511.
 
 Bichindaritz IB, Cole E, et al., & **Quinn TP**. 2016. Machine Learning Based Automatic Multilevel Stress Detection from ECG Signals. IJCAI 2016: Workshop on Knowledge Discovery in Healthcare Data. http://sites.google.com/site/ijcai2016kdhealth/accepted-papers.
 

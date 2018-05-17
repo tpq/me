@@ -8,7 +8,11 @@ title: "Fiction"
 
 ##### [**Travel by Inner-state**](travel-by-inner-state.html)
 
-##### [**After Words**](after-words.html)
+##### [**In My Inkblot Notebook**](in-my-inkblot-notebook.html)
+
+##### [**Jotnar Rising North**](jotnar-rising-north.html)
+
+##### [**Clocked Out**](clocked-out.html)
 
 <br>
 
@@ -20,7 +24,7 @@ title: "Fiction"
 
 ##### [**Washed Assured**](washed-assured.html)
 
-##### [**Clocked Out**](clocked-out.html)
+##### [**After Words**](after-words.html)
 
 <br>
 

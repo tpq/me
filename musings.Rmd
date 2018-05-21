@@ -2,6 +2,12 @@
 title: "Musings"
 ---
 
+### 2018
+
+##### [**Puerto Rico: an Analysis of 100 Hours of Gameplay**](puerto-rico_-an-analysis-of-100-hours-of-gameplay.html)
+
+<br>
+
 ### 2017
 
 ##### [**Algebra Is for Those Without Algorithms**](algebra-is-for-those-without-algorithms.html)

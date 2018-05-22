@@ -232,11 +232,11 @@ $(document).ready(function () {
 
 <div id="an-american-tradition" class="section level3">
 <h3>An American tradition</h3>
-<p>Since moving to Australia, I have made it a point to stay connected with friends back home. For two of my old gaming buddies, we decided to catch up regularly for a chat over a game of Puerto Rico, a resource management board game by Andreas Seyfarth. We play online through <a href="https://en.boardgamearena.com/">Board Game Arena</a>, a free platform that provides a clean interface for dozens of board games.</p>
-<p>As a coding project, I wrote a module in Python to scrape and parse logs from each of our games. Using this module, I retrieved data for (most) games played between the players ‘buzzsnuzz’ (me), ‘Airjoe’ (Joseph), and ‘pmac135’ (Patrick), excepting those that used expansion cards (or otherwise failed to download). This blog post is dedicated to these two who, being data fiends like myself, I hope will enjoy analyzing these data set as much as I enjoyed generating them.</p>
+<p>Since moving to Australia, I have made it a point to stay connected with friends back home. For two of my old gaming buddies, we decided to catch up regularly for a chat over a round of Puerto Rico, a resource management board game by Andreas Seyfarth. We play online through <a href="https://en.boardgamearena.com/">Board Game Arena</a>, a free platform that provides a clean interface for dozens of board games.</p>
+<p>As a coding project, I wrote a module in Python to scrape and parse logs from each of our games. Using this module, I retrieved data for (most) games played between the players ‘buzzsnuzz’ (me), ‘Airjoe’ (Joseph), and ‘pmac135’ (Patrick), excepting those that used expansion cards (or otherwise failed to download). This blog post is dedicated to these two who, being data fiends like myself, I hope will enjoy analyzing these results as much as I enjoyed generating them.</p>
 </div>
-<div id="a-game-of-roles-without-rolls" class="section level3">
-<h3>A game of roles without rolls</h3>
+<div id="a-game-of-quarry-rock-and-roles" class="section level3">
+<h3>A game of quarry rock and roles</h3>
 <p>The retrieved data exist in two parts. The first part is simple, listing which roles were called (and by whom). The second part is comprehensive, listing what pieces each player acquired on each turn. Here, we import the first part of the data.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">files &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="st">&quot;data/&quot;</span>, <span class="dt">full.names =</span> <span class="ot">TRUE</span>)
 files.turns &lt;-<span class="st"> </span>files[<span class="kw">grepl</span>(<span class="st">&quot;bga[0-9]+</span><span class="ch">\\</span><span class="st">.csv&quot;</span>, files)]</code></pre></div>
@@ -271,12 +271,12 @@ df.r &lt;-<span class="st"> </span>ggplot2::<span class="kw">remove_missing</spa
 <span class="st">  </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set2&quot;</span>) +<span class="st"> </span><span class="kw">theme_bw</span>() +
 <span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Turn&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Frequency&quot;</span>)</code></pre></div>
 <p><img src="puerto-rico_-an-analysis-of-100-hours-of-gameplay_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
-<p>Which roles tend to follow other roles? Here, the number nearest the node indicates the outgoing probability.</p>
+<p>Which roles tend to follow other roles? Note, the number nearest the node indicates the outgoing probability.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(markovchain)
 mcFit &lt;-<span class="st"> </span><span class="kw">markovchainFit</span>(<span class="kw">sapply</span>(roles, as.vector))
 <span class="kw">plot</span>(mcFit$estimate, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</code></pre></div>
 <p><img src="puerto-rico_-an-analysis-of-100-hours-of-gameplay_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
-<p>Which roles tend to follow other roles? Here, rows indicate the first state (and columns the second).</p>
+<p>Which roles tend to follow other roles? Note, rows indicate the first state.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mc &lt;-<span class="st"> </span>mcFit$estimate@transitionMatrix
 mc</code></pre></div>
 <pre><code>##              builder    captain   craftsman     mayor    settler    trader
@@ -293,8 +293,8 @@ L</code></pre></div>
 <pre><code>## [1] &quot;builder -&gt; mayor&quot;    &quot;captain -&gt; builder&quot;  &quot;craftsman -&gt; trader&quot;
 ## [4] &quot;mayor -&gt; craftsman&quot;  &quot;settler -&gt; builder&quot;  &quot;trader -&gt; captain&quot;</code></pre>
 </div>
-<div id="the-winning-positioned" class="section level3">
-<h3>The winning positioned</h3>
+<div id="the-winning-positioned-here" class="section level3">
+<h3>The winning positioned here</h3>
 <p>Now, we import the second part of the data. We have one file per player per game.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">files.a &lt;-<span class="st"> </span>files[<span class="kw">grepl</span>(<span class="st">&quot;Airjoe.csv&quot;</span>, files)]
 data.a &lt;-<span class="st"> </span><span class="kw">lapply</span>(files.a, read.csv)
@@ -342,7 +342,7 @@ WinnerPos :<span class="er">=</span><span class="st"> </span>for(i in <span clas
 </div>
 <div id="of-yearnings-and-earnings" class="section level3">
 <h3>Of yearnings and earnings</h3>
-<p>For statistical modeling and visualization, we want the data in a neat format. Here, we convert a list of matrices into one large matrix. You can download these data <a href="data/pr-frequency.csv">here</a>.</p>
+<p>For statistical modeling and visualization, we want the data in long format. Here, we convert a list of matrices into one very large matrix. You can download this data set <a href="data/pr-frequency.csv">here</a>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gameid &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="kw">strsplit</span>(<span class="kw">basename</span>(files.a), <span class="st">&quot;-&quot;</span>), function(f) f[<span class="dv">1</span>])
 data &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="dv">1</span>:<span class="kw">length</span>(data.a), function(i){
   <span class="kw">data.frame</span>(
@@ -361,7 +361,7 @@ data &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="d
             )))})
 df &lt;-<span class="st"> </span><span class="kw">do.call</span>(<span class="st">&quot;rbind&quot;</span>, data)
 df$vp &lt;-<span class="st"> </span>df$vp_ship +<span class="st"> </span>df$vp_harbor +<span class="st"> </span>df$vp_bld +<span class="st"> </span>df$vp_bonus</code></pre></div>
-<p>The data above describe what pieces were acquired on each turn. However, we more often want to know whether a piece is held on a given turn. This means that we should arrange the data by the cumulative sum (per player per game). We do this with <code>aggregate</code> (followed by <code>lapply</code> to unnest the results). You can download these data <a href="data/pr-cumsum.csv">here</a>.</p>
+<p>The data above describe what pieces were acquired on each turn. However, we more often want to know whether a piece is held on a given turn. This means that we should arrange the data by the cumulative sum (per player per game). We do this with <code>aggregate</code> (followed by <code>lapply</code> to unnest the results). You can download this data set <a href="data/pr-cumsum.csv">here</a>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df.cumsum &lt;-<span class="st"> </span><span class="kw">aggregate</span>(. ~<span class="st"> </span>game +<span class="st"> </span>name +<span class="st"> </span>pos, df, <span class="dt">FUN =</span> cumsum)
 df.cs &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="dv">1</span>:<span class="kw">nrow</span>(df.cumsum), function(row){
   df.i &lt;-<span class="st"> </span><span class="kw">do.call</span>(data.frame, df.cumsum[row,])
@@ -375,7 +375,7 @@ df.cs &lt;-<span class="st"> </span><span class="kw">do.call</span>(<span class=
 <span class="st">  </span><span class="kw">geom_line</span>() +<span class="st"> </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set2&quot;</span>) +<span class="st"> </span><span class="kw">theme_bw</span>() +
 <span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Turn&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;VP Earned (Average)&quot;</span>) +<span class="st"> </span><span class="kw">labs</span>(<span class="dt">col =</span> <span class="st">&quot;Position&quot;</span>)</code></pre></div>
 <p><img src="puerto-rico_-an-analysis-of-100-hours-of-gameplay_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
-<p>We can also visualize how ownership of a building changes the rate of VP earnings (as further broken down by player and position). For example, we see below how ownership of the “Harbor” building yields more VP.</p>
+<p>We can also visualize how ownership of a building changes the rate of VP earnings (as further broken down by player and position). For example, we see below how ownership of the “Harbor” building can yield more VP.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df.m &lt;-<span class="st"> </span><span class="kw">aggregate</span>(vp ~<span class="st"> </span>name +<span class="st"> </span>X +<span class="st"> </span>pos +<span class="st"> </span>harbor, df.cs, mean)
 <span class="kw">ggplot</span>(df.m, <span class="kw">aes</span>(<span class="dt">x =</span> X, <span class="dt">y =</span> vp, <span class="dt">col =</span> <span class="kw">factor</span>(harbor))) +<span class="st"> </span><span class="kw">facet_grid</span>(pos~name) +
 <span class="st">  </span><span class="kw">geom_line</span>() +<span class="st"> </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set2&quot;</span>) +<span class="st"> </span><span class="kw">theme_bw</span>() +
@@ -384,7 +384,7 @@ df.cs &lt;-<span class="st"> </span><span class="kw">do.call</span>(<span class=
 </div>
 <div id="weighing-in-on-the-game" class="section level3">
 <h3>Weighing in on the game</h3>
-<p>As an analyst and player, I want to know which buildings provide the most value in terms of VP earnings. One way to assess this is by fitting a linear model to VP earnings, and then comparing the weight of the coefficients for each building. By modeling turn order as a covariate (labeled as “X”), the coefficients of the linear model should estimate how well building ownership correlates with victory VP earnings while adjusting for the natural course of the game.</p>
+<p>As an analyst and player, I want to know which buildings provide the most value in terms of VP earnings. One way to assess this is by fitting a linear model to VP earnings, and then comparing the weight of the coefficients for each building. By modeling turn order as a covariate (labeled as “X”), the coefficients of the linear model should estimate how well building ownership correlates with VP earnings while adjusting for the natural course of the game.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit &lt;-<span class="st"> </span><span class="kw">lm</span>(vp ~<span class="st"> </span>. +<span class="st"> </span><span class="dv">0</span>, df.cs[, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">26</span>:<span class="dv">49</span>)])
 coefTotal &lt;-<span class="st"> </span><span class="kw">t</span>(<span class="kw">t</span>(<span class="kw">coefficients</span>(fit)))
 <span class="kw">colnames</span>(coefTotal) &lt;-<span class="st"> &quot;Weight&quot;</span>
@@ -414,7 +414,7 @@ coefTotal &lt;-<span class="st"> </span><span class="kw">t</span>(<span class="k
 ## residence            4.59
 ## city.hall            4.00
 ## fortress             4.00</code></pre>
-<p>How does the value (in terms of VP earnings) of buildings change for each player?</p>
+<p>How does the value of buildings (in terms of VP earnings) change for each player?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">coefPerP &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="kw">unique</span>(df.cs$name), function(name){
   fit &lt;-<span class="st"> </span><span class="kw">lm</span>(vp ~<span class="st"> </span>. +<span class="st"> </span><span class="dv">0</span>, df.cs[df.cs$name ==<span class="st"> </span>name, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">26</span>:<span class="dv">49</span>)])
   <span class="kw">data.frame</span>(name, <span class="kw">t</span>(<span class="kw">coefficients</span>(fit)))
@@ -447,7 +447,7 @@ coefPerP &lt;-<span class="st"> </span><span class="kw">t</span>(<span class="kw
 ## residence            6.54      3.33    1.52
 ## city.hall            3.10      5.55    4.40
 ## fortress             5.27      6.34    3.36</code></pre>
-<p>How does the value (in terms of VP earnings) of buildings change for each player in first position?</p>
+<p>How does the value of buildings (in terms of VP earnings) change for each player in first position?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df.cs$np &lt;-<span class="st"> </span><span class="kw">paste0</span>(df.cs$name, <span class="st">&quot;-&quot;</span>, df.cs$pos)
 coefPerNP &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="kw">unique</span>(df.cs$np), function(np){
   fit &lt;-<span class="st"> </span><span class="kw">lm</span>(vp ~<span class="st"> </span>. +<span class="st"> </span><span class="dv">0</span>, df.cs[df.cs$np ==<span class="st"> </span>np, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">26</span>:<span class="dv">49</span>)])
@@ -481,7 +481,7 @@ coefPerNP &lt;-<span class="st"> </span><span class="kw">t</span>(<span class="k
 ## residence              4.48        3.14      2.57
 ## city.hall              2.68        5.40      3.17
 ## fortress               4.91        9.55      3.05</code></pre>
-<p>How does the value (in terms of VP earnings) of buildings change for each player in second position?</p>
+<p>How does the value of buildings (in terms of VP earnings) change for each player in second position?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(coefPerNP, <span class="dv">2</span>)[,<span class="dv">4</span>:<span class="dv">6</span>]</code></pre></div>
 <pre><code>##                    Airjoe-2 buzzsnuzz-2 pmac135-2
 ## X                      0.52        0.54      0.39
@@ -508,7 +508,7 @@ coefPerNP &lt;-<span class="st"> </span><span class="kw">t</span>(<span class="k
 ## residence              7.57          NA      4.07
 ## city.hall              4.82        6.43      2.16
 ## fortress               8.28        9.57      6.92</code></pre>
-<p>How does the value (in terms of VP earnings) of buildings change for each player in third position?</p>
+<p>How does the value of buildings (in terms of VP earnings) change for each player in third position?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(coefPerNP, <span class="dv">2</span>)[,<span class="dv">7</span>:<span class="dv">9</span>]</code></pre></div>
 <pre><code>##                    Airjoe-3 buzzsnuzz-3 pmac135-3
 ## X                      0.50        0.59      0.69
@@ -535,7 +535,7 @@ coefPerNP &lt;-<span class="st"> </span><span class="kw">t</span>(<span class="k
 ## residence              8.79        5.83        NA
 ## city.hall              5.18        6.97      4.83
 ## fortress               5.56        0.60      1.49</code></pre>
-<p>The linear models above implicitly assume that the ownership of each building contributes independently to VP earned. However, we might expect that the joint ownership of some building pairs could contribute more toward VP earnings than the ownernship of either building individually. We can estimate the synergistic value of joint ownership by fitting another linear model that considers the interaction effect between building ownership. For this, we fit 529 linear models (i.e., for all pairs of 23 buildings), wherein we replace each pair of two-level factors (i.e., ownership of building A and B as binary states) with a four-level factor (i.e., ownership of neither, the first, the second, or both). As above, we include turn order as a covariate. However, because we fit a separate model for each building pair, we should fix the turn order coefficient (chosen as 0.58 from above) to keep results comparable across the 529 models.</p>
+<p>The linear models above implicitly assume that the ownership of each building contributes independently to VP earned. However, we might expect that the joint ownership of some building pairs could contribute more toward VP earnings than the ownernship of either building individually. We can estimate the synergistic value of joint ownership by fitting another linear model that considers the interaction effect between building ownership. For this, we fit 529 linear models (i.e., for all pairs of 23 buildings), wherein we replace each pair of two-level factors (i.e., ownership of building A or B as binary states) with a four-level factor (i.e., ownership of neither, the first, the second, or both). As above, we include turn order as a covariate. However, because we fit a separate model for each building pair, we should fix the turn order coefficient (chosen as 0.58 from above) to keep results comparable across the 529 models.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df.b &lt;-<span class="st"> </span>df.cs[, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">26</span>:<span class="dv">49</span>)]
 buildings &lt;-<span class="st"> </span><span class="kw">names</span>(df.b)[<span class="dv">2</span>:(<span class="kw">length</span>(df.b)-<span class="dv">1</span>)]
 outer &lt;-<span class="st"> </span><span class="kw">lapply</span>(buildings, function(b1){
@@ -553,7 +553,7 @@ outer &lt;-<span class="st"> </span><span class="kw">lapply</span>(buildings, fu
   <span class="kw">do.call</span>(plyr::rbind.fill, inner)
 })
 interactions &lt;-<span class="st"> </span><span class="kw">do.call</span>(plyr::rbind.fill, outer)</code></pre></div>
-<p>Here, the coefficient “X11” represents the added value of joint ownership (i.e., the added value beyond owning each building individually “X10” and “X01”). As such, we can conceive of “X11” as a kind of synergy score which describes the amount of VP earned by owning both buildings that is not simply explained by owning both separately.</p>
+<p>Here, the coefficient “X11” represents the benefit of joint ownership (i.e., the value added beyond owning each building individually “X10” and “X01”). As such, we can conceive of “X11” as a kind of synergy score which describes the amount of VP earned by owning both buildings together that is not simply explained by owning them separately.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df.i &lt;-<span class="st"> </span>reshape2::<span class="kw">melt</span>(interactions[,<span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;X11&quot;</span>)])</code></pre></div>
 <pre><code>## Using A, B as id variables</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df.i$valuecut &lt;-<span class="st"> </span><span class="kw">cut</span>(df.i$value, <span class="kw">seq</span>(-<span class="dv">25</span>, <span class="dv">25</span>, <span class="dv">5</span>))
@@ -566,7 +566,7 @@ interactions &lt;-<span class="st"> </span><span class="kw">do.call</span>(plyr:
 </div>
 <div id="final-remarks" class="section level3">
 <h3>Final remarks</h3>
-<p>I have gained a few insights from this analysis, but will leave it to the reader to draw their own conclusions. However, I wish to say that I am a big fan of interpreting linear model weights directly, and I think this use case provides a good example of how coefficients can simplify the interpretation of multi-dimensional data. Still, reading too much into these weights carries with it the age old problem of <em>post hoc ergo propter hoc</em>: this analysis only tells us whether building ownership correlates with VP earnings (and not whether it is causal). It is always possible that players who are not earning VP acquire certain buildings because they are already in a rut!</p>
+<p>I have gained a few insights from this analysis, but will leave it to the reader to draw their own conclusions. However, I wish to say that I am a big fan of interpreting linear model weights directly, and I think this use case provides a good example of how coefficients can simplify the interpretation of multi-dimensional data. Still, these weights carry with them the age old problem of <em>post hoc ergo propter hoc</em>. This analysis only tells us whether building ownership correlates with VP earnings (and not whether it is causal). It is always possible that players who are not earning VP acquire certain buildings because they are already in a rut!</p>
 <p><br></p>
 </div>
 

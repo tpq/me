@@ -144,11 +144,13 @@ title: "Curriculum Vitae"
 
 ### Publications
 
-Lee SC+, **Quinn TP+**, et al., & Nguyen T. 2018. Solving for X: evidence for sex-specific autism biomarkers across multiple transcriptomic studies. bioRxiv 309518. https://doi.org/10.1101/309518.
+Allnutt TR, Wade B, **Quinn TP**, Richardson MF, & Crowley TM. 2018. Shortlisting Aptamer Candidates from HT-SELEX data. Aptamers 2. http://japtamers.co.uk/shortlisting-aptamer-candidates-from-ht-selex-data.
 
-**Quinn TP**, Erb I, Richardson MF, & Crowley TM. 2018. Understanding sequencing data as compositions: an outlook and review. Bioinformatics. Advanced Access Publication. https://doi.org/10.1093/bioinformatics/bty175.
+Lee SC+, **Quinn TP+**, et al., & Nguyen T. 2018. Solving for X: evidence for sex-specific autism biomarkers across multiple transcriptomic studies. bioRxiv 309518. http://doi.org/10.1101/309518.
 
-**Quinn TP**, Crowley TM, & Richardson MF. 2017. Differential expression analysis of log-ratio transformed counts: benchmarking methods for RNA-Seq data. bioRxiv 231175. https://doi.org/10.1101/231175.
+**Quinn TP**, Erb I, Richardson MF, & Crowley TM. 2018. Understanding sequencing data as compositions: an outlook and review. Bioinformatics. Advanced Access Publication. http://doi.org/10.1093/bioinformatics/bty175.
+
+**Quinn TP**, Crowley TM, & Richardson MF. 2017. Differential expression analysis of log-ratio transformed counts: benchmarking methods for RNA-Seq data. bioRxiv 231175. http://doi.org/10.1101/231175.
 
 Erb I, **Quinn T**, Lovell D, & Notredame C. 2017. Differential Proportionality - A Normalization-Free Approach To Differential Gene Expression. Proceedings of CoDaWork 2017, The 7th Compositional Data Analysis Workshop; available under bioRxiv 134536. http://dx.doi.org/10.1101/134536.
 

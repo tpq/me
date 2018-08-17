@@ -114,6 +114,9 @@ img {
 .tabbed-pane {
   padding-top: 12px;
 }
+.html-widget {
+  margin-bottom: 20px;
+}
 button.code-folding-btn:focus {
   outline: none;
 }
@@ -246,8 +249,8 @@ files.turns &lt;-<span class="st"> </span>files[<span class="kw">grepl</span>(<s
 <p>Each round, every player has a turn. How many turns are in a full game?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(yuck)
 turns &lt;-<span class="st"> </span><span class="kw">lapply</span>(files.turns, read.csv)
-players :<span class="er">=</span><span class="st"> </span>for(turn in turns) <span class="kw">t</span>(turn)[<span class="dv">2</span>,,drop=<span class="ot">FALSE</span>]
-roles :<span class="er">=</span><span class="st"> </span>for(turn in turns) <span class="kw">t</span>(turn)[<span class="dv">1</span>,,drop=<span class="ot">FALSE</span>]
+players <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="cf">for</span>(turn <span class="cf">in</span> turns) <span class="kw">t</span>(turn)[<span class="dv">2</span>,,drop=<span class="ot">FALSE</span>]
+roles <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="cf">for</span>(turn <span class="cf">in</span> turns) <span class="kw">t</span>(turn)[<span class="dv">1</span>,,drop=<span class="ot">FALSE</span>]
 <span class="kw">table</span>(<span class="st">&quot;Turns&quot;</span> =<span class="st"> </span><span class="kw">sapply</span>(roles, length))</code></pre></div>
 <pre><code>## Turns
 ## 39 45 48 51 54 57 
@@ -258,26 +261,26 @@ roles :<span class="er">=</span><span class="st"> </span>for(turn in turns) <spa
 ##   builder   captain craftsman     mayor   settler    trader 
 ##       533       445       413       456       405       370</code></pre>
 <p>How does the popularity of each role change over time?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rolesm :<span class="er">=</span><span class="st"> </span>for(turn in roles) <span class="kw">as.data.frame</span>(turn)
-rolesm &lt;-<span class="st"> </span>plyr::<span class="kw">rbind.fill</span>(rolesm)
-<span class="kw">colnames</span>(rolesm) &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;Turn&quot;</span>, <span class="dv">1</span>:<span class="kw">ncol</span>(rolesm))
-<span class="kw">rownames</span>(rolesm) &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;Game&quot;</span>, <span class="dv">1</span>:<span class="kw">nrow</span>(rolesm))
-df.r &lt;-<span class="st"> </span>reshape2::<span class="kw">melt</span>(<span class="kw">t</span>(rolesm))
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rolesm <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="cf">for</span>(turn <span class="cf">in</span> roles) <span class="kw">as.data.frame</span>(turn)
+rolesm &lt;-<span class="st"> </span>plyr<span class="op">::</span><span class="kw">rbind.fill</span>(rolesm)
+<span class="kw">colnames</span>(rolesm) &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;Turn&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="kw">ncol</span>(rolesm))
+<span class="kw">rownames</span>(rolesm) &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;Game&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(rolesm))
+df.r &lt;-<span class="st"> </span>reshape2<span class="op">::</span><span class="kw">melt</span>(<span class="kw">t</span>(rolesm))
 <span class="kw">colnames</span>(df.r) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Turn&quot;</span>, <span class="st">&quot;Game&quot;</span>, <span class="st">&quot;Role&quot;</span>)
-df.r &lt;-<span class="st"> </span>ggplot2::<span class="kw">remove_missing</span>(df.r)
+df.r &lt;-<span class="st"> </span>ggplot2<span class="op">::</span><span class="kw">remove_missing</span>(df.r)
 <span class="kw">library</span>(ggplot2)
-<span class="kw">ggplot</span>(df.r, <span class="kw">aes</span>(<span class="dt">x =</span> Turn, <span class="dt">fill =</span> Role)) +<span class="st"> </span><span class="kw">facet_wrap</span>(~Role) +
-<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">stat =</span> <span class="st">&quot;count&quot;</span>) +
-<span class="st">  </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set2&quot;</span>) +<span class="st"> </span><span class="kw">theme_bw</span>() +
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Turn&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Frequency&quot;</span>)</code></pre></div>
+<span class="kw">ggplot</span>(df.r, <span class="kw">aes</span>(<span class="dt">x =</span> Turn, <span class="dt">fill =</span> Role)) <span class="op">+</span><span class="st"> </span><span class="kw">facet_wrap</span>(<span class="op">~</span>Role) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">stat =</span> <span class="st">&quot;count&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set2&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Turn&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Frequency&quot;</span>)</code></pre></div>
 <p><img src="puerto-rico_-an-analysis-of-100-hours-of-gameplay_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>Which roles tend to follow other roles? Note, the number nearest the node indicates the outgoing probability.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(markovchain)
 mcFit &lt;-<span class="st"> </span><span class="kw">markovchainFit</span>(<span class="kw">sapply</span>(roles, as.vector))
-<span class="kw">plot</span>(mcFit$estimate, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</code></pre></div>
+<span class="kw">plot</span>(mcFit<span class="op">$</span>estimate, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</code></pre></div>
 <p><img src="puerto-rico_-an-analysis-of-100-hours-of-gameplay_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>Which roles tend to follow other roles? Note, rows indicate the first state.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mc &lt;-<span class="st"> </span>mcFit$estimate@transitionMatrix
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mc &lt;-<span class="st"> </span>mcFit<span class="op">$</span>estimate<span class="op">@</span>transitionMatrix
 mc</code></pre></div>
 <pre><code>##              builder    captain   craftsman     mayor    settler    trader
 ## builder   0.01529637 0.19120459 0.193116635 0.3212237 0.17017208 0.1089866
@@ -287,8 +290,8 @@ mc</code></pre></div>
 ## settler   0.34090909 0.14141414 0.169191919 0.2045455 0.01515152 0.1287879
 ## trader    0.24383562 0.29589041 0.134246575 0.1534247 0.16164384 0.0109589</code></pre>
 <p>What is the most common transition for each role?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">L &lt;-<span class="st"> </span><span class="kw">apply</span>(mc, <span class="dv">1</span>, function(x) <span class="kw">rownames</span>(mc)[<span class="kw">which.max</span>(x)])
-L :<span class="er">=</span><span class="st"> </span>for(l in <span class="dv">1</span>:<span class="kw">length</span>(L)) <span class="kw">paste</span>(<span class="kw">names</span>(L)[l], <span class="st">&quot;-&gt;&quot;</span>, L[l])
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">L &lt;-<span class="st"> </span><span class="kw">apply</span>(mc, <span class="dv">1</span>, <span class="cf">function</span>(x) <span class="kw">rownames</span>(mc)[<span class="kw">which.max</span>(x)])
+L <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="cf">for</span>(l <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(L)) <span class="kw">paste</span>(<span class="kw">names</span>(L)[l], <span class="st">&quot;-&gt;&quot;</span>, L[l])
 L</code></pre></div>
 <pre><code>## [1] &quot;builder -&gt; mayor&quot;    &quot;captain -&gt; builder&quot;  &quot;craftsman -&gt; trader&quot;
 ## [4] &quot;mayor -&gt; craftsman&quot;  &quot;settler -&gt; builder&quot;  &quot;trader -&gt; captain&quot;</code></pre>
@@ -303,10 +306,10 @@ data.t &lt;-<span class="st"> </span><span class="kw">lapply</span>(files.t, rea
 files.p &lt;-<span class="st"> </span>files[<span class="kw">grepl</span>(<span class="st">&quot;pmac135.csv&quot;</span>, files)]
 data.p &lt;-<span class="st"> </span><span class="kw">lapply</span>(files.p, read.csv)</code></pre></div>
 <p>First, let us calculate the winners for each game (and their score).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">which.median &lt;-<span class="st"> </span>function(x) (<span class="kw">which</span>(x ==<span class="st"> </span><span class="kw">median</span>(x)))[<span class="dv">1</span>]
-vp.a &lt;-<span class="st"> </span><span class="kw">sapply</span>(data.a, function(d) <span class="kw">sum</span>(<span class="kw">colSums</span>(d[, <span class="kw">grepl</span>(<span class="st">&quot;vp_&quot;</span>, <span class="kw">colnames</span>(d))])))
-vp.t &lt;-<span class="st"> </span><span class="kw">sapply</span>(data.t, function(d) <span class="kw">sum</span>(<span class="kw">colSums</span>(d[, <span class="kw">grepl</span>(<span class="st">&quot;vp_&quot;</span>, <span class="kw">colnames</span>(d))])))
-vp.p &lt;-<span class="st"> </span><span class="kw">sapply</span>(data.p, function(d) <span class="kw">sum</span>(<span class="kw">colSums</span>(d[, <span class="kw">grepl</span>(<span class="st">&quot;vp_&quot;</span>, <span class="kw">colnames</span>(d))])))
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">which.median &lt;-<span class="st"> </span><span class="cf">function</span>(x) (<span class="kw">which</span>(x <span class="op">==</span><span class="st"> </span><span class="kw">median</span>(x)))[<span class="dv">1</span>]
+vp.a &lt;-<span class="st"> </span><span class="kw">sapply</span>(data.a, <span class="cf">function</span>(d) <span class="kw">sum</span>(<span class="kw">colSums</span>(d[, <span class="kw">grepl</span>(<span class="st">&quot;vp_&quot;</span>, <span class="kw">colnames</span>(d))])))
+vp.t &lt;-<span class="st"> </span><span class="kw">sapply</span>(data.t, <span class="cf">function</span>(d) <span class="kw">sum</span>(<span class="kw">colSums</span>(d[, <span class="kw">grepl</span>(<span class="st">&quot;vp_&quot;</span>, <span class="kw">colnames</span>(d))])))
+vp.p &lt;-<span class="st"> </span><span class="kw">sapply</span>(data.p, <span class="cf">function</span>(d) <span class="kw">sum</span>(<span class="kw">colSums</span>(d[, <span class="kw">grepl</span>(<span class="st">&quot;vp_&quot;</span>, <span class="kw">colnames</span>(d))])))
 vp.atp &lt;-<span class="st"> </span><span class="kw">data.frame</span>(vp.a, vp.t, vp.p)
 Winner &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Airjoe&quot;</span>, <span class="st">&quot;buzzsnuzz&quot;</span>, <span class="st">&quot;pmac135&quot;</span>)[<span class="kw">apply</span>(vp.atp, <span class="dv">1</span>, which.max)]
 LoserM &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Airjoe&quot;</span>, <span class="st">&quot;buzzsnuzz&quot;</span>, <span class="st">&quot;pmac135&quot;</span>)[<span class="kw">apply</span>(vp.atp, <span class="dv">1</span>, which.median)]
@@ -318,16 +321,16 @@ Loser &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&
 ##        21        17        15</code></pre>
 <p>What is the spread?</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gameorder &lt;-<span class="st"> </span><span class="kw">order</span>(<span class="kw">as.numeric</span>(<span class="kw">gsub</span>(<span class="st">&quot;(bga)|(</span><span class="ch">\\</span><span class="st">.csv)&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="kw">basename</span>(files.turns))))
-s.atp &lt;-<span class="st"> </span><span class="kw">apply</span>(vp.atp, <span class="dv">1</span>, function(x) x -<span class="st"> </span><span class="kw">median</span>(x))
+s.atp &lt;-<span class="st"> </span><span class="kw">apply</span>(vp.atp, <span class="dv">1</span>, <span class="cf">function</span>(x) x <span class="op">-</span><span class="st"> </span><span class="kw">median</span>(x))
 <span class="kw">rownames</span>(s.atp) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Airjoe&quot;</span>, <span class="st">&quot;buzzsnuzz&quot;</span>, <span class="st">&quot;pmac135&quot;</span>)
-df.s &lt;-<span class="st"> </span>reshape2::<span class="kw">melt</span>(<span class="kw">t</span>(s.atp))
-<span class="kw">ggplot</span>(df.s, <span class="kw">aes</span>(<span class="dt">x =</span> Var1, <span class="dt">y =</span> value, <span class="dt">fill =</span> Var2)) +<span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) +
-<span class="st">  </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set2&quot;</span>) +<span class="st"> </span><span class="kw">theme_bw</span>() +
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Game&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Spread from Median&quot;</span>) +<span class="st"> </span><span class="kw">labs</span>(<span class="dt">fill =</span> <span class="st">&quot;Player&quot;</span>)</code></pre></div>
+df.s &lt;-<span class="st"> </span>reshape2<span class="op">::</span><span class="kw">melt</span>(<span class="kw">t</span>(s.atp))
+<span class="kw">ggplot</span>(df.s, <span class="kw">aes</span>(<span class="dt">x =</span> Var1, <span class="dt">y =</span> value, <span class="dt">fill =</span> Var2)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set2&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Game&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Spread from Median&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">fill =</span> <span class="st">&quot;Player&quot;</span>)</code></pre></div>
 <p><img src="puerto-rico_-an-analysis-of-100-hours-of-gameplay_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <p>A game can change a lot depending on player order. Do some positions have an advantage?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">turn :<span class="er">=</span><span class="st"> </span>for(turn in turns) <span class="kw">t</span>(turn)[<span class="dv">2</span>,<span class="dv">1</span>:<span class="dv">3</span>,drop=<span class="ot">FALSE</span>]
-WinnerPos :<span class="er">=</span><span class="st"> </span>for(i in <span class="dv">1</span>:<span class="kw">length</span>(turn)) <span class="kw">which</span>(turn[[i]] %in%<span class="st"> </span>Winner[i])
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">turn <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="cf">for</span>(turn <span class="cf">in</span> turns) <span class="kw">t</span>(turn)[<span class="dv">2</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>,drop=<span class="ot">FALSE</span>]
+WinnerPos <span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(turn)) <span class="kw">which</span>(turn[[i]] <span class="op">%in%</span><span class="st"> </span>Winner[i])
 <span class="kw">table</span>(<span class="st">&quot;Position&quot;</span> =<span class="st"> </span>WinnerPos)</code></pre></div>
 <pre><code>## Position
 ##  1  2  3 
@@ -343,8 +346,8 @@ WinnerPos :<span class="er">=</span><span class="st"> </span>for(i in <span clas
 <div id="of-yearnings-and-earnings" class="section level3">
 <h3>Of yearnings and earnings</h3>
 <p>For statistical modeling and visualization, we want the data in long format. Here, we convert a list of matrices into one very large matrix. You can download this data set <a href="data/pr-frequency.csv">here</a>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gameid &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="kw">strsplit</span>(<span class="kw">basename</span>(files.a), <span class="st">&quot;-&quot;</span>), function(f) f[<span class="dv">1</span>])
-data &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="dv">1</span>:<span class="kw">length</span>(data.a), function(i){
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">gameid &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="kw">strsplit</span>(<span class="kw">basename</span>(files.a), <span class="st">&quot;-&quot;</span>), <span class="cf">function</span>(f) f[<span class="dv">1</span>])
+data &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(data.a), <span class="cf">function</span>(i){
   <span class="kw">data.frame</span>(
     <span class="st">&quot;game&quot;</span> =<span class="st"> </span>gameid[i],
     <span class="kw">do.call</span>(<span class="st">&quot;rbind&quot;</span>,
@@ -360,32 +363,32 @@ data &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="d
                          data.p[[i]])
             )))})
 df &lt;-<span class="st"> </span><span class="kw">do.call</span>(<span class="st">&quot;rbind&quot;</span>, data)
-df$vp &lt;-<span class="st"> </span>df$vp_ship +<span class="st"> </span>df$vp_harbor +<span class="st"> </span>df$vp_bld +<span class="st"> </span>df$vp_bonus</code></pre></div>
+df<span class="op">$</span>vp &lt;-<span class="st"> </span>df<span class="op">$</span>vp_ship <span class="op">+</span><span class="st"> </span>df<span class="op">$</span>vp_harbor <span class="op">+</span><span class="st"> </span>df<span class="op">$</span>vp_bld <span class="op">+</span><span class="st"> </span>df<span class="op">$</span>vp_bonus</code></pre></div>
 <p>The data above describe what pieces were acquired on each turn. However, we more often want to know whether a piece is held on a given turn. This means that we should arrange the data by the cumulative sum (per player per game). We do this with <code>aggregate</code> (followed by <code>lapply</code> to unnest the results). You can download this data set <a href="data/pr-cumsum.csv">here</a>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df.cumsum &lt;-<span class="st"> </span><span class="kw">aggregate</span>(. ~<span class="st"> </span>game +<span class="st"> </span>name +<span class="st"> </span>pos, df, <span class="dt">FUN =</span> cumsum)
-df.cs &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="dv">1</span>:<span class="kw">nrow</span>(df.cumsum), function(row){
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df.cumsum &lt;-<span class="st"> </span><span class="kw">aggregate</span>(. <span class="op">~</span><span class="st"> </span>game <span class="op">+</span><span class="st"> </span>name <span class="op">+</span><span class="st"> </span>pos, df, <span class="dt">FUN =</span> cumsum)
+df.cs &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(df.cumsum), <span class="cf">function</span>(row){
   df.i &lt;-<span class="st"> </span><span class="kw">do.call</span>(data.frame, df.cumsum[row,])
   <span class="kw">names</span>(df.i) &lt;-<span class="st"> </span><span class="kw">names</span>(df.cumsum)
-  <span class="kw">data.frame</span>(<span class="st">&quot;X&quot;</span> =<span class="st"> </span><span class="dv">1</span>:<span class="kw">nrow</span>(df.i), df.i)
+  <span class="kw">data.frame</span>(<span class="st">&quot;X&quot;</span> =<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(df.i), df.i)
 })
 df.cs &lt;-<span class="st"> </span><span class="kw">do.call</span>(<span class="st">&quot;rbind&quot;</span>, df.cs)</code></pre></div>
 <p>Now, we can easily visualize the average number of victory points (VP) earned over the course of a game for each player. We know that starting position can influence game outcomes, so we will separate the trends based on this factor.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df.m &lt;-<span class="st"> </span><span class="kw">aggregate</span>(vp ~<span class="st"> </span>name +<span class="st"> </span>X +<span class="st"> </span>pos, df.cs, mean)
-<span class="kw">ggplot</span>(df.m, <span class="kw">aes</span>(<span class="dt">x =</span> X, <span class="dt">y =</span> vp, <span class="dt">col =</span> <span class="kw">factor</span>(pos))) +<span class="st"> </span><span class="kw">facet_grid</span>(~name) +
-<span class="st">  </span><span class="kw">geom_line</span>() +<span class="st"> </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set2&quot;</span>) +<span class="st"> </span><span class="kw">theme_bw</span>() +
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Turn&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;VP Earned (Average)&quot;</span>) +<span class="st"> </span><span class="kw">labs</span>(<span class="dt">col =</span> <span class="st">&quot;Position&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df.m &lt;-<span class="st"> </span><span class="kw">aggregate</span>(vp <span class="op">~</span><span class="st"> </span>name <span class="op">+</span><span class="st"> </span>X <span class="op">+</span><span class="st"> </span>pos, df.cs, mean)
+<span class="kw">ggplot</span>(df.m, <span class="kw">aes</span>(<span class="dt">x =</span> X, <span class="dt">y =</span> vp, <span class="dt">col =</span> <span class="kw">factor</span>(pos))) <span class="op">+</span><span class="st"> </span><span class="kw">facet_grid</span>(<span class="op">~</span>name) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set2&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Turn&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;VP Earned (Average)&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">col =</span> <span class="st">&quot;Position&quot;</span>)</code></pre></div>
 <p><img src="puerto-rico_-an-analysis-of-100-hours-of-gameplay_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 <p>We can also visualize how ownership of a building changes the rate of VP earnings (as further broken down by player and position). For example, we see below how ownership of the “Harbor” building can yield more VP.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df.m &lt;-<span class="st"> </span><span class="kw">aggregate</span>(vp ~<span class="st"> </span>name +<span class="st"> </span>X +<span class="st"> </span>pos +<span class="st"> </span>harbor, df.cs, mean)
-<span class="kw">ggplot</span>(df.m, <span class="kw">aes</span>(<span class="dt">x =</span> X, <span class="dt">y =</span> vp, <span class="dt">col =</span> <span class="kw">factor</span>(harbor))) +<span class="st"> </span><span class="kw">facet_grid</span>(pos~name) +
-<span class="st">  </span><span class="kw">geom_line</span>() +<span class="st"> </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set2&quot;</span>) +<span class="st"> </span><span class="kw">theme_bw</span>() +
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Turn&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;VP Earned (Average)&quot;</span>) +<span class="st"> </span><span class="kw">labs</span>(<span class="dt">col =</span> <span class="st">&quot;Harbor Ownership&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df.m &lt;-<span class="st"> </span><span class="kw">aggregate</span>(vp <span class="op">~</span><span class="st"> </span>name <span class="op">+</span><span class="st"> </span>X <span class="op">+</span><span class="st"> </span>pos <span class="op">+</span><span class="st"> </span>harbor, df.cs, mean)
+<span class="kw">ggplot</span>(df.m, <span class="kw">aes</span>(<span class="dt">x =</span> X, <span class="dt">y =</span> vp, <span class="dt">col =</span> <span class="kw">factor</span>(harbor))) <span class="op">+</span><span class="st"> </span><span class="kw">facet_grid</span>(pos<span class="op">~</span>name) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set2&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Turn&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;VP Earned (Average)&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">col =</span> <span class="st">&quot;Harbor Ownership&quot;</span>)</code></pre></div>
 <p><img src="puerto-rico_-an-analysis-of-100-hours-of-gameplay_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 </div>
 <div id="weighing-in-on-the-game" class="section level3">
 <h3>Weighing in on the game</h3>
 <p>As an analyst and player, I want to know which buildings provide the most value in terms of VP earnings. One way to assess this is by fitting a linear model to VP earnings, and then comparing the weight of the coefficients for each building. By modeling turn order as a covariate (labeled as “X”), the coefficients of the linear model should estimate how well building ownership correlates with VP earnings while adjusting for the natural course of the game.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit &lt;-<span class="st"> </span><span class="kw">lm</span>(vp ~<span class="st"> </span>. +<span class="st"> </span><span class="dv">0</span>, df.cs[, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">26</span>:<span class="dv">49</span>)])
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit &lt;-<span class="st"> </span><span class="kw">lm</span>(vp <span class="op">~</span><span class="st"> </span>. <span class="op">+</span><span class="st"> </span><span class="dv">0</span>, df.cs[, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">26</span><span class="op">:</span><span class="dv">49</span>)])
 coefTotal &lt;-<span class="st"> </span><span class="kw">t</span>(<span class="kw">t</span>(<span class="kw">coefficients</span>(fit)))
 <span class="kw">colnames</span>(coefTotal) &lt;-<span class="st"> &quot;Weight&quot;</span>
 <span class="kw">round</span>(coefTotal, <span class="dv">2</span>)</code></pre></div>
@@ -415,12 +418,12 @@ coefTotal &lt;-<span class="st"> </span><span class="kw">t</span>(<span class="k
 ## city.hall            4.00
 ## fortress             4.00</code></pre>
 <p>How does the value of buildings (in terms of VP earnings) change for each player?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">coefPerP &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="kw">unique</span>(df.cs$name), function(name){
-  fit &lt;-<span class="st"> </span><span class="kw">lm</span>(vp ~<span class="st"> </span>. +<span class="st"> </span><span class="dv">0</span>, df.cs[df.cs$name ==<span class="st"> </span>name, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">26</span>:<span class="dv">49</span>)])
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">coefPerP &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="kw">unique</span>(df.cs<span class="op">$</span>name), <span class="cf">function</span>(name){
+  fit &lt;-<span class="st"> </span><span class="kw">lm</span>(vp <span class="op">~</span><span class="st"> </span>. <span class="op">+</span><span class="st"> </span><span class="dv">0</span>, df.cs[df.cs<span class="op">$</span>name <span class="op">==</span><span class="st"> </span>name, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">26</span><span class="op">:</span><span class="dv">49</span>)])
   <span class="kw">data.frame</span>(name, <span class="kw">t</span>(<span class="kw">coefficients</span>(fit)))
 })
-coefPerP &lt;-<span class="st"> </span><span class="kw">t</span>(<span class="kw">do.call</span>(<span class="st">&quot;rbind&quot;</span>, coefPerP)[,-<span class="dv">1</span>])
-<span class="kw">colnames</span>(coefPerP) &lt;-<span class="st"> </span><span class="kw">unique</span>(df.cs$name)
+coefPerP &lt;-<span class="st"> </span><span class="kw">t</span>(<span class="kw">do.call</span>(<span class="st">&quot;rbind&quot;</span>, coefPerP)[,<span class="op">-</span><span class="dv">1</span>])
+<span class="kw">colnames</span>(coefPerP) &lt;-<span class="st"> </span><span class="kw">unique</span>(df.cs<span class="op">$</span>name)
 <span class="kw">round</span>(coefPerP, <span class="dv">2</span>)</code></pre></div>
 <pre><code>##                    Airjoe buzzsnuzz pmac135
 ## X                    0.56      0.54    0.64
@@ -448,14 +451,14 @@ coefPerP &lt;-<span class="st"> </span><span class="kw">t</span>(<span class="kw
 ## city.hall            3.10      5.55    4.40
 ## fortress             5.27      6.34    3.36</code></pre>
 <p>How does the value of buildings (in terms of VP earnings) change for each player in first position?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df.cs$np &lt;-<span class="st"> </span><span class="kw">paste0</span>(df.cs$name, <span class="st">&quot;-&quot;</span>, df.cs$pos)
-coefPerNP &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="kw">unique</span>(df.cs$np), function(np){
-  fit &lt;-<span class="st"> </span><span class="kw">lm</span>(vp ~<span class="st"> </span>. +<span class="st"> </span><span class="dv">0</span>, df.cs[df.cs$np ==<span class="st"> </span>np, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">26</span>:<span class="dv">49</span>)])
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df.cs<span class="op">$</span>np &lt;-<span class="st"> </span><span class="kw">paste0</span>(df.cs<span class="op">$</span>name, <span class="st">&quot;-&quot;</span>, df.cs<span class="op">$</span>pos)
+coefPerNP &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="kw">unique</span>(df.cs<span class="op">$</span>np), <span class="cf">function</span>(np){
+  fit &lt;-<span class="st"> </span><span class="kw">lm</span>(vp <span class="op">~</span><span class="st"> </span>. <span class="op">+</span><span class="st"> </span><span class="dv">0</span>, df.cs[df.cs<span class="op">$</span>np <span class="op">==</span><span class="st"> </span>np, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">26</span><span class="op">:</span><span class="dv">49</span>)])
   <span class="kw">data.frame</span>(np, <span class="kw">t</span>(<span class="kw">coefficients</span>(fit)))
 })
-coefPerNP &lt;-<span class="st"> </span><span class="kw">t</span>(<span class="kw">do.call</span>(<span class="st">&quot;rbind&quot;</span>, coefPerNP)[,-<span class="dv">1</span>])
-<span class="kw">colnames</span>(coefPerNP) &lt;-<span class="st"> </span><span class="kw">unique</span>(df.cs$np)
-<span class="kw">round</span>(coefPerNP, <span class="dv">2</span>)[,<span class="dv">1</span>:<span class="dv">3</span>]</code></pre></div>
+coefPerNP &lt;-<span class="st"> </span><span class="kw">t</span>(<span class="kw">do.call</span>(<span class="st">&quot;rbind&quot;</span>, coefPerNP)[,<span class="op">-</span><span class="dv">1</span>])
+<span class="kw">colnames</span>(coefPerNP) &lt;-<span class="st"> </span><span class="kw">unique</span>(df.cs<span class="op">$</span>np)
+<span class="kw">round</span>(coefPerNP, <span class="dv">2</span>)[,<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]</code></pre></div>
 <pre><code>##                    Airjoe-1 buzzsnuzz-1 pmac135-1
 ## X                      0.52        0.48      0.70
 ## small.indigo.plant    -1.20       -1.49     -2.80
@@ -482,7 +485,7 @@ coefPerNP &lt;-<span class="st"> </span><span class="kw">t</span>(<span class="k
 ## city.hall              2.68        5.40      3.17
 ## fortress               4.91        9.55      3.05</code></pre>
 <p>How does the value of buildings (in terms of VP earnings) change for each player in second position?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(coefPerNP, <span class="dv">2</span>)[,<span class="dv">4</span>:<span class="dv">6</span>]</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(coefPerNP, <span class="dv">2</span>)[,<span class="dv">4</span><span class="op">:</span><span class="dv">6</span>]</code></pre></div>
 <pre><code>##                    Airjoe-2 buzzsnuzz-2 pmac135-2
 ## X                      0.52        0.54      0.39
 ## small.indigo.plant    -2.36       -0.92     -1.43
@@ -509,7 +512,7 @@ coefPerNP &lt;-<span class="st"> </span><span class="kw">t</span>(<span class="k
 ## city.hall              4.82        6.43      2.16
 ## fortress               8.28        9.57      6.92</code></pre>
 <p>How does the value of buildings (in terms of VP earnings) change for each player in third position?</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(coefPerNP, <span class="dv">2</span>)[,<span class="dv">7</span>:<span class="dv">9</span>]</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">round</span>(coefPerNP, <span class="dv">2</span>)[,<span class="dv">7</span><span class="op">:</span><span class="dv">9</span>]</code></pre></div>
 <pre><code>##                    Airjoe-3 buzzsnuzz-3 pmac135-3
 ## X                      0.50        0.59      0.69
 ## small.indigo.plant     2.81        3.72     -0.95
@@ -536,31 +539,31 @@ coefPerNP &lt;-<span class="st"> </span><span class="kw">t</span>(<span class="k
 ## city.hall              5.18        6.97      4.83
 ## fortress               5.56        0.60      1.49</code></pre>
 <p>The linear models above implicitly assume that the ownership of each building contributes independently to VP earned. However, we might expect that the joint ownership of some building pairs could contribute more toward VP earnings than the ownernship of either building individually. We can estimate the synergistic value of joint ownership by fitting another linear model that considers the interaction effect between building ownership. For this, we fit 529 linear models (i.e., for all pairs of 23 buildings), wherein we replace each pair of two-level factors (i.e., ownership of building A or B as binary states) with a four-level factor (i.e., ownership of neither, the first, the second, or both). As above, we include turn order as a covariate. However, because we fit a separate model for each building pair, we should fix the turn order coefficient (chosen as 0.58 from above) to keep results comparable across the 529 models.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df.b &lt;-<span class="st"> </span>df.cs[, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">26</span>:<span class="dv">49</span>)]
-buildings &lt;-<span class="st"> </span><span class="kw">names</span>(df.b)[<span class="dv">2</span>:(<span class="kw">length</span>(df.b)-<span class="dv">1</span>)]
-outer &lt;-<span class="st"> </span><span class="kw">lapply</span>(buildings, function(b1){
-  inner &lt;-<span class="st"> </span><span class="kw">lapply</span>(buildings, function(b2){
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df.b &lt;-<span class="st"> </span>df.cs[, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">26</span><span class="op">:</span><span class="dv">49</span>)]
+buildings &lt;-<span class="st"> </span><span class="kw">names</span>(df.b)[<span class="dv">2</span><span class="op">:</span>(<span class="kw">length</span>(df.b)<span class="op">-</span><span class="dv">1</span>)]
+outer &lt;-<span class="st"> </span><span class="kw">lapply</span>(buildings, <span class="cf">function</span>(b1){
+  inner &lt;-<span class="st"> </span><span class="kw">lapply</span>(buildings, <span class="cf">function</span>(b2){
     form &lt;-<span class="st"> </span><span class="kw">as.formula</span>(<span class="kw">paste0</span>(<span class="st">&quot;vp ~ &quot;</span>, b1, <span class="st">&quot; * &quot;</span>, b2, <span class="st">&quot; + offset(I(0.58 * X)) + 0&quot;</span>))
     fit &lt;-<span class="st"> </span><span class="kw">lm</span>(form, df.b)
     coefTotal &lt;-<span class="st"> </span><span class="kw">t</span>(<span class="kw">coefficients</span>(fit))
-    if(b1 ==<span class="st"> </span>b2){
+    <span class="cf">if</span>(b1 <span class="op">==</span><span class="st"> </span>b2){
       <span class="kw">colnames</span>(coefTotal) &lt;-<span class="st"> &quot;X11&quot;</span>
-    }else{
+    }<span class="cf">else</span>{
       <span class="kw">colnames</span>(coefTotal) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;X10&quot;</span>, <span class="st">&quot;X01&quot;</span>, <span class="st">&quot;X11&quot;</span>)
     }
     <span class="kw">data.frame</span>(<span class="st">&quot;A&quot;</span> =<span class="st"> </span>b1, <span class="st">&quot;B&quot;</span> =<span class="st"> </span>b2, coefTotal)
   })
-  <span class="kw">do.call</span>(plyr::rbind.fill, inner)
+  <span class="kw">do.call</span>(plyr<span class="op">::</span>rbind.fill, inner)
 })
-interactions &lt;-<span class="st"> </span><span class="kw">do.call</span>(plyr::rbind.fill, outer)</code></pre></div>
+interactions &lt;-<span class="st"> </span><span class="kw">do.call</span>(plyr<span class="op">::</span>rbind.fill, outer)</code></pre></div>
 <p>Here, the coefficient “X11” represents the benefit of joint ownership (i.e., the value added beyond owning each building individually “X10” and “X01”). As such, we can conceive of “X11” as a kind of synergy score which describes the amount of VP earned by owning both buildings together that is not simply explained by owning them separately.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df.i &lt;-<span class="st"> </span>reshape2::<span class="kw">melt</span>(interactions[,<span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;X11&quot;</span>)])</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df.i &lt;-<span class="st"> </span>reshape2<span class="op">::</span><span class="kw">melt</span>(interactions[,<span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;X11&quot;</span>)])</code></pre></div>
 <pre><code>## Using A, B as id variables</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df.i$valuecut &lt;-<span class="st"> </span><span class="kw">cut</span>(df.i$value, <span class="kw">seq</span>(-<span class="dv">25</span>, <span class="dv">25</span>, <span class="dv">5</span>))
-<span class="kw">ggplot</span>(df.i, <span class="kw">aes</span>(<span class="dt">x =</span> B, <span class="dt">y =</span> A, <span class="dt">fill =</span> valuecut)) +<span class="st"> </span><span class="kw">geom_tile</span>() +
-<span class="st">  </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set2&quot;</span>) +<span class="st"> </span><span class="kw">theme_bw</span>() +
-<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>)) +
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Building&quot;</span>) +<span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Building&quot;</span>) +<span class="st"> </span><span class="kw">labs</span>(<span class="dt">fill =</span> <span class="st">&quot;VP Earned&quot;</span>) +
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df.i<span class="op">$</span>valuecut &lt;-<span class="st"> </span><span class="kw">cut</span>(df.i<span class="op">$</span>value, <span class="kw">seq</span>(<span class="op">-</span><span class="dv">25</span>, <span class="dv">25</span>, <span class="dv">5</span>))
+<span class="kw">ggplot</span>(df.i, <span class="kw">aes</span>(<span class="dt">x =</span> B, <span class="dt">y =</span> A, <span class="dt">fill =</span> valuecut)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_tile</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_fill_brewer</span>(<span class="dt">palette =</span> <span class="st">&quot;Set2&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>() <span class="op">+</span>
+<span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle =</span> <span class="dv">90</span>, <span class="dt">hjust =</span> <span class="dv">1</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Building&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">&quot;Building&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">fill =</span> <span class="st">&quot;VP Earned&quot;</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">ggtitle</span>(<span class="st">&quot;The Synergy of Joint Building Ownership&quot;</span>)</code></pre></div>
 <p><img src="puerto-rico_-an-analysis-of-100-hours-of-gameplay_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
 </div>

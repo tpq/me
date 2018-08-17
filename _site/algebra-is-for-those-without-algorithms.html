@@ -114,6 +114,9 @@ img {
 .tabbed-pane {
   padding-top: 12px;
 }
+.html-widget {
+  margin-bottom: 20px;
+}
 button.code-folding-btn:focus {
   outline: none;
 }
@@ -239,9 +242,9 @@ $(document).ready(function () {
 <h3>Sales pitch</h3>
 <p>Pitch is determined by the oscillatory frequency of the output current. We can calculate this frequency based on three parts labelled <span class="math inline">\(R_1\)</span>, <span class="math inline">\(R_2\)</span>, and <span class="math inline">\(C\)</span>. Measuring resistance in <span class="math inline">\(\textrm{k} \Omega\)</span> and capacitance in <span class="math inline">\(\mu \textrm{F}\)</span>, the formula is:</p>
 <p><span class="math display">\[ f = \frac{1440}{(R_1 + 2R_2)C} \]</span></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">f &lt;-<span class="st"> </span>function(r1, r2, <span class="dt">c =</span> .<span class="dv">01</span>){
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">f &lt;-<span class="st"> </span><span class="cf">function</span>(r1, r2, <span class="dt">c =</span> <span class="fl">.01</span>){
   
-  <span class="dv">1000</span> *<span class="st"> </span><span class="fl">1.44</span> /<span class="st"> </span>((r1 +<span class="st"> </span><span class="dv">2</span>*r2) *<span class="st"> </span>c)
+  <span class="dv">1000</span> <span class="op">*</span><span class="st"> </span><span class="fl">1.44</span> <span class="op">/</span><span class="st"> </span>((r1 <span class="op">+</span><span class="st"> </span><span class="dv">2</span><span class="op">*</span>r2) <span class="op">*</span><span class="st"> </span>c)
 }</code></pre></div>
 <p>With <span class="math inline">\(C\)</span> fixed, it is easy enough to find <span class="math inline">\(R_1\)</span> and <span class="math inline">\(R_2\)</span> for a single frequency. However, to make a multi-tone synthesizer, we will need to alter either <span class="math inline">\(R_1\)</span> or <span class="math inline">\(R_2\)</span> for each note. In practice, we can achieve this by having each piano key add a little bit of resistance to <span class="math inline">\(R_2\)</span> (i.e., via a series configuration). For example, if <span class="math inline">\(R_1\)</span> and <span class="math inline">\(R_2\)</span> outputs middle C, then <span class="math inline">\(R_1\)</span> and <span class="math inline">\(R_2 + R_A\)</span> might output B a semi-tone lower.</p>
 <p>The question becomes: how do we find the values of <span class="math inline">\(R_1\)</span>, <span class="math inline">\(R_2\)</span>, and <span class="math inline">\(R_A\)</span> such that the addition of each new <span class="math inline">\(R_A\)</span> (i.e., <span class="math inline">\(k\)</span> added resistors) makes <span class="math inline">\(R_1\)</span> and <span class="math inline">\(R_2 + kR_A\)</span> equal the next note in the dichromatic scale?</p>
@@ -249,33 +252,33 @@ $(document).ready(function () {
 <div id="circuit-optimization" class="section level3">
 <h3>Circuit optimization</h3>
 <p>This looks like a problem that we can solve with optimization by way of a genetic algorithm. To simplify the issue, however, we will fix <span class="math inline">\(R_A\)</span> to <span class="math inline">\(10 \textrm{k} \Omega\)</span> (convenient, since I already own a bunch of these). First, however, we need to define a “ribosome” function that converts binary input into a list of integers (see <a href="http://tpq.me/genetic-monkeys-on-typewriters.html">here</a> for what that means).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ribosome &lt;-<span class="st"> </span>function(string, nbits,
-                     <span class="dt">how =</span> function(codon) <span class="kw">strtoi</span>(codon, <span class="dt">base =</span> <span class="dv">2</span>)){
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ribosome &lt;-<span class="st"> </span><span class="cf">function</span>(string, nbits,
+                     <span class="dt">how =</span> <span class="cf">function</span>(codon) <span class="kw">strtoi</span>(codon, <span class="dt">base =</span> <span class="dv">2</span>)){
   
-  if(!<span class="kw">is.character</span>(string)){
+  <span class="cf">if</span>(<span class="op">!</span><span class="kw">is.character</span>(string)){
     string &lt;-<span class="st"> </span><span class="kw">paste0</span>(string, <span class="dt">collapse =</span> <span class="st">&quot;&quot;</span>)
   }
   
-  if(<span class="kw">nchar</span>(string) %%<span class="st"> </span>nbits !=<span class="st"> </span><span class="dv">0</span>){
+  <span class="cf">if</span>(<span class="kw">nchar</span>(string) <span class="op">%%</span><span class="st"> </span>nbits <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>){
     <span class="kw">stop</span>(<span class="st">&quot;Digital gene not evenly divisible by chosen codon size.&quot;</span>)
   }
   
-  output &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;list&quot;</span>, <span class="kw">nchar</span>(string)/nbits)
-  for(i in <span class="dv">0</span>:(<span class="kw">nchar</span>(string)/nbits -<span class="st"> </span><span class="dv">1</span>)){
+  output &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;list&quot;</span>, <span class="kw">nchar</span>(string)<span class="op">/</span>nbits)
+  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">0</span><span class="op">:</span>(<span class="kw">nchar</span>(string)<span class="op">/</span>nbits <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)){
     
-    codon &lt;-<span class="st"> </span><span class="kw">substr</span>(string, i*nbits +<span class="st"> </span><span class="dv">1</span>, i*nbits +<span class="st"> </span>nbits)
-    output[[i<span class="dv">+1</span>]] &lt;-<span class="st"> </span><span class="kw">do.call</span>(how, <span class="kw">list</span>(codon))
+    codon &lt;-<span class="st"> </span><span class="kw">substr</span>(string, i<span class="op">*</span>nbits <span class="op">+</span><span class="st"> </span><span class="dv">1</span>, i<span class="op">*</span>nbits <span class="op">+</span><span class="st"> </span>nbits)
+    output[[i<span class="op">+</span><span class="dv">1</span>]] &lt;-<span class="st"> </span><span class="kw">do.call</span>(how, <span class="kw">list</span>(codon))
   }
   
   <span class="kw">return</span>(output)
 }</code></pre></div>
 <p>Now, we can define the “fitness” function. This will measure the error of each attempted solution. Then, the genetic algorithm will allow the better performing solutions to “reproduce” (with “crossing over”), potentially giving rise to even better solutions. Specifically, our fitness function measures how closely the predicted frequencies match the expected (i.e., desired) frequencies. Here, the expected frequencies correspond to the octave ascending from middle C. Note that we negate the error because genetic algorithms seek to maximize the result of the “fitness” function.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fitness &lt;-<span class="st"> </span>function(binary){
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fitness &lt;-<span class="st"> </span><span class="cf">function</span>(binary){
   
   AA &lt;-<span class="st"> </span><span class="kw">ribosome</span>(binary, <span class="dt">nbits =</span> <span class="dv">16</span>)
   
-  predicted &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="dv">1</span>:<span class="dv">13</span>, function(i){
-    <span class="kw">f</span>(AA[[<span class="dv">1</span>]], AA[[<span class="dv">2</span>]] +<span class="st"> </span>i*<span class="dv">10</span>, <span class="dt">c =</span> <span class="fl">0.01</span>)
+  predicted &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">13</span>, <span class="cf">function</span>(i){
+    <span class="kw">f</span>(AA[[<span class="dv">1</span>]], AA[[<span class="dv">2</span>]] <span class="op">+</span><span class="st"> </span>i<span class="op">*</span><span class="dv">10</span>, <span class="dt">c =</span> <span class="fl">0.01</span>)
   })
   
   expected &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">523.25</span>, <span class="fl">493.88</span>, <span class="fl">466.16</span>, <span class="fl">440.00</span>, <span class="co"># semi-tones</span>
@@ -283,8 +286,8 @@ $(document).ready(function () {
                 <span class="fl">329.63</span>, <span class="fl">311.13</span>, <span class="fl">293.66</span>, <span class="fl">277.18</span>,
                 <span class="fl">261.63</span>)
   
-  error &lt;-<span class="st"> </span><span class="kw">mean</span>((predicted -<span class="st"> </span>expected)^<span class="dv">2</span>)
-  <span class="kw">return</span>(-<span class="dv">1</span> *<span class="st"> </span>error)
+  error &lt;-<span class="st"> </span><span class="kw">mean</span>((predicted <span class="op">-</span><span class="st"> </span>expected)<span class="op">^</span><span class="dv">2</span>)
+  <span class="kw">return</span>(<span class="op">-</span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>error)
 }</code></pre></div>
 <p>We can now call the genetic algorithm, then plot its performance over time. Here, I’ll run the algorithm for 1000 breeding cycles (although originally I used 50000).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(GA)
@@ -293,9 +296,9 @@ res &lt;-<span class="st"> </span><span class="kw">ga</span>(<span class="dt">ty
 <span class="kw">plot</span>(res)</code></pre></div>
 <p><img src="algebra-is-for-those-without-algorithms_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>Often, genetic algorithms converge on multiple equally good solutions. Let’s view them all.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">for(i in <span class="dv">1</span>:<span class="kw">nrow</span>(res@solution)){
-  <span class="kw">print</span>(<span class="kw">c</span>(<span class="st">&quot;r1&quot;</span> =<span class="st"> </span><span class="kw">ribosome</span>(res@solution[i,], <span class="dt">nbits =</span> <span class="dv">16</span>)[[<span class="dv">1</span>]],
-          <span class="st">&quot;r2&quot;</span> =<span class="st"> </span><span class="kw">ribosome</span>(res@solution[i,], <span class="dt">nbits =</span> <span class="dv">16</span>)[[<span class="dv">2</span>]]))
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(res<span class="op">@</span>solution)){
+  <span class="kw">print</span>(<span class="kw">c</span>(<span class="st">&quot;r1&quot;</span> =<span class="st"> </span><span class="kw">ribosome</span>(res<span class="op">@</span>solution[i,], <span class="dt">nbits =</span> <span class="dv">16</span>)[[<span class="dv">1</span>]],
+          <span class="st">&quot;r2&quot;</span> =<span class="st"> </span><span class="kw">ribosome</span>(res<span class="op">@</span>solution[i,], <span class="dt">nbits =</span> <span class="dv">16</span>)[[<span class="dv">2</span>]]))
 }</code></pre></div>
 <pre><code>##  r1  r2 
 ## 217  18 

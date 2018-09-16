@@ -243,13 +243,13 @@ $(document).ready(function () {
 <h3>From cluster to cluster</h3>
 <p>Parallelization of R through batch processing involves two steps. First, we obviate the burden of having to write a parallel-process script by writing a script that writes single-process scripts. Second, we deliver each new script to the batch processing queue where it will wait to get executed on an unoccupied node.</p>
 <p>In this endeavor, we make use of two helper functions, <code>writeR</code> and <code>qsub</code>, that simplify these two steps, respectively. I have made these available through the <code>miSciTools</code> package, an R library that bundles miscellaneous software tools to expedite scientific analyses. We can install <code>miSciTools</code> directly from GitHub using the <code>devtools</code> package.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;tpq/miSciTools&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools::<span class="kw">install_github</span>(<span class="st">&quot;tpq/miSciTools&quot;</span>)
 <span class="kw">library</span>(miSciTools)</code></pre></div>
 <p>Next, to show the logic behind <em>batch parallelization</em>, we create a computationally expensive <code>for</code>-loop that clusters 10 large mock datasets. In this example, parallelization is easy enough to implement using an R package like <code>foreach</code>. However, for illustration purposes, we will instead parallelize this task through batch processing. Consider the single-threaded loop below.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>){
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">for(i in <span class="dv">1</span>:<span class="dv">10</span>){
   
   N &lt;-<span class="st"> </span><span class="dv">2000</span>
-  someData &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(N<span class="op">^</span><span class="dv">2</span>), N, N)
+  someData &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(N^<span class="dv">2</span>), N, N)
   hc &lt;-<span class="st"> </span><span class="kw">hclust</span>(<span class="kw">dist</span>(someData))
   cuts &lt;-<span class="st"> </span><span class="kw">cutree</span>(hc, <span class="dv">10</span>)
   <span class="kw">write.csv</span>(<span class="kw">data.frame</span>(cuts),
@@ -277,7 +277,7 @@ file &lt;-<span class="st"> </span><span class="kw">writeR</span>(<span class="s
 <p>To test that <code>qsub</code> works properly on your machine, try the following function call. If successful, a new process should appear in the queue. You view the queue from the OS console using the <code>qstat</code> bash command.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qsub</span>(<span class="st">&quot;sleep 30&quot;</span>)</code></pre></div>
 <p>Now, we can use <code>qsub</code> to put <code>writeR</code> to work. Note that we supply <code>i</code> from outside of the <code>writeR</code> environment. However, because each new <code>writeR</code> script imports the working directory of the parent script, we could just as well have named the output files using <code>file = paste0(&quot;cluster-&quot;, i, &quot;.csv&quot;)</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>){
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">for(i in <span class="dv">1</span>:<span class="dv">10</span>){
   
   cmd &lt;-<span class="st"> </span><span class="kw">writeR</span>(<span class="st">&#39;</span>
 <span class="st">  N &lt;- 2000</span>
@@ -296,7 +296,7 @@ file &lt;-<span class="st"> </span><span class="kw">writeR</span>(<span class="s
 <p>When this <code>for</code>-loop completes, 10 single-process R scripts will have joined the queue. From the console, you can check the <em>TORQUE</em> queue using the <code>qstat</code> bash command. In addition, you can use the <code>qdel</code> bash command to remove a queued job and the <code>qrun</code> bash command to force the execution of a queued job.</p>
 <p>In this example, each script saves the cluster labels as a comma-delimited file in the working directory. By default, the working directory of batch processed R scripts is the home directory of the computer. To combine the results from the parallelized processes, we could write a simple loop that reads in the <code>.csv</code> file and joins the contents.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">files &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;list&quot;</span>, <span class="dv">10</span>)
-<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>){
+for(i in <span class="dv">1</span>:<span class="dv">10</span>){
   
   files[[i]] &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="kw">paste0</span>(<span class="st">&quot;cluster-&quot;</span>, i, <span class="st">&quot;.csv&quot;</span>))
 }

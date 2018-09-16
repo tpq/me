@@ -251,7 +251,7 @@ $(document).ready(function () {
 <p>Of course, genetic algorithms cannot capture the total complexity of biological systems. As such, <em>digital genes</em> differ somewhat from their biological counterpart. First, unlike biological genes, which store information as <code>A</code>s, <code>G</code>s, <code>T</code>s, and <code>C</code>s, digital genes store bits of information as <code>1</code>s and <code>0</code>s. Second, unlike biological genes which can grow and shrink from insertions and deletions, digital genes have a fixed size. Third, unlike biological genes which have layers upon layers of higher-order regulation, digital genes have only the simplest expression profiles.</p>
 <p>On the other hand, like biological genes, digital genes require a key that translates the gene transcripts (comprised of evenly spaced “codons”) into a functional sequence (comprised of protein-like “building blocks”). This key, analogous to the <a href="https://en.wikipedia.org/wiki/DNA_codon_table">DNA codon table</a>, is a user-defined function that ultimately tells the genetic algorithm how to make sense of (pseudo-)random binary strings.</p>
 <p>To demonstrate a basic “codon table”, I introduce a function below that translates a <em>binary sequence</em> (analogous to a genetic codon) into a <em>decimal sequence</em> (analogous to an amino acid). Amino acids, the “building blocks” of the cell, conventionally represent the functional level upon which natural selection works. Then, just as amino acids undergo the test of life to determine the fitness of that organism, these translated decimal sequences will undergo their own test to determine their “fitness” as a solution.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">table &lt;-<span class="st"> </span><span class="cf">function</span>(codon){
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">table &lt;-<span class="st"> </span>function(codon){
   
   <span class="kw">strtoi</span>(codon, <span class="dt">base =</span> <span class="dv">2</span>)
 }</code></pre></div>
@@ -261,23 +261,23 @@ $(document).ready(function () {
 <p>In nature, each codon consists of three bases which exist in one of four states. Since we can represent four states using two bits, each natural codon contains <span class="math inline">\(3(2)\)</span> bits of information. We will follow this convention for now by using 6-bit <em>digital codons</em>, allowing for <span class="math inline">\(2^6\)</span> values per codon. An example of a digital gene with two 6-bit codons might look like this:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">twoCodons &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>)</code></pre></div>
 <p>Above, I introduced a function that translates a single <em>digital codon</em> into a decimal sequence. However, in order to perform real work, we need to harness the power of multiple codons by translating an entire <em>digital genome</em>. Within the cell, the <strong>ribosome</strong> organelle holds the machinery that translates genes into functional proteins. To reinforce analogy, we will embed our custom “codon table” within a <em>digital ribosome</em>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ribosome &lt;-<span class="st"> </span><span class="cf">function</span>(string, <span class="dt">nbits =</span> <span class="dv">6</span>, <span class="dt">how =</span> table){
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ribosome &lt;-<span class="st"> </span>function(string, <span class="dt">nbits =</span> <span class="dv">6</span>, <span class="dt">how =</span> table){
   
-  <span class="cf">if</span>(<span class="op">!</span><span class="kw">is.character</span>(string)){
+  if(!<span class="kw">is.character</span>(string)){
     
     string &lt;-<span class="st"> </span><span class="kw">paste0</span>(string, <span class="dt">collapse =</span> <span class="st">&quot;&quot;</span>)
   }
   
-  <span class="cf">if</span>(<span class="kw">nchar</span>(string) <span class="op">%%</span><span class="st"> </span>nbits <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>){
+  if(<span class="kw">nchar</span>(string) %%<span class="st"> </span>nbits !=<span class="st"> </span><span class="dv">0</span>){
     
     <span class="kw">stop</span>(<span class="st">&quot;Digital gene not evenly divisible by chosen codon size.&quot;</span>)
   }
   
-  output &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;list&quot;</span>, <span class="kw">nchar</span>(string)<span class="op">/</span>nbits)
-  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">0</span><span class="op">:</span>(<span class="kw">nchar</span>(string)<span class="op">/</span>nbits <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)){
+  output &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;list&quot;</span>, <span class="kw">nchar</span>(string)/nbits)
+  for(i in <span class="dv">0</span>:(<span class="kw">nchar</span>(string)/nbits -<span class="st"> </span><span class="dv">1</span>)){
     
-    codon &lt;-<span class="st"> </span><span class="kw">substr</span>(string, i<span class="op">*</span>nbits <span class="op">+</span><span class="st"> </span><span class="dv">1</span>, i<span class="op">*</span>nbits <span class="op">+</span><span class="st"> </span>nbits)
-    output[[i<span class="op">+</span><span class="dv">1</span>]] &lt;-<span class="st"> </span><span class="kw">do.call</span>(how, <span class="kw">list</span>(codon))
+    codon &lt;-<span class="st"> </span><span class="kw">substr</span>(string, i*nbits +<span class="st"> </span><span class="dv">1</span>, i*nbits +<span class="st"> </span>nbits)
+    output[[i<span class="dv">+1</span>]] &lt;-<span class="st"> </span><span class="kw">do.call</span>(how, <span class="kw">list</span>(codon))
   }
   
   <span class="kw">return</span>(output)
@@ -295,19 +295,19 @@ $(document).ready(function () {
 <p>Now, we need to put the translated gene to the test. For this, we define a <em>fitness function</em> that will score the “fitness” of a digital genome. In this paradigm, I find it helpful to think of “fitness” as a measure of the proximity of an outcome to an intended result. By convention, the fitness function will convert a binary vector input into a <em>survival score</em>, such that higher scores signify greater fitness. Then, through simulated evolution, the more fit solutions (i.e., those with higher scores) will have an increased probability of seeding the next generation of solutions.</p>
 <p>In the example below, we define a fitness function that solves the simple equation <span class="math inline">\(a^2+b=308\)</span>. Since the fitness function expects binary vector input, we embed our <em>digital ribosome</em> within the fitness function itself. Then, based on our choice of genome size and ribosome configuration, the genetic algorithm will attempt solutions for <span class="math inline">\(0&lt;a&lt;65\)</span> and <span class="math inline">\(0&lt;b&lt;65\)</span>.</p>
 <p>(Note that if we wanted to change the range of values for <span class="math inline">\(a\)</span> or <span class="math inline">\(b\)</span>, we just need to change the “codon table” function. If we wanted to add more possible values for <span class="math inline">\(a\)</span> or <span class="math inline">\(b\)</span>, we just need to increase the size of the codon. If we wanted to add more variables, we just need to increase the size of the genome. In this way, we have a tremendous amount of control over the kinds of solutions tested. Meanwhile, through careful crafting of the fitness function, we maintain total control over how the solutions get tested.)</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fitness &lt;-<span class="st"> </span><span class="cf">function</span>(binary){
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fitness &lt;-<span class="st"> </span>function(binary){
   
   AA &lt;-<span class="st"> </span><span class="kw">ribosome</span>(binary, <span class="dt">nbits =</span> <span class="dv">6</span>, <span class="dt">how =</span> table)
-  solution &lt;-<span class="st"> </span>AA[[<span class="dv">1</span>]]<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>AA[[<span class="dv">2</span>]]
-  <span class="kw">atan</span>(<span class="dv">1</span> <span class="op">/</span><span class="st"> </span><span class="kw">abs</span>(<span class="dv">308</span> <span class="op">-</span><span class="st"> </span>solution))
+  solution &lt;-<span class="st"> </span>AA[[<span class="dv">1</span>]]^<span class="dv">2</span> +<span class="st"> </span>AA[[<span class="dv">2</span>]]
+  <span class="kw">atan</span>(<span class="dv">1</span> /<span class="st"> </span><span class="kw">abs</span>(<span class="dv">308</span> -<span class="st"> </span>solution))
 }</code></pre></div>
 <p>In order to execute the algorithm, we need to provide two additional parameters. The first, <code>nBits</code>, equals the total length of the <em>digital genome</em> expected by the <em>digital ribosome</em> and <em>fitness function</em>. The second, <code>maxiter</code>, equals the total number of generations (i.e., reproductive cycles) until the algorithm terminates. Running an algorithm with fewer iterations will finish sooner, but will carry an increased risk of not converging onto a “best” solution.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(GA)
 <span class="kw">set.seed</span>(<span class="dv">1</span>)
-res &lt;-<span class="st"> </span><span class="kw">ga</span>(<span class="dt">type =</span> <span class="st">&quot;binary&quot;</span>, <span class="dt">fitness =</span> fitness, <span class="dt">nBits =</span> <span class="dv">2</span><span class="op">*</span><span class="dv">3</span><span class="op">*</span><span class="dv">2</span>, <span class="dt">maxiter =</span> <span class="dv">100</span>)</code></pre></div>
+res &lt;-<span class="st"> </span><span class="kw">ga</span>(<span class="dt">type =</span> <span class="st">&quot;binary&quot;</span>, <span class="dt">fitness =</span> fitness, <span class="dt">nBits =</span> <span class="dv">2</span>*<span class="dv">3</span>*<span class="dv">2</span>, <span class="dt">maxiter =</span> <span class="dv">100</span>)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(res)</code></pre></div>
 <p><img src="genetic-monkeys-on-typewriters_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">solution &lt;-<span class="st"> </span><span class="kw">summary</span>(res)<span class="op">$</span>solution
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">solution &lt;-<span class="st"> </span><span class="kw">summary</span>(res)$solution
 <span class="kw">ribosome</span>(solution)</code></pre></div>
 <pre><code>## [[1]]
 ## [1] 17
@@ -319,14 +319,14 @@ res &lt;-<span class="st"> </span><span class="kw">ga</span>(<span class="dt">ty
 <h3>More than one answer</h3>
 <p>This mock example highlights how the same genetic algorithm, when executed twice, may arrive at different solutions each time. By starting with a different genetic stock (i.e., a different primordial Eve), or by drifting through a different genetic path, a genetic algorithm may converge on a different “best” solution.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">2</span>)
-res &lt;-<span class="st"> </span><span class="kw">ga</span>(<span class="dt">type =</span> <span class="st">&quot;binary&quot;</span>, <span class="dt">fitness =</span> fitness, <span class="dt">nBits =</span> <span class="dv">2</span><span class="op">*</span><span class="dv">3</span><span class="op">*</span><span class="dv">2</span>, <span class="dt">maxiter =</span> <span class="dv">100</span>)
-<span class="kw">ribosome</span>(<span class="kw">summary</span>(res)<span class="op">$</span>solution)</code></pre></div>
+res &lt;-<span class="st"> </span><span class="kw">ga</span>(<span class="dt">type =</span> <span class="st">&quot;binary&quot;</span>, <span class="dt">fitness =</span> fitness, <span class="dt">nBits =</span> <span class="dv">2</span>*<span class="dv">3</span>*<span class="dv">2</span>, <span class="dt">maxiter =</span> <span class="dv">100</span>)
+<span class="kw">ribosome</span>(<span class="kw">summary</span>(res)$solution)</code></pre></div>
 </div>
 <div id="literary-genes" class="section level3">
 <h3>Literary genes</h3>
 <p>Since we can represent nearly any type of input as a binary string, genetic algorithms offer a tremendous amount of flexibility when solving problems. Next, we will use genetic algorithms to draft a line from Shakespeare. By constructing a fitness function that rewards digital genes that most closely approximate Shakespearean verse, we guide an otherwise chaotic process toward coherency. Then, just like the proverbial monkey striking away on a typewriter, we author something poetically sensible out of nothing more than fragments of nonsense.</p>
 <p>First, however, we need a new “codon table” that translates binary strings to alphanumeric characters. To do this, we will convert <em>binary</em> to <em>decimal</em>, then <em>decimal</em> to <em>raw</em>, and finally <em>raw</em> to <em>character</em>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">table &lt;-<span class="st"> </span><span class="cf">function</span>(codon){
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">table &lt;-<span class="st"> </span>function(codon){
   
   dec &lt;-<span class="st"> </span><span class="kw">strtoi</span>(codon, <span class="dt">base =</span> <span class="dv">2</span>)
   <span class="kw">rawToChar</span>(<span class="kw">as.raw</span>(dec))
@@ -334,20 +334,20 @@ res &lt;-<span class="st"> </span><span class="kw">ga</span>(<span class="dt">ty
 <p>By using this new “codon table” in conjunction with the digital ribosome from above, we can convert a digital genome into a literary paragraph. However, in order to ensure that each codon could eventually become any letter, we need these codons to contain 7-bits of information each.</p>
 <p>Next, we need a way to evaluate the fitness, or literary quality, of the translated binary strings. In theory, an experienced user could incorporate some kind of natural language processing to guide the algorithm toward novel speech. However, in this contrived example, we will simply excerpt a quote from Shakespeare against which we compare each piece of translated text. As such, our fitness function will measure the similarity between Shakespeare and random nonsense. Then, by iteratively breeding the most sensible nonsense, we can eventually arrive at some prosaic truth.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">prose &lt;-<span class="st"> &quot;that which we call a rose by any other name would smell as sweet&quot;</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fitness &lt;-<span class="st"> </span><span class="cf">function</span>(binary){
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fitness &lt;-<span class="st"> </span>function(binary){
   
   AA &lt;-<span class="st"> </span><span class="kw">ribosome</span>(binary, <span class="dt">nbits =</span> <span class="dv">7</span>, <span class="dt">how =</span> table)
-  <span class="kw">sum</span>(<span class="kw">unlist</span>(AA) <span class="op">==</span><span class="st"> </span><span class="kw">unlist</span>(<span class="kw">strsplit</span>(prose, <span class="st">&quot;&quot;</span>)))
+  <span class="kw">sum</span>(<span class="kw">unlist</span>(AA) ==<span class="st"> </span><span class="kw">unlist</span>(<span class="kw">strsplit</span>(prose, <span class="st">&quot;&quot;</span>)))
 }</code></pre></div>
 <p>In order to execute the algorithm, we again need to supply arguments for the <code>nBits</code> and <code>maxiter</code> parameters. Since we need 7-bits to represent each letter in the final result, we set <code>nBits</code> equal to <code>nchar(prose)*7</code>. Next, we set <code>maxiter</code> to 100,000 generations, a value which led to promising results during prior testing.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">1</span>)
-res &lt;-<span class="st"> </span><span class="kw">ga</span>(<span class="dt">type =</span> <span class="st">&quot;binary&quot;</span>, <span class="dt">fitness =</span> fitness, <span class="dt">nBits =</span> <span class="kw">nchar</span>(prose)<span class="op">*</span><span class="dv">7</span>, <span class="dt">maxiter =</span> <span class="dv">100000</span>)</code></pre></div>
+res &lt;-<span class="st"> </span><span class="kw">ga</span>(<span class="dt">type =</span> <span class="st">&quot;binary&quot;</span>, <span class="dt">fitness =</span> fitness, <span class="dt">nBits =</span> <span class="kw">nchar</span>(prose)*<span class="dv">7</span>, <span class="dt">maxiter =</span> <span class="dv">100000</span>)</code></pre></div>
 <p>Sometimes, the genetic algorithms result object contains <em>multiple</em> equally fit solutions. In these cases, I usually collapse all “best” solutions into an “average best” solution.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">allsol &lt;-<span class="st"> </span><span class="kw">summary</span>(res)<span class="op">$</span>solution
-<span class="cf">if</span>(<span class="kw">nrow</span>(allsol) <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>){
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">allsol &lt;-<span class="st"> </span><span class="kw">summary</span>(res)$solution
+if(<span class="kw">nrow</span>(allsol) &gt;<span class="st"> </span><span class="dv">1</span>){
   
-  final &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">colSums</span>(allsol) <span class="op">/</span><span class="st"> </span><span class="kw">nrow</span>(allsol))
-}<span class="cf">else</span>{
+  final &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">colSums</span>(allsol) /<span class="st"> </span><span class="kw">nrow</span>(allsol))
+}else{
   
   final &lt;-<span class="st"> </span>allsol[<span class="dv">1</span>, ]
 }</code></pre></div>

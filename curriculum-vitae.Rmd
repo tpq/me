@@ -154,7 +154,7 @@ Statistical Methods in Medical Research
 
 **Quinn TP+**, Lee SC+, Venkatesh S, & Nguyen T. 2018. Improving the classification of neuropsychiatric conditions using gene ontology terms as features. bioRxiv 393082. http://doi.org/10.1101/393082.
 
-**Quinn TP**. 2018. Visualizing Balances of Compositional Data: A New Alternative to Balance Dendrograms [version 1; referees: awaiting peer review]. F1000Research 7:1278. http://doi.org/10.12688/f1000research.15858.1.
+**Quinn TP**. 2018. Visualizing Balances of Compositional Data: A New Alternative to Balance Dendrograms [version 1; referees: 2 approved]. F1000Research 7:1278. http://doi.org/10.12688/f1000research.15858.1.
 
 **Quinn TP**, Crowley TM, & Richardson MF. 2018. Benchmarking differential expression analysis tools for RNA-Seq: normalization-based vs. log-ratio transformation-based methods. BMC Bioinformatics 19(1). http://doi.org/10.1186/s12859-018-2261-8.
 

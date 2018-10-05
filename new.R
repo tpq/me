@@ -54,12 +54,11 @@ newFiction <- function(blog.title = "New Title", after = "### Over Under"){
 title: \"", blog.title, "\"
 ---
 
-### Placeholder
+### ", blog.title, "
 
 Placeholder
 
-<br>
-"
+<br>"
     )
   
   writeLines(blog.template, con = blog.new)

@@ -34,6 +34,10 @@ title: "Curriculum Vitae"
 
 #### R packages which I designed and maintain,
 
+##### **balance** | [GitHub](https://github.com/tpq/balance)
+
+###### Balances have become a cornerstone of compositional data analysis. However, conceptualizing balances is difficult, especially for high-dimensional data. Most often, investigators visualize balances with "balance dendrograms". However, this visualization tool does not scale well for large data. This package provides an alternative scheme for visualizing balances, described in [Quinn (2018)]. This package also provides a method for principal balance analysis.
+
 ##### **exprso** | [CRAN](https://CRAN.R-project.org/package=exprso)
 
 ###### Supervised machine learning has an increasingly important role in data analysis. This package introduces a framework for rapidly building and deploying supervised machine learning in a high-throughput manner. This package provides a user-friendly interface that empowers investigators to execute state-of-the-art binary and multi-class classification, as well as regression, with minimal programming experience necessary.
@@ -110,6 +114,10 @@ title: "Curriculum Vitae"
 
 ###### Co-founder of the Geelong Hacky Hour chapter where researchers help other researchers learn to program.
 
+##### **ABACBS & COMBINE:** October 2018
+
+###### Reviewed abstracts as part of the ABACBS & COMBINE 2018 Program Committee.
+
 <br>
 
 ### Awards and scholarships
@@ -151,6 +159,8 @@ Statistical Methods in Medical Research
 <br>
 
 ### Publications
+
+**Quinn TP**, Nguyen T, Lee SC, & Venkatesh S. 2018. Cancer as a tissue anomaly: classifying tumor transcriptomes based only on healthy data. bioRxiv 426395. http://doi.org/10.1101/426395.
 
 **Quinn TP+**, Lee SC+, Venkatesh S, & Nguyen T. 2018. Improving the classification of neuropsychiatric conditions using gene ontology terms as features. bioRxiv 393082. http://doi.org/10.1101/393082.
 

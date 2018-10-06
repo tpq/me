@@ -1,8 +1,8 @@
 ---
-title: "Downcasted"
+title: "Down Casted"
 ---
 
-### Downcasted
+### Down Casted
 
 I still think about that slug,<br>
 

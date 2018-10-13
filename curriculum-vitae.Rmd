@@ -34,7 +34,7 @@ title: "Curriculum Vitae"
 
 #### R packages which I designed and maintain,
 
-##### **balance** | [GitHub](https://github.com/tpq/balance)
+##### **balance** | [CRAN](https://cran.r-project.org/package=balance)
 
 ###### Balances have become a cornerstone of compositional data analysis. However, conceptualizing balances is difficult, especially for high-dimensional data. Most often, investigators visualize balances with "balance dendrograms". However, this visualization tool does not scale well for large data. This package provides an alternative scheme for visualizing balances, described in [Quinn (2018)]. This package also provides a method for principal balance analysis.
 
@@ -145,6 +145,8 @@ title: "Curriculum Vitae"
 <br>
 
 ### Presentations
+
+**Quinn TP**. October 2018. Understanding sequencing data as compositions: theory and application. Invited talk presented at Centre for Genomic Regulation in Barcelona, Spain.
 
 **Quinn TP**. October 2017. A compositionally valid pipeline for any-omics data. Invited abstract presented at Australasian Genomic Technologies Association in Hobart, Tasmania.
 

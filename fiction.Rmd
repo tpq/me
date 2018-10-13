@@ -2,6 +2,12 @@
 title: "Fiction"
 ---
 
+### Screen Shot
+
+##### [**Clocked Out**](clocked-out.html)
+
+<br>
+
 ### Over Under
 
 ##### [**Jotnar Rising North**](jotnar-rising-north.html)
@@ -9,8 +15,6 @@ title: "Fiction"
 ##### [**When the Weight Is Over**](when-the-weight-is-over.html)
 
 ##### [**Rinse and Retreat**](rinse-and-retreat.html)
-
-##### [**Down Casted**](down-casted.html)
 
 ##### [**Two Homes**](two-homes.html)
 
@@ -24,7 +28,7 @@ title: "Fiction"
 
 ##### [**Rorschachled and Bound**](rorschachled-and-bound.html)
 
-##### [**Clocked Out**](clocked-out.html)
+##### [**Downcasted**](downcasted.html)
 
 <br>
 

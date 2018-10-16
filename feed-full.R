@@ -1,5 +1,5 @@
 system(paste("wget -O /home/thom/Dropbox/R/projects/tpq/me/feed-full.rss",
-             "http://ftr.fivefilters.org/makefulltextfeed.php?url=http%3A%2F%2Ftpq.me%2Ffeed.rss&max=10")
+             "http://ftr.fivefilters.org/makefulltextfeed.php?url=http%3A%2F%2Ftpq.github.io%2Ffeed.rss&max=10")
 )
 rss <- readLines(con = "feed-full.rss")
 search <- paste0("&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://blockads.fivefilters.org&",

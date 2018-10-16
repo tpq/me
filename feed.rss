@@ -6,11 +6,6 @@
   <link>http://www.tpq.me</link>
   <description>Personal website of Thom Quinn</description>
   <item>
-    <title>Puerto Rico: an Analysis of 100 Hours of Gameplay</title>
-    <link>http://www.tpq.me/puerto-rico_-an-analysis-of-100-hours-of-gameplay.html</link>
-    <description>This new entry explores trends within data collected from over 100 hours of gameplay between three players</description>
-  </item>
-  <item>
     <title>Algebra Is for Those Without Algorithms</title>
     <link>http://www.tpq.me/algebra-is-for-those-without-algorithms.html</link>
     <description>This new entry explores how to use genetic algorithms to solve electronic circuits for hobbyist applications</description>
@@ -19,16 +14,6 @@
     <title>The Ubiquitous Dot Product</title>
     <link>http://www.tpq.me/the-ubiquitous-dot-product.html</link>
     <description>This new entry explores the ubiquity of the dot product in statistical methods including variance and covariance</description>
-  </item>
-  <item>
-    <title>R Parallelization through Batch Processing</title>
-    <link>http://www.tpq.me/r-parallelization-through-batch-processing.html</link>
-    <description>This new entry explores how to parallelize tasks from within R using a batch processing software like TORQUE</description>
-  </item>
-  <item>
-    <title>Reeling in Fisher's Z Transformation</title>
-    <link>http://www.tpq.me/reeling-in-fishers-z-transformation.html</link>
-    <description>This new entry explores the Fisher z-transformation, demonstrating it empirically using the R programming language</description>
   </item>
   <item>
     <title>Genetic Monkeys on Typewriters</title>

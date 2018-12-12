@@ -158,9 +158,17 @@ Wellcome Trust
 
 Statistical Methods in Medical Research
 
+PeerJ
+
 <br>
 
 ### Publications
+
+Lee SC+, **Quinn TP+**, et al., & Nguyen T. 2018. Solving for X: evidence for sex-specific autism biomarkers across multiple transcriptomic studies. American Journal of Medical Genetics B Neuropsychiatric Genetics. Early Print Publication. http://doi.org/10.1002/ajmg.b.32701.
+
+Lee SC+, Quinn A, Nguyen T, Venkatesh S, & **Quinn TP+**. 2018. A cross-cancer metastasis signature in the microRNA-mRNA axis of paired tissue samples. bioRxiv 484816. http://doi.org/10.1101/484816.
+
+**Quinn TP**, Erb E, Gloor G, Notredame C, Richardson MF, & Crowley TM. 2018. A field guide for the compositional analysis of any-omics data. bioRxiv 484766. http://doi.org/10.1101/484766.
 
 **Quinn TP**, Nguyen T, Lee SC, & Venkatesh S. 2018. Cancer as a tissue anomaly: classifying tumor transcriptomes based only on healthy data. bioRxiv 426395. http://doi.org/10.1101/426395.
 
@@ -171,8 +179,6 @@ Statistical Methods in Medical Research
 **Quinn TP**, Crowley TM, & Richardson MF. 2018. Benchmarking differential expression analysis tools for RNA-Seq: normalization-based vs. log-ratio transformation-based methods. BMC Bioinformatics 19(1). http://doi.org/10.1186/s12859-018-2261-8.
 
 Allnutt TR, Wade B, **Quinn TP**, Richardson MF, & Crowley TM. 2018. Shortlisting Aptamer Candidates from HT-SELEX data. Aptamers 2. http://japtamers.co.uk/shortlisting-aptamer-candidates-from-ht-selex-data.
-
-Lee SC+, **Quinn TP+**, et al., & Nguyen T. 2018. Solving for X: evidence for sex-specific autism biomarkers across multiple transcriptomic studies. bioRxiv 309518. http://doi.org/10.1101/309518.
 
 **Quinn TP**, Erb I, Richardson MF, & Crowley TM. 2018. Understanding sequencing data as compositions: an outlook and review. Bioinformatics 34(16). http://doi.org/10.1093/bioinformatics/bty175.
 

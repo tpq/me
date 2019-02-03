@@ -164,6 +164,10 @@ PeerJ
 
 ### Publications
 
+Nguyen T, Lee SC, **Quinn TP**, et al., & Le TD. 2019. Personalized Annotation-based Networks (PAN) for the Prediction of Breast Cancer Relapse. bioRxiv 534628. http://doi.org/10.1101/534628.
+
+Beykikhoshk A, **Quinn TP**, Lee SC, Tran T, & Venkatesh S. 2019. DeepTRIAGE: Interpretable and Individualised Biomarker Scores using Attention Mechanism for the Classification of Breast Cancer Sub-types. bioRxiv 533406. http://doi.org/10.1101/533406.
+
 Lee SC+, **Quinn TP+**, et al., & Nguyen T. 2018. Solving for X: evidence for sex-specific autism biomarkers across multiple transcriptomic studies. American Journal of Medical Genetics B Neuropsychiatric Genetics. Early View. http://doi.org/10.1002/ajmg.b.32701.
 
 Lee SC+, Quinn A, Nguyen T, Venkatesh S, & **Quinn TP+**. 2018. A cross-cancer metastasis signature in the microRNA-mRNA axis of paired tissue samples. bioRxiv 484816. http://doi.org/10.1101/484816.
@@ -190,7 +194,7 @@ Tylee DS, Kikinis Z, **Quinn TP**, et al., & Makris N. 2017. Machine-learning cl
 
 Englebert C, **Quinn T**, & Bichindaritz I. 2017. Feature selection for survival analysis in bioinformatics. CEUR Workshop Proceedings 1942:30-35. http://ceur-ws.org/Vol-1942/paper5.pdf.
 
-**Quinn T**, Tylee D, & Glatt S. 2017. exprso: an R-package for the rapid implementation of machine learning algorithms [version 2; referees: 2 approved]. F1000Research 5:2588. http://dx.doi.org/10.12688/f1000research.9893.1.
+**Quinn T**, Tylee D, & Glatt S. 2017. exprso: an R-package for the rapid implementation of machine learning algorithms [version 2; referees: 2 approved]. F1000Research 5:2588. http://dx.doi.org/10.12688/f1000research.9893.2.
 
 Tylee DS, Hess JL, **Quinn TP**, et al., & Glatt SJ. 2016. Blood transcriptomic comparison of individuals with and without autism spectrum disorder: A combined-samples mega-analysis. American Journal of Medical Genetics B Neuropsychiatric Genetics. Rapid Publication. http://dx.doi.org/10.1002/ajmg.b.32511.
 

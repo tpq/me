@@ -2,13 +2,19 @@
 title: "Fiction"
 ---
 
+### Life Drawer
+
+##### [**For Alexander**](for-alexander.html)
+
+##### [**Downcasted**](downcasted.html)
+
+<br>
+
 ### Screen Shot
 
 ##### [**The Finer Arts**](the-finer-arts.html)
 
-##### [**Immolation Arch**](immolation-arch.html)
-
-##### [**Clocked Out**](clocked-out.html)
+##### [**Travel by Inner-state**](travel-by-inner-state.html)
 
 <br>
 
@@ -28,11 +34,11 @@ title: "Fiction"
 
 ##### [**A Sea-Saw Memory**](a-sea-saw-memory.html)
 
-##### [**Travel by Inner-state**](travel-by-inner-state.html)
-
 ##### [**Rorschachled and Bound**](rorschachled-and-bound.html)
 
-##### [**Downcasted**](downcasted.html)
+##### [**Immolation Arch**](immolation-arch.html)
+
+##### [**Clocked Out**](clocked-out.html)
 
 <br>
 

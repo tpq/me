@@ -4,12 +4,14 @@ navbar:
   left:
     - text: "ABOUT ME"
       href: about-me.html
-    - text: "CURRICULUM VITAE"
+    - text: "C.V."
       href: curriculum-vitae.html
     - text: "MUSINGS"
       href: musings.html
-    - text: "FICTION"
+    - text: "POETRY"
       href: fiction.html
+    - text: "PHOTOGRAPHY"
+      href: prints.html
 output:
   html_document:
     theme: cosmo

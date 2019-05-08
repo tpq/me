@@ -42,7 +42,8 @@ Placeholder
   miSciTools::insert("feed.rss", after = rss.loc, what = "  <item>")
 }
 
-newFiction <- function(blog.title = "New Title", after = "### Over Under"){
+newFiction <- function(blog.title = "New Title",
+                       after = "### Screen Shot"){
   
   # Write custom blog template to new file
   blog.name <- gsub("\\s", "-", stringr::str_to_lower(blog.title))
@@ -68,4 +69,34 @@ Placeholder
   blog.link <- paste0("##### [**", blog.title, "**](", blog.name, ".html)")
   miSciTools::insert("fiction.Rmd", after = after, what = blog.link)
   miSciTools::insert("fiction.Rmd", after = after, what = "")
+}
+
+newPrint <- function(blog.title = "New Title",
+                     after = "### Van Dyke Brown",
+                     file = "prints/clocked1.jpeg"){
+  
+  # Write custom blog template to new file
+  blog.name <- gsub("\\s", "-", stringr::str_to_lower(blog.title))
+  blog.file <- paste0(getwd(), "/print-", blog.name, ".Rmd")
+  blog.new <- file(blog.file)
+  
+  blog.template <-
+    paste0("---
+title: \"", blog.title, "\"
+---
+
+### ", blog.title, "
+
+![](", file, ")
+
+<br>"
+    )
+  
+  writeLines(blog.template, con = blog.new)
+  close(blog.new)
+  
+  # Add blog index to musings.html
+  blog.link <- paste0("##### [**", blog.title, "**](print-", blog.name, ".html)")
+  miSciTools::insert("prints.Rmd", after = after, what = blog.link)
+  miSciTools::insert("prints.Rmd", after = after, what = "")
 }

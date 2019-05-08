@@ -55,9 +55,7 @@ h6 {
 
 <link rel="stylesheet" href="styles.css" type="text/css" />
 
-</head>
 
-<body>
 
 <style type = "text/css">
 .main-container {
@@ -82,6 +80,9 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
+summary {
+  display: list-item;
+}
 </style>
 
 
@@ -96,7 +97,6 @@ body {
   padding-top: 56px;
   margin-top: -56px;
 }
-
 .section h2 {
   padding-top: 56px;
   margin-top: -56px;
@@ -116,6 +116,43 @@ body {
 .section h6 {
   padding-top: 56px;
   margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
 }
 </style>
 
@@ -137,19 +174,85 @@ $(document).ready(function () {
 });
 </script>
 
-
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
 });
 </script>
 
 <!-- code folding -->
 
 
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
 
 
 
@@ -170,13 +273,16 @@ $(document).ready(function () {
   <a href="about-me.html">ABOUT ME</a>
 </li>
 <li>
-  <a href="curriculum-vitae.html">CURRICULUM VITAE</a>
+  <a href="curriculum-vitae.html">C.V.</a>
 </li>
 <li>
   <a href="musings.html">MUSINGS</a>
 </li>
 <li>
-  <a href="fiction.html">FICTION</a>
+  <a href="fiction.html">POETRY</a>
+</li>
+<li>
+  <a href="prints.html">PHOTOGRAPHY</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -320,10 +426,10 @@ $(document).ready(function () {
 </div>
 <div id="in-education" class="section level4">
 <h4>In education,</h4>
-<div id="deakin-university-march-2017-to-present" class="section level5">
-<h5><strong>Deakin University:</strong> March 2017 to present</h5>
-<div id="employed-as-a-graduate-assistant-for-two-courses-titled-principles-of-pharmacology-and-therapeutic-development." class="section level6">
-<h6>Employed as a <strong>Graduate Assistant</strong> for two courses titled, <em>Principles of Pharmacology</em> and <em>Therapeutic Development</em>.</h6>
+<div id="deakin-university-march-2017-to-may-2019" class="section level5">
+<h5><strong>Deakin University:</strong> March 2017 to May 2019</h5>
+<div id="employed-as-a-graduate-assistant-for-two-courses-titled-principles-of-pharmacology-x3-and-therapeutic-development-x2." class="section level6">
+<h6>Employed as a <strong>Graduate Assistant</strong> for two courses titled, <em>Principles of Pharmacology</em> (x3) and <em>Therapeutic Development</em> (x2).</h6>
 </div>
 </div>
 <div id="coursera-september-2016-to-october-2016" class="section level5">
@@ -379,6 +485,8 @@ $(document).ready(function () {
 </div>
 <div id="presentations" class="section level3">
 <h3>Presentations</h3>
+<p><strong>Quinn TP</strong>. June 2019. Using balances to engineer features for the classification of health biomarkers: a new approach to balance selection. Invited talk presented at CoDaWork 2019 in Terrassa, Spain.</p>
+<p><strong>Quinn TP</strong>. March 2019. A practical guide to (supervised) machine learning using the exprso R package. Invited talk presented at Deakin University in Geelong, Victoria.</p>
 <p><strong>Quinn TP</strong>. October 2018. Understanding sequencing data as compositions: theory and application. Invited talk presented at Centre for Genomic Regulation in Barcelona, Spain.</p>
 <p><strong>Quinn TP</strong>. October 2017. A compositionally valid pipeline for any-omics data. Invited abstract presented at Australasian Genomic Technologies Association in Hobart, Tasmania.</p>
 <p><br></p>
@@ -388,17 +496,19 @@ $(document).ready(function () {
 <p>Wellcome Trust</p>
 <p>Statistical Methods in Medical Research</p>
 <p>PeerJ</p>
+<p>American Journal of Medical Genetics B</p>
 <p><br></p>
 </div>
 <div id="publications" class="section level3">
 <h3>Publications</h3>
+<p><strong>Quinn TP+</strong>, Lee SC+, Venkatesh S, &amp; Nguyen T. 2019. Improving the classification of neuropsychiatric conditions using gene ontology terms as features. American Journal of Medical Genetics B Neuropsychiatric Genetics. Early View. <a href="http://doi.org/10.1002/ajmg.b.32727" class="uri">http://doi.org/10.1002/ajmg.b.32727</a>.</p>
+<p><strong>Quinn TP</strong> &amp; Erb I. 2019. Using balances to engineer features for the classification of health biomarkers: a new approach to balance selection. bioRxiv 600122. <a href="http://doi.org/10.1101/600122" class="uri">http://doi.org/10.1101/600122</a>.</p>
 <p>Nguyen T, Lee SC, <strong>Quinn TP</strong>, et al., &amp; Le TD. 2019. Personalized Annotation-based Networks (PAN) for the Prediction of Breast Cancer Relapse. bioRxiv 534628. <a href="http://doi.org/10.1101/534628" class="uri">http://doi.org/10.1101/534628</a>.</p>
 <p>Beykikhoshk A, <strong>Quinn TP</strong>, Lee SC, Tran T, &amp; Venkatesh S. 2019. DeepTRIAGE: Interpretable and Individualised Biomarker Scores using Attention Mechanism for the Classification of Breast Cancer Sub-types. bioRxiv 533406. <a href="http://doi.org/10.1101/533406" class="uri">http://doi.org/10.1101/533406</a>.</p>
 <p>Lee SC+, <strong>Quinn TP+</strong>, et al., &amp; Nguyen T. 2018. Solving for X: evidence for sex-specific autism biomarkers across multiple transcriptomic studies. American Journal of Medical Genetics B Neuropsychiatric Genetics. Early View. <a href="http://doi.org/10.1002/ajmg.b.32701" class="uri">http://doi.org/10.1002/ajmg.b.32701</a>.</p>
 <p>Lee SC+, Quinn A, Nguyen T, Venkatesh S, &amp; <strong>Quinn TP+</strong>. 2018. A cross-cancer metastasis signature in the microRNA-mRNA axis of paired tissue samples. bioRxiv 484816. <a href="http://doi.org/10.1101/484816" class="uri">http://doi.org/10.1101/484816</a>.</p>
-<p><strong>Quinn TP</strong>, Erb E, Gloor G, Notredame C, Richardson MF, &amp; Crowley TM. 2018. A field guide for the compositional analysis of any-omics data. bioRxiv 484766. <a href="http://doi.org/10.1101/484766" class="uri">http://doi.org/10.1101/484766</a>.</p>
+<p><strong>Quinn TP</strong>, Erb I, Gloor G, Notredame C, Richardson MF, &amp; Crowley TM. 2018. A field guide for the compositional analysis of any-omics data. bioRxiv 484766. <a href="http://doi.org/10.1101/484766" class="uri">http://doi.org/10.1101/484766</a>.</p>
 <p><strong>Quinn TP</strong>, Nguyen T, Lee SC, &amp; Venkatesh S. 2018. Cancer as a tissue anomaly: classifying tumor transcriptomes based only on healthy data. bioRxiv 426395. <a href="http://doi.org/10.1101/426395" class="uri">http://doi.org/10.1101/426395</a>.</p>
-<p><strong>Quinn TP+</strong>, Lee SC+, Venkatesh S, &amp; Nguyen T. 2018. Improving the classification of neuropsychiatric conditions using gene ontology terms as features. bioRxiv 393082. <a href="http://doi.org/10.1101/393082" class="uri">http://doi.org/10.1101/393082</a>.</p>
 <p><strong>Quinn TP</strong>. 2018. Visualizing Balances of Compositional Data: A New Alternative to Balance Dendrograms [version 1; referees: 2 approved]. F1000Research 7:1278. <a href="http://doi.org/10.12688/f1000research.15858.1" class="uri">http://doi.org/10.12688/f1000research.15858.1</a>.</p>
 <p><strong>Quinn TP</strong>, Crowley TM, &amp; Richardson MF. 2018. Benchmarking differential expression analysis tools for RNA-Seq: normalization-based vs. log-ratio transformation-based methods. BMC Bioinformatics 19(1). <a href="http://doi.org/10.1186/s12859-018-2261-8" class="uri">http://doi.org/10.1186/s12859-018-2261-8</a>.</p>
 <p>Allnutt TR, Wade B, <strong>Quinn TP</strong>, Richardson MF, &amp; Crowley TM. 2018. Shortlisting Aptamer Candidates from HT-SELEX data. Aptamers 2. <a href="http://japtamers.co.uk/shortlisting-aptamer-candidates-from-ht-selex-data" class="uri">http://japtamers.co.uk/shortlisting-aptamer-candidates-from-ht-selex-data</a>.</p>
@@ -408,7 +518,7 @@ $(document).ready(function () {
 <p><strong>Quinn T</strong>, Richardson MF, Lovell D, &amp; Crowley T. 2017. propr: An R-package for Identifying Proportionally Abundant Features Using Compositional Data Analysis. Scientific Reports 7:16252. <a href="http://dx.doi.org/10.1038/s41598-017-16520-0" class="uri">http://dx.doi.org/10.1038/s41598-017-16520-0</a>.</p>
 <p>Englebert C, <strong>Quinn T</strong>, &amp; Bichindaritz I. 2017. Feature selection for survival analysis in bioinformatics. CEUR Workshop Proceedings 1942:30-35. <a href="http://ceur-ws.org/Vol-1942/paper5.pdf" class="uri">http://ceur-ws.org/Vol-1942/paper5.pdf</a>.</p>
 <p><strong>Quinn T</strong>, Tylee D, &amp; Glatt S. 2017. exprso: an R-package for the rapid implementation of machine learning algorithms [version 2; referees: 2 approved]. F1000Research 5:2588. <a href="http://dx.doi.org/10.12688/f1000research.9893.2" class="uri">http://dx.doi.org/10.12688/f1000research.9893.2</a>.</p>
-<p>Tylee DS, Hess JL, <strong>Quinn TP</strong>, et al., &amp; Glatt SJ. 2016. Blood transcriptomic comparison of individuals with and without autism spectrum disorder: A combined-samples mega-analysis. American Journal of Medical Genetics B Neuropsychiatric Genetics. Rapid Publication. <a href="http://dx.doi.org/10.1002/ajmg.b.32511" class="uri">http://dx.doi.org/10.1002/ajmg.b.32511</a>.</p>
+<p>Tylee DS, Hess JL, <strong>Quinn TP</strong>, et al., &amp; Glatt SJ. 2016. Blood transcriptomic comparison of individuals with and without autism spectrum disorder: A combined-samples mega-analysis. American Journal of Medical Genetics B Neuropsychiatric Genetics 174(3):181-201. <a href="http://dx.doi.org/10.1002/ajmg.b.32511" class="uri">http://dx.doi.org/10.1002/ajmg.b.32511</a>.</p>
 <p>Bichindaritz IB, Cole E, et al., &amp; <strong>Quinn TP</strong>. 2016. Machine Learning Based Automatic Multilevel Stress Detection from ECG Signals. IJCAI 2016: Workshop on Knowledge Discovery in Healthcare Data. <a href="http://sites.google.com/site/ijcai2016kdhealth/accepted-papers" class="uri">http://sites.google.com/site/ijcai2016kdhealth/accepted-papers</a>.</p>
 <p>Hess JL, <strong>Quinn TP</strong>, Akbarian S, &amp; Glatt SJ. 2015. Bioinformatic analyses and conceptual synthesis of evidence linking ZNF804A to risk for schizophrenia and bipolar disorder. American Journal of Medical Genetics B Neuropsychiatric Genetics 168(1):14-35. <a href="http://dx.doi.org/10.1002/ajmg.b.32284" class="uri">http://dx.doi.org/10.1002/ajmg.b.32284</a>.</p>
 <p><strong>Quinn TP</strong>, Atwood PD, Tanski JM, Moore TF, &amp; Folmer-Andersen J. 2011. Aza-crown macrocycles as chiral solvating agents for mandelic acid derivatives. Journal of Organic Chemistry 76(24):10020-30. <a href="http://dx.doi.org/10.1021/jo2018203" class="uri">http://dx.doi.org/10.1021/jo2018203</a>.</p>

@@ -25,7 +25,7 @@
 
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
+<style type="text/css" data-origin="pandoc">
 div.sourceCode { overflow-x: auto; }
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
@@ -56,7 +56,29 @@ code > span.an { color: #008000; } /* Annotation */
 code > span.cv { color: #008000; } /* CommentVar */
 code > span.at { } /* Attribute */
 code > span.in { color: #008000; } /* Information */
+
 </style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
@@ -93,9 +115,7 @@ h6 {
 
 <link rel="stylesheet" href="styles.css" type="text/css" />
 
-</head>
 
-<body>
 
 <style type = "text/css">
 .main-container {
@@ -120,6 +140,9 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
+summary {
+  display: list-item;
+}
 </style>
 
 
@@ -134,7 +157,6 @@ body {
   padding-top: 56px;
   margin-top: -56px;
 }
-
 .section h2 {
   padding-top: 56px;
   margin-top: -56px;
@@ -154,6 +176,43 @@ body {
 .section h6 {
   padding-top: 56px;
   margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
 }
 </style>
 
@@ -175,19 +234,85 @@ $(document).ready(function () {
 });
 </script>
 
-
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
 });
 </script>
 
 <!-- code folding -->
 
 
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
 
 
 
@@ -208,13 +333,16 @@ $(document).ready(function () {
   <a href="about-me.html">ABOUT ME</a>
 </li>
 <li>
-  <a href="curriculum-vitae.html">CURRICULUM VITAE</a>
+  <a href="curriculum-vitae.html">C.V.</a>
 </li>
 <li>
   <a href="musings.html">MUSINGS</a>
 </li>
 <li>
-  <a href="fiction.html">FICTION</a>
+  <a href="fiction.html">POETRY</a>
+</li>
+<li>
+  <a href="prints.html">PHOTOGRAPHY</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -243,13 +371,13 @@ $(document).ready(function () {
 <h3>From cluster to cluster</h3>
 <p>Parallelization of R through batch processing involves two steps. First, we obviate the burden of having to write a parallel-process script by writing a script that writes single-process scripts. Second, we deliver each new script to the batch processing queue where it will wait to get executed on an unoccupied node.</p>
 <p>In this endeavor, we make use of two helper functions, <code>writeR</code> and <code>qsub</code>, that simplify these two steps, respectively. I have made these available through the <code>miSciTools</code> package, an R library that bundles miscellaneous software tools to expedite scientific analyses. We can install <code>miSciTools</code> directly from GitHub using the <code>devtools</code> package.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools::<span class="kw">install_github</span>(<span class="st">&quot;tpq/miSciTools&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;tpq/miSciTools&quot;</span>)
 <span class="kw">library</span>(miSciTools)</code></pre></div>
 <p>Next, to show the logic behind <em>batch parallelization</em>, we create a computationally expensive <code>for</code>-loop that clusters 10 large mock datasets. In this example, parallelization is easy enough to implement using an R package like <code>foreach</code>. However, for illustration purposes, we will instead parallelize this task through batch processing. Consider the single-threaded loop below.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">for(i in <span class="dv">1</span>:<span class="dv">10</span>){
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>){
   
   N &lt;-<span class="st"> </span><span class="dv">2000</span>
-  someData &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(N^<span class="dv">2</span>), N, N)
+  someData &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(N<span class="op">^</span><span class="dv">2</span>), N, N)
   hc &lt;-<span class="st"> </span><span class="kw">hclust</span>(<span class="kw">dist</span>(someData))
   cuts &lt;-<span class="st"> </span><span class="kw">cutree</span>(hc, <span class="dv">10</span>)
   <span class="kw">write.csv</span>(<span class="kw">data.frame</span>(cuts),
@@ -277,7 +405,7 @@ file &lt;-<span class="st"> </span><span class="kw">writeR</span>(<span class="s
 <p>To test that <code>qsub</code> works properly on your machine, try the following function call. If successful, a new process should appear in the queue. You view the queue from the OS console using the <code>qstat</code> bash command.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qsub</span>(<span class="st">&quot;sleep 30&quot;</span>)</code></pre></div>
 <p>Now, we can use <code>qsub</code> to put <code>writeR</code> to work. Note that we supply <code>i</code> from outside of the <code>writeR</code> environment. However, because each new <code>writeR</code> script imports the working directory of the parent script, we could just as well have named the output files using <code>file = paste0(&quot;cluster-&quot;, i, &quot;.csv&quot;)</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">for(i in <span class="dv">1</span>:<span class="dv">10</span>){
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>){
   
   cmd &lt;-<span class="st"> </span><span class="kw">writeR</span>(<span class="st">&#39;</span>
 <span class="st">  N &lt;- 2000</span>
@@ -296,7 +424,7 @@ file &lt;-<span class="st"> </span><span class="kw">writeR</span>(<span class="s
 <p>When this <code>for</code>-loop completes, 10 single-process R scripts will have joined the queue. From the console, you can check the <em>TORQUE</em> queue using the <code>qstat</code> bash command. In addition, you can use the <code>qdel</code> bash command to remove a queued job and the <code>qrun</code> bash command to force the execution of a queued job.</p>
 <p>In this example, each script saves the cluster labels as a comma-delimited file in the working directory. By default, the working directory of batch processed R scripts is the home directory of the computer. To combine the results from the parallelized processes, we could write a simple loop that reads in the <code>.csv</code> file and joins the contents.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">files &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;list&quot;</span>, <span class="dv">10</span>)
-for(i in <span class="dv">1</span>:<span class="dv">10</span>){
+<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>){
   
   files[[i]] &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="kw">paste0</span>(<span class="st">&quot;cluster-&quot;</span>, i, <span class="st">&quot;.csv&quot;</span>))
 }

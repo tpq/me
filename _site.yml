@@ -10,7 +10,7 @@ navbar:
       href: musings.html
     - text: "POETRY"
       href: fiction.html
-    - text: "PHOTOGRAPHY"
+    - text: "ALT. PHOTOGRAPHY"
       href: prints.html
 output:
   html_document:

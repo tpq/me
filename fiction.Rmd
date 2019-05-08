@@ -2,19 +2,13 @@
 title: "Fiction"
 ---
 
-### Life Drawer
-
-##### [**For Alexander**](for-alexander.html)
-
-##### [**Downcasted**](downcasted.html)
-
-<br>
-
 ### Screen Shot
 
 ##### [**The Finer Arts**](the-finer-arts.html)
 
 ##### [**Travel by Inner-state**](travel-by-inner-state.html)
+
+##### [**Pharmakon**](pharmakon.html)
 
 <br>
 
@@ -77,6 +71,14 @@ title: "Fiction"
 ##### [**Jet-lagged**](jet-lagged.html)
 
 ##### [**Tinged**](tinged.html)
+
+<br>
+
+### The Life Drawer
+
+##### [**For Alexander**](for-alexander.html)
+
+##### [**Downcasted**](downcasted.html)
 
 <br>
 

@@ -90,9 +90,9 @@ title: "Curriculum Vitae"
 
 #### In education,
 
-##### **Deakin University:** March 2017 to present
+##### **Deakin University:** March 2017 to May 2019
 
-###### Employed as a **Graduate Assistant** for two courses titled, *Principles of Pharmacology* and *Therapeutic Development*.
+###### Employed as a **Graduate Assistant** for two courses titled, *Principles of Pharmacology* (x3) and *Therapeutic Development* (x2).
 
 ##### **Coursera:** September 2016 to October 2016
 
@@ -146,6 +146,10 @@ title: "Curriculum Vitae"
 
 ### Presentations
 
+**Quinn TP**. June 2019. Using balances to engineer features for the classification of health biomarkers: a new approach to balance selection. Invited talk presented at CoDaWork 2019 in Terrassa, Spain.
+
+**Quinn TP**. March 2019. A practical guide to (supervised) machine learning using the exprso R package. Invited talk presented at Deakin University in Geelong, Victoria.
+
 **Quinn TP**. October 2018. Understanding sequencing data as compositions: theory and application. Invited talk presented at Centre for Genomic Regulation in Barcelona, Spain.
 
 **Quinn TP**. October 2017. A compositionally valid pipeline for any-omics data. Invited abstract presented at Australasian Genomic Technologies Association in Hobart, Tasmania.
@@ -160,9 +164,15 @@ Statistical Methods in Medical Research
 
 PeerJ
 
+American Journal of Medical Genetics B
+
 <br>
 
 ### Publications
+
+**Quinn TP+**, Lee SC+, Venkatesh S, & Nguyen T. 2019. Improving the classification of neuropsychiatric conditions using gene ontology terms as features. American Journal of Medical Genetics B Neuropsychiatric Genetics. Early View. http://doi.org/10.1002/ajmg.b.32727.
+
+**Quinn TP** & Erb I. 2019. Using balances to engineer features for the classification of health biomarkers: a new approach to balance selection. bioRxiv 600122. http://doi.org/10.1101/600122.
 
 Nguyen T, Lee SC, **Quinn TP**, et al., & Le TD. 2019. Personalized Annotation-based Networks (PAN) for the Prediction of Breast Cancer Relapse. bioRxiv 534628. http://doi.org/10.1101/534628.
 
@@ -172,11 +182,9 @@ Lee SC+, **Quinn TP+**, et al., & Nguyen T. 2018. Solving for X: evidence for se
 
 Lee SC+, Quinn A, Nguyen T, Venkatesh S, & **Quinn TP+**. 2018. A cross-cancer metastasis signature in the microRNA-mRNA axis of paired tissue samples. bioRxiv 484816. http://doi.org/10.1101/484816.
 
-**Quinn TP**, Erb E, Gloor G, Notredame C, Richardson MF, & Crowley TM. 2018. A field guide for the compositional analysis of any-omics data. bioRxiv 484766. http://doi.org/10.1101/484766.
+**Quinn TP**, Erb I, Gloor G, Notredame C, Richardson MF, & Crowley TM. 2018. A field guide for the compositional analysis of any-omics data. bioRxiv 484766. http://doi.org/10.1101/484766.
 
 **Quinn TP**, Nguyen T, Lee SC, & Venkatesh S. 2018. Cancer as a tissue anomaly: classifying tumor transcriptomes based only on healthy data. bioRxiv 426395. http://doi.org/10.1101/426395.
-
-**Quinn TP+**, Lee SC+, Venkatesh S, & Nguyen T. 2018. Improving the classification of neuropsychiatric conditions using gene ontology terms as features. bioRxiv 393082. http://doi.org/10.1101/393082.
 
 **Quinn TP**. 2018. Visualizing Balances of Compositional Data: A New Alternative to Balance Dendrograms [version 1; referees: 2 approved]. F1000Research 7:1278. http://doi.org/10.12688/f1000research.15858.1.
 
@@ -196,7 +204,7 @@ Englebert C, **Quinn T**, & Bichindaritz I. 2017. Feature selection for survival
 
 **Quinn T**, Tylee D, & Glatt S. 2017. exprso: an R-package for the rapid implementation of machine learning algorithms [version 2; referees: 2 approved]. F1000Research 5:2588. http://dx.doi.org/10.12688/f1000research.9893.2.
 
-Tylee DS, Hess JL, **Quinn TP**, et al., & Glatt SJ. 2016. Blood transcriptomic comparison of individuals with and without autism spectrum disorder: A combined-samples mega-analysis. American Journal of Medical Genetics B Neuropsychiatric Genetics. Rapid Publication. http://dx.doi.org/10.1002/ajmg.b.32511.
+Tylee DS, Hess JL, **Quinn TP**, et al., & Glatt SJ. 2016. Blood transcriptomic comparison of individuals with and without autism spectrum disorder: A combined-samples mega-analysis. American Journal of Medical Genetics B Neuropsychiatric Genetics 174(3):181-201. http://dx.doi.org/10.1002/ajmg.b.32511.
 
 Bichindaritz IB, Cole E, et al., & **Quinn TP**. 2016. Machine Learning Based Automatic Multilevel Stress Detection from ECG Signals. IJCAI 2016: Workshop on Knowledge Discovery in Healthcare Data. http://sites.google.com/site/ijcai2016kdhealth/accepted-papers.
 

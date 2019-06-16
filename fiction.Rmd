@@ -6,7 +6,7 @@ title: "Poetry"
 
 ##### [**The Finer Arts**](the-finer-arts.html)
 
-##### [**Travel by Inner-state**](travel-by-inner-state.html)
+##### [**Collegetown, USA**](collegetown,-usa.html)
 
 ##### [**Pharmakon**](pharmakon.html)
 
@@ -41,6 +41,8 @@ title: "Poetry"
 ##### [**Held Back Cheers**](held-back-cheers.html)
 
 ##### [**An Old Erie Reminder**](an-old-erie-reminder.html)
+
+##### [**Travel by Inner-state**](travel-by-inner-state.html)
 
 ##### [**Washed Assured**](washed-assured.html)
 

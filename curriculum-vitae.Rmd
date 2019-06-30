@@ -170,7 +170,9 @@ Bioinformatics
 
 <br>
 
-### Publications
+### Lead Author Publications
+
+Le V+, **Quinn TP+**, Tran T, & Venkatesh S. 2019. Deep in the Bowel: Highly Interpretable Neural Encoder-Decoder Networks Predict Gut Metabolites from Gut Microbiome. bioRxiv 686394. http://doi.org/10.1101/686394.
 
 **Quinn TP**, Nguyen T, Lee SC, & Venkatesh S. 2019. Cancer as a tissue anomaly: classifying tumor transcriptomes based only on healthy data. Frontiers in Genetics. Early View. http://doi.org/10.3389/fgene.2019.00599.
 
@@ -178,9 +180,7 @@ Bioinformatics
 
 **Quinn TP** & Erb I. 2019. Using balances to engineer features for the classification of health biomarkers: a new approach to balance selection. bioRxiv 600122. http://doi.org/10.1101/600122.
 
-Nguyen T, Lee SC, **Quinn TP**, et al., & Le TD. 2019. Personalized Annotation-based Networks (PAN) for the Prediction of Breast Cancer Relapse. bioRxiv 534628. http://doi.org/10.1101/534628.
-
-Beykikhoshk A, **Quinn TP**, Lee SC, Tran T, & Venkatesh S. 2019. DeepTRIAGE: Interpretable and Individualised Biomarker Scores using Attention Mechanism for the Classification of Breast Cancer Sub-types. bioRxiv 533406. http://doi.org/10.1101/533406.
+Beykikhoshk A+, **Quinn TP+**, Lee SC, Tran T, & Venkatesh S. 2019. DeepTRIAGE: Interpretable and Individualised Biomarker Scores using Attention Mechanism for the Classification of Breast Cancer Sub-types. bioRxiv 533406. http://doi.org/10.1101/533406.
 
 Lee SC+, **Quinn TP+**, et al., & Nguyen T. 2018. Solving for X: evidence for sex-specific autism biomarkers across multiple transcriptomic studies. American Journal of Medical Genetics B Neuropsychiatric Genetics. Early View. http://doi.org/10.1002/ajmg.b.32701.
 
@@ -192,26 +192,32 @@ Lee SC+, Quinn A, Nguyen T, Venkatesh S, & **Quinn TP+**. 2018. A cross-cancer m
 
 **Quinn TP**, Crowley TM, & Richardson MF. 2018. Benchmarking differential expression analysis tools for RNA-Seq: normalization-based vs. log-ratio transformation-based methods. BMC Bioinformatics 19(1). http://doi.org/10.1186/s12859-018-2261-8.
 
-Allnutt TR, Wade B, **Quinn TP**, Richardson MF, & Crowley TM. 2018. Shortlisting Aptamer Candidates from HT-SELEX data. Aptamers 2. http://japtamers.co.uk/shortlisting-aptamer-candidates-from-ht-selex-data.
-
 **Quinn TP**, Erb I, Richardson MF, & Crowley TM. 2018. Understanding sequencing data as compositions: an outlook and review. Bioinformatics 34(16). http://doi.org/10.1093/bioinformatics/bty175.
+
+**Quinn T**, Richardson MF, Lovell D, & Crowley T. 2017. propr: An R-package for Identifying Proportionally Abundant Features Using Compositional Data Analysis. Scientific Reports 7:16252. http://dx.doi.org/10.1038/s41598-017-16520-0.
+
+**Quinn T**, Tylee D, & Glatt S. 2017. exprso: an R-package for the rapid implementation of machine learning algorithms [version 2; referees: 2 approved]. F1000Research 5:2588. http://dx.doi.org/10.12688/f1000research.9893.2.
+
+**Quinn TP**, Atwood PD, Tanski JM, Moore TF, & Folmer-Andersen J. 2011. Aza-crown macrocycles as chiral solvating agents for mandelic acid derivatives. Journal of Organic Chemistry 76(24):10020-30. http://dx.doi.org/10.1021/jo2018203.
+
+<br>
+
+### Other Publications
+
+Nguyen T, Lee SC, **Quinn TP**, et al., & Le TD. 2019. Personalized Annotation-based Networks (PAN) for the Prediction of Breast Cancer Relapse. bioRxiv 534628. http://doi.org/10.1101/534628.
+
+Allnutt TR, Wade B, **Quinn TP**, Richardson MF, & Crowley TM. 2018. Shortlisting Aptamer Candidates from HT-SELEX data. Aptamers 2. http://japtamers.co.uk/shortlisting-aptamer-candidates-from-ht-selex-data.
 
 Erb I, **Quinn T**, Lovell D, & Notredame C. 2017. Differential Proportionality - A Normalization-Free Approach To Differential Gene Expression. Proceedings of CoDaWork 2017, The 7th Compositional Data Analysis Workshop; available under bioRxiv 134536. http://dx.doi.org/10.1101/134536.
 
 Tylee DS, Kikinis Z, **Quinn TP**, et al., & Makris N. 2017. Machine-learning classification of 22q11.2 deletion syndrome: A diffusion tensor imaging study. NeuroImage: Clinical 15(1):832-42. http://dx.doi.org/10.1016/j.nicl.2017.04.029.
 
-**Quinn T**, Richardson MF, Lovell D, & Crowley T. 2017. propr: An R-package for Identifying Proportionally Abundant Features Using Compositional Data Analysis. Scientific Reports 7:16252. http://dx.doi.org/10.1038/s41598-017-16520-0.
-
 Englebert C, **Quinn T**, & Bichindaritz I. 2017. Feature selection for survival analysis in bioinformatics. CEUR Workshop Proceedings 1942:30-35. http://ceur-ws.org/Vol-1942/paper5.pdf.
-
-**Quinn T**, Tylee D, & Glatt S. 2017. exprso: an R-package for the rapid implementation of machine learning algorithms [version 2; referees: 2 approved]. F1000Research 5:2588. http://dx.doi.org/10.12688/f1000research.9893.2.
 
 Tylee DS, Hess JL, **Quinn TP**, et al., & Glatt SJ. 2016. Blood transcriptomic comparison of individuals with and without autism spectrum disorder: A combined-samples mega-analysis. American Journal of Medical Genetics B Neuropsychiatric Genetics 174(3):181-201. http://dx.doi.org/10.1002/ajmg.b.32511.
 
 Bichindaritz IB, Cole E, et al., & **Quinn TP**. 2016. Machine Learning Based Automatic Multilevel Stress Detection from ECG Signals. IJCAI 2016: Workshop on Knowledge Discovery in Healthcare Data. http://sites.google.com/site/ijcai2016kdhealth/accepted-papers.
 
 Hess JL, **Quinn TP**, Akbarian S, & Glatt SJ. 2015. Bioinformatic analyses and conceptual synthesis of evidence linking ZNF804A to risk for schizophrenia and bipolar disorder. American Journal of Medical Genetics B Neuropsychiatric Genetics 168(1):14-35. http://dx.doi.org/10.1002/ajmg.b.32284.
-
-**Quinn TP**, Atwood PD, Tanski JM, Moore TF, & Folmer-Andersen J. 2011. Aza-crown macrocycles as chiral solvating agents for mandelic acid derivatives. Journal of Organic Chemistry 76(24):10020-30. http://dx.doi.org/10.1021/jo2018203.
 
 <br>

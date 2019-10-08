@@ -4,7 +4,7 @@ title: "Poetry"
 
 ### Screen Shot
 
-##### [**The Finer Arts**](the-finer-arts.html)
+##### [**No Reception**](no-reception.html)
 
 ##### [**Collegetown, USA**](collegetown,-usa.html)
 
@@ -79,6 +79,8 @@ title: "Poetry"
 ### The Life Drawer
 
 ##### [**For Alexander**](for-alexander.html)
+
+##### [**The Finer Arts**](the-finer-arts.html)
 
 ##### [**Downcasted**](downcasted.html)
 

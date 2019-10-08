@@ -168,25 +168,27 @@ American Journal of Medical Genetics B
 
 Bioinformatics
 
+Applied Computing and Geosciences
+
 <br>
 
 ### Lead Author Publications
 
+**Quinn TP**, Erb I, Gloor G, Notredame C, Richardson MF, & Crowley TM. 2019. A field guide for the compositional analysis of any-omics data. GigaScience giz107. http://doi.org/10.1093/gigascience/giz107.
+
+Lee SC+, Quinn A, Nguyen T, Venkatesh S, & **Quinn TP+**. 2019. A cross-cancer metastasis signature in the microRNA-mRNA axis of paired tissue samples. Molecular Biology Reports. http://doi.org/10.1007/s11033-019-05025-w.
+
 Le V+, **Quinn TP+**, Tran T, & Venkatesh S. 2019. Deep in the Bowel: Highly Interpretable Neural Encoder-Decoder Networks Predict Gut Metabolites from Gut Microbiome. bioRxiv 686394. http://doi.org/10.1101/686394.
 
-**Quinn TP**, Nguyen T, Lee SC, & Venkatesh S. 2019. Cancer as a tissue anomaly: classifying tumor transcriptomes based only on healthy data. Frontiers in Genetics. Early View. http://doi.org/10.3389/fgene.2019.00599.
+**Quinn TP**, Nguyen T, Lee SC, & Venkatesh S. 2019. Cancer as a tissue anomaly: classifying tumor transcriptomes based only on healthy data. Frontiers in Genetics 10:599. http://doi.org/10.3389/fgene.2019.00599.
 
-**Quinn TP+**, Lee SC+, Venkatesh S, & Nguyen T. 2019. Improving the classification of neuropsychiatric conditions using gene ontology terms as features. American Journal of Medical Genetics B Neuropsychiatric Genetics. Early View. http://doi.org/10.1002/ajmg.b.32727.
+**Quinn TP+**, Lee SC+, Venkatesh S, & Nguyen T. 2019. Improving the classification of neuropsychiatric conditions using gene ontology terms as features. American Journal of Medical Genetics B Neuropsychiatric Genetics 180(7):508-18. http://doi.org/10.1002/ajmg.b.32727.
 
 **Quinn TP** & Erb I. 2019. Using balances to engineer features for the classification of health biomarkers: a new approach to balance selection. bioRxiv 600122. http://doi.org/10.1101/600122.
 
 Beykikhoshk A+, **Quinn TP+**, Lee SC, Tran T, & Venkatesh S. 2019. DeepTRIAGE: Interpretable and Individualised Biomarker Scores using Attention Mechanism for the Classification of Breast Cancer Sub-types. bioRxiv 533406. http://doi.org/10.1101/533406.
 
-Lee SC+, **Quinn TP+**, et al., & Nguyen T. 2018. Solving for X: evidence for sex-specific autism biomarkers across multiple transcriptomic studies. American Journal of Medical Genetics B Neuropsychiatric Genetics. Early View. http://doi.org/10.1002/ajmg.b.32701.
-
-Lee SC+, Quinn A, Nguyen T, Venkatesh S, & **Quinn TP+**. 2018. A cross-cancer metastasis signature in the microRNA-mRNA axis of paired tissue samples. bioRxiv 484816. http://doi.org/10.1101/484816.
-
-**Quinn TP**, Erb I, Gloor G, Notredame C, Richardson MF, & Crowley TM. 2018. A field guide for the compositional analysis of any-omics data. bioRxiv 484766. http://doi.org/10.1101/484766.
+Lee SC+, **Quinn TP+**, et al., & Nguyen T. 2018. Solving for X: evidence for sex-specific autism biomarkers across multiple transcriptomic studies. American Journal of Medical Genetics B Neuropsychiatric Genetics 180(6):377-89. http://doi.org/10.1002/ajmg.b.32701.
 
 **Quinn TP**. 2018. Visualizing Balances of Compositional Data: A New Alternative to Balance Dendrograms [version 1; referees: 2 approved]. F1000Research 7:1278. http://doi.org/10.12688/f1000research.15858.1.
 

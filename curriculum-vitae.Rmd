@@ -8,7 +8,7 @@ title: "Curriculum Vitae"
 
 ###### **Deakin University:** September 2016 to present
 
-###### Currently pursuing a Doctor of Philosophy with a concentration in bioinformatics and medical genomics
+###### Thesis submitted for a Doctor of Philosophy with a concentration in bioinformatics and medical genomics
 
 ## MD
 
@@ -72,9 +72,13 @@ title: "Curriculum Vitae"
 
 #### In research,
 
-##### **Deakin University:** January 2018 to present
+##### **Deakin University:** October 2019 to present
 
-###### Employed as a **Casual Research Fellow** in the Pattern Recognition and Data Analysis (PRaDA) lab under Dr. Svetha Venkatesh to study autism spectrum disorder. This role involved pre-processing genomic data, building and deploying classifiers based on gene expression signatures, and supervising a research assistant.
+###### Employed as an **Associate Research Fellow** in the Applied Artificial Intelligence Institute (A2I2) lab under Dr. Svetha Venkatesh to study XAI for health applications. This role involved close collaboration with computer science experts to design and implement neural network architectures that enable the interpretable analysis of high-dimensional genomic data.
+
+##### **Deakin University:** January 2018 to August 2019
+
+###### Employed as a **Casual Research Fellow** in the Pattern Recognition and Data Analysis (PRaDA) lab under Dr. Svetha Venkatesh to study autism spectrum disorder and cancer genomics. This role involved pre-processing genomic data, building and deploying classifiers based on gene expression signatures, and supervising a research assistant.
 
 ##### **SUNY Upstate Medical University:** August 2012 to May 2016
 
@@ -110,7 +114,7 @@ title: "Curriculum Vitae"
 
 ### Community engagement
 
-##### **Geelong Hacky Hour:** October 2017 to present
+##### **Geelong Hacky Hour:** October 2017 to October 2019
 
 ###### Co-founder of the Geelong Hacky Hour chapter where researchers help other researchers learn to program.
 
@@ -118,9 +122,15 @@ title: "Curriculum Vitae"
 
 ###### Reviewed abstracts as part of the ABACBS & COMBINE 2018 Program Committee.
 
+##### **NAR Genomics and Bioinformatics:** December 2019 to present
+
+###### Served as guest editor for special issue on compositional data analysis.
+
 <br>
 
 ### Awards and scholarships
+
+2019 People's Choice Award for Outstanding Talk at Joint GIW/ABACBS 2019
 
 2017 Travel Award to Winter School in Mathematical & Computational Biology
 
@@ -146,6 +156,10 @@ title: "Curriculum Vitae"
 
 ### Presentations
 
+**Quinn TP**. December 2019. Deep in the Bowel: Highly Interpretable Neural Encoder-Decoder Networks Predict Gut Metabolites from Gut Microbiome. Invited talk presented at Joint GIW/ABACBS 2019 in Sydney, Australia.
+
+**Quinn TP**. December 2019. DeepTRIAGE: Interpretable and Individualised Biomarker Scores using Attention Mechanism for the Classification of Breast Cancer Sub-types. Invited talk presented at Joint GIW/ABACBS 2019 in Sydney, Australia.
+
 **Quinn TP**. June 2019. Using balances to engineer features for the classification of health biomarkers: a new approach to balance selection. Invited talk presented at CoDaWork 2019 in Terrassa, Spain.
 
 **Quinn TP**. March 2019. A practical guide to (supervised) machine learning using the exprso R package. Invited talk presented at Deakin University in Geelong, Victoria.
@@ -170,9 +184,13 @@ Bioinformatics
 
 Applied Computing and Geosciences
 
+NAR Genomics and Bioinformatics
+
 <br>
 
 ### Lead Author Publications
+
+**Quinn TP** & Erb I. 2019. Another look at microbe–metabolite interactions: how scale invariant correlations can outperform a neural network. bioRxiv 847475. http://doi.org/10.1101/847475.
 
 Harikumar H+, **Quinn TP+**, Rana S, Gupta S, & Venkatesh S. 2019. A random walk down personalized single-cell networks: predicting the response of any gene to any drug for any patient. bioRxiv 837807. http://doi.org/10.1101/837807.
 

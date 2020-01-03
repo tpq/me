@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Algebra Is for Those Without Algorithms</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+<link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #0000ff; } /* Keyword */
+code > span.ch { color: #008080; } /* Char */
+code > span.st { color: #008080; } /* String */
+code > span.co { color: #008000; } /* Comment */
+code > span.ot { color: #ff4000; } /* Other */
+code > span.al { color: #ff0000; } /* Alert */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #008000; font-weight: bold; } /* Warning */
+code > span.cn { } /* Constant */
+code > span.sc { color: #008080; } /* SpecialChar */
+code > span.vs { color: #008080; } /* VerbatimString */
+code > span.ss { color: #008080; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { } /* Variable */
+code > span.cf { color: #0000ff; } /* ControlFlow */
+code > span.op { } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #ff4000; } /* Preprocessor */
+code > span.do { color: #008000; } /* Documentation */
+code > span.an { color: #008000; } /* Annotation */
+code > span.cv { color: #008000; } /* CommentVar */
+code > span.at { } /* Attribute */
+code > span.in { color: #008000; } /* Information */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">THOM QUINN</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="about-me.html">ABOUT ME</a>
+</li>
+<li>
+  <a href="curriculum-vitae.html">C.V.</a>
+</li>
+<li>
+  <a href="musings.html">MUSINGS</a>
+</li>
+<li>
+  <a href="fiction.html">POETRY</a>
+</li>
+<li>
+  <a href="prints.html">ALT. PHOTOGRAPHY</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Algebra Is for Those Without Algorithms</h1>
+
+</div>
+
+
+<div id="astable-mode" class="section level3">
+<h3>Astable mode</h3>
+<p>On a whim, I traded a handful of tokens imbued with symbolic value (and acquired arbitrarily in exchange for my labor) for a packet of shaped metal. Inside this pack were veterans of the Space Age: resistors, capacitors, transistors, and an integrated circuit. The last of these pieces, merely the size of a fingernail, Man had manufactured to keep time (just in case, I suppose, He might otherwise find it slip away?). I have no regard for clocks, but timer circuits can also make sound: as the regular oscillations of current pass through a speaker, they vibrate the air such that we, by a trick of anatomy and signal processing, can hear noise and assign it an emotion.</p>
+<p>I want to make sound. This is why I purchased a 555 timer integrated circuit. These circuits have 8-pins that, when wired in a certain configuration, can make sound. A 555 has two modes. The first, astable mode, outputs a continuous oscillating current when a switch is pressed. The second, monostable mode, outputs a continuous non-oscillating current for a fixed period of time when a switch is pressed. We will use the 555 timer in astable mode to build a circuit that synthesizes sound (i.e., a synthesizer).</p>
+</div>
+<div id="sales-pitch" class="section level3">
+<h3>Sales pitch</h3>
+<p>Pitch is determined by the oscillatory frequency of the output current. We can calculate this frequency based on three parts labelled <span class="math inline">\(R_1\)</span>, <span class="math inline">\(R_2\)</span>, and <span class="math inline">\(C\)</span>. Measuring resistance in <span class="math inline">\(\textrm{k} \Omega\)</span> and capacitance in <span class="math inline">\(\mu \textrm{F}\)</span>, the formula is:</p>
+<p><span class="math display">\[ f = \frac{1440}{(R_1 + 2R_2)C} \]</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">f &lt;-<span class="st"> </span><span class="cf">function</span>(r1, r2, <span class="dt">c =</span> <span class="fl">.01</span>){
+  
+  <span class="dv">1000</span> <span class="op">*</span><span class="st"> </span><span class="fl">1.44</span> <span class="op">/</span><span class="st"> </span>((r1 <span class="op">+</span><span class="st"> </span><span class="dv">2</span><span class="op">*</span>r2) <span class="op">*</span><span class="st"> </span>c)
+}</code></pre></div>
+<p>With <span class="math inline">\(C\)</span> fixed, it is easy enough to find <span class="math inline">\(R_1\)</span> and <span class="math inline">\(R_2\)</span> for a single frequency. However, to make a multi-tone synthesizer, we will need to alter either <span class="math inline">\(R_1\)</span> or <span class="math inline">\(R_2\)</span> for each note. In practice, we can achieve this by having each piano key add a little bit of resistance to <span class="math inline">\(R_2\)</span> (i.e., via a series configuration). For example, if <span class="math inline">\(R_1\)</span> and <span class="math inline">\(R_2\)</span> outputs middle C, then <span class="math inline">\(R_1\)</span> and <span class="math inline">\(R_2 + R_A\)</span> might output B a semi-tone lower.</p>
+<p>The question becomes: how do we find the values of <span class="math inline">\(R_1\)</span>, <span class="math inline">\(R_2\)</span>, and <span class="math inline">\(R_A\)</span> such that the addition of each new <span class="math inline">\(R_A\)</span> (i.e., <span class="math inline">\(k\)</span> added resistors) makes <span class="math inline">\(R_1\)</span> and <span class="math inline">\(R_2 + kR_A\)</span> equal the next note in the dichromatic scale?</p>
+</div>
+<div id="circuit-optimization" class="section level3">
+<h3>Circuit optimization</h3>
+<p>This looks like a problem that we can solve with optimization by way of a genetic algorithm. To simplify the issue, however, we will fix <span class="math inline">\(R_A\)</span> to <span class="math inline">\(10 \textrm{k} \Omega\)</span> (convenient, since I already own a bunch of these). First, however, we need to define a “ribosome” function that converts binary input into a list of integers (see <a href="http://tpq.me/genetic-monkeys-on-typewriters.html">here</a> for what that means).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ribosome &lt;-<span class="st"> </span><span class="cf">function</span>(string, nbits,
+                     <span class="dt">how =</span> <span class="cf">function</span>(codon) <span class="kw">strtoi</span>(codon, <span class="dt">base =</span> <span class="dv">2</span>)){
+  
+  <span class="cf">if</span>(<span class="op">!</span><span class="kw">is.character</span>(string)){
+    string &lt;-<span class="st"> </span><span class="kw">paste0</span>(string, <span class="dt">collapse =</span> <span class="st">&quot;&quot;</span>)
+  }
+  
+  <span class="cf">if</span>(<span class="kw">nchar</span>(string) <span class="op">%%</span><span class="st"> </span>nbits <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>){
+    <span class="kw">stop</span>(<span class="st">&quot;Digital gene not evenly divisible by chosen codon size.&quot;</span>)
+  }
+  
+  output &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;list&quot;</span>, <span class="kw">nchar</span>(string)<span class="op">/</span>nbits)
+  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">0</span><span class="op">:</span>(<span class="kw">nchar</span>(string)<span class="op">/</span>nbits <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)){
+    
+    codon &lt;-<span class="st"> </span><span class="kw">substr</span>(string, i<span class="op">*</span>nbits <span class="op">+</span><span class="st"> </span><span class="dv">1</span>, i<span class="op">*</span>nbits <span class="op">+</span><span class="st"> </span>nbits)
+    output[[i<span class="op">+</span><span class="dv">1</span>]] &lt;-<span class="st"> </span><span class="kw">do.call</span>(how, <span class="kw">list</span>(codon))
+  }
+  
+  <span class="kw">return</span>(output)
+}</code></pre></div>
+<p>Now, we can define the “fitness” function. This will measure the error of each attempted solution. Then, the genetic algorithm will allow the better performing solutions to “reproduce” (with “crossing over”), potentially giving rise to even better solutions. Specifically, our fitness function measures how closely the predicted frequencies match the expected (i.e., desired) frequencies. Here, the expected frequencies correspond to the octave ascending from middle C. Note that we negate the error because genetic algorithms seek to maximize the result of the “fitness” function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fitness &lt;-<span class="st"> </span><span class="cf">function</span>(binary){
+  
+  AA &lt;-<span class="st"> </span><span class="kw">ribosome</span>(binary, <span class="dt">nbits =</span> <span class="dv">16</span>)
+  
+  predicted &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">13</span>, <span class="cf">function</span>(i){
+    <span class="kw">f</span>(AA[[<span class="dv">1</span>]], AA[[<span class="dv">2</span>]] <span class="op">+</span><span class="st"> </span>i<span class="op">*</span><span class="dv">10</span>, <span class="dt">c =</span> <span class="fl">0.01</span>)
+  })
+  
+  expected &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="fl">523.25</span>, <span class="fl">493.88</span>, <span class="fl">466.16</span>, <span class="fl">440.00</span>, <span class="co"># semi-tones</span>
+                <span class="fl">415.30</span>, <span class="fl">392.00</span>, <span class="fl">369.99</span>, <span class="fl">349.23</span>,
+                <span class="fl">329.63</span>, <span class="fl">311.13</span>, <span class="fl">293.66</span>, <span class="fl">277.18</span>,
+                <span class="fl">261.63</span>)
+  
+  error &lt;-<span class="st"> </span><span class="kw">mean</span>((predicted <span class="op">-</span><span class="st"> </span>expected)<span class="op">^</span><span class="dv">2</span>)
+  <span class="kw">return</span>(<span class="op">-</span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>error)
+}</code></pre></div>
+<p>We can now call the genetic algorithm, then plot its performance over time. Here, I’ll run the algorithm for 1000 breeding cycles (although originally I used 50000).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(GA)
+<span class="kw">set.seed</span>(<span class="dv">1</span>)
+res &lt;-<span class="st"> </span><span class="kw">ga</span>(<span class="dt">type =</span> <span class="st">&quot;binary&quot;</span>, <span class="dt">fitness =</span> fitness, <span class="dt">nBits =</span> <span class="dv">32</span>, <span class="dt">maxiter =</span> <span class="dv">1000</span>)
+<span class="kw">plot</span>(res)</code></pre></div>
+<p><img src="algebra-is-for-those-without-algorithms_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Often, genetic algorithms converge on multiple equally good solutions. Let’s view them all.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(res<span class="op">@</span>solution)){
+  <span class="kw">print</span>(<span class="kw">c</span>(<span class="st">&quot;r1&quot;</span> =<span class="st"> </span><span class="kw">ribosome</span>(res<span class="op">@</span>solution[i,], <span class="dt">nbits =</span> <span class="dv">16</span>)[[<span class="dv">1</span>]],
+          <span class="st">&quot;r2&quot;</span> =<span class="st"> </span><span class="kw">ribosome</span>(res<span class="op">@</span>solution[i,], <span class="dt">nbits =</span> <span class="dv">16</span>)[[<span class="dv">2</span>]]))
+}</code></pre></div>
+<pre><code>##  r1  r2 
+## 217  18 
+##  r1  r2 
+## 153  50</code></pre>
+</div>
+<div id="results" class="section level3">
+<h3>Results</h3>
+<p>Using the second set of <span class="math inline">\(R_1\)</span> and <span class="math inline">\(R_2\)</span> values from above, the synthesizer works! Although fixing <span class="math inline">\(R_A\)</span> seems to prevent the model from converging on a perfect solution, the synthesizer only wobbles out of tune by a few cents in each direction. When playing melodies, I do not notice the sharpening or flattening of any notes. Although using a fixed <span class="math inline">\(R_A\)</span> made it much easier to assemble the circuit, a post-hoc evaluation of the predicted frequencies suggests that a fixed <span class="math inline">\(R_A\)</span> might not work for a synthesizer that spans multiple octaves.</p>
+<div class="figure">
+<img src="astable-me.jpg" alt="Figure 1. Me holding a DIY synthesizer tuned to C major." />
+<p class="caption">Figure 1. Me holding a DIY synthesizer tuned to C major.</p>
+</div>
+<div class="figure">
+<img src="astable.jpg" alt="Figure 2. The 555 timer circuit in astable mode." />
+<p class="caption">Figure 2. The 555 timer circuit in astable mode.</p>
+</div>
+<p><br></p>
+</div>
+
+<div style="position: relative">
+  <p style="position: relative; bottom: 0; width:100%; text-align: center; font-size: small">
+    &copy; 2019 | <a href="mailto:thom@tpq.me">thom@tpq.me</a> |
+    <a href="http://twitter.com/tpq__">Twitter</a> |
+    <a href="http://github.com/tpq"> GitHub</a>
+  </p>
+</div>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

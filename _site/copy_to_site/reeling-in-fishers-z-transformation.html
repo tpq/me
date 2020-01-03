@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Reeling in Fisher’s Z Transformation</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+<link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #0000ff; } /* Keyword */
+code > span.ch { color: #008080; } /* Char */
+code > span.st { color: #008080; } /* String */
+code > span.co { color: #008000; } /* Comment */
+code > span.ot { color: #ff4000; } /* Other */
+code > span.al { color: #ff0000; } /* Alert */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #008000; font-weight: bold; } /* Warning */
+code > span.cn { } /* Constant */
+code > span.sc { color: #008080; } /* SpecialChar */
+code > span.vs { color: #008080; } /* VerbatimString */
+code > span.ss { color: #008080; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { } /* Variable */
+code > span.cf { color: #0000ff; } /* ControlFlow */
+code > span.op { } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #ff4000; } /* Preprocessor */
+code > span.do { color: #008000; } /* Documentation */
+code > span.an { color: #008000; } /* Annotation */
+code > span.cv { color: #008000; } /* CommentVar */
+code > span.at { } /* Attribute */
+code > span.in { color: #008000; } /* Information */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">THOM QUINN</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="about-me.html">ABOUT ME</a>
+</li>
+<li>
+  <a href="curriculum-vitae.html">C.V.</a>
+</li>
+<li>
+  <a href="musings.html">MUSINGS</a>
+</li>
+<li>
+  <a href="fiction.html">POETRY</a>
+</li>
+<li>
+  <a href="prints.html">ALT. PHOTOGRAPHY</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Reeling in Fisher’s Z Transformation</h1>
+
+</div>
+
+
+<div id="a-fisher-to-fry" class="section level3">
+<h3>A Fisher to fry</h3>
+<p>I write now as a premise to another project rooted in the construction of an empiric distribution for a novel measure of dependence. For my own sake, I set out here to evaluate Fisher’s hypothesis that the <em>inverse hyperbolic tangent</em> of a sample correlation coefficient, <span class="math inline">\(r\)</span>, follows a normal distribution with a population mean equal to the similarly transformed population correlation coefficient, and a sampling error equal to <span class="math inline">\(\frac{1}{\sqrt{N-3}}\)</span>.</p>
+<p>This transformation, known as the <a href="https://en.wikipedia.org/wiki/Fisher_transformation">Fisher z-transformation</a>, makes it possible to use correlation coefficients within a conventional hypothesis testing framework by providing a way to calculate standard error using only a point estimate (i.e., the sample correlation coefficient) and the sample size. In this way, it offers an elegant means by which to effortlessly apply well-described statistical methods to correlation-based studies.</p>
+<p>In this report, I demonstrate empirically that (1) the z-transformation of a distribution of sample correlation coefficients has a normal distribution, and (2) the standard error about that distribution approximately equals <span class="math inline">\(\frac{1}{\sqrt{N-3}}\)</span>. Although not discussed further, do take note that Fisher’s hypothesis presupposes that the two correlated variables are independent and follow a bivariate normal distribution.</p>
+</div>
+<div id="it-begins-with-the-first-step" class="section level3">
+<h3>It begins with the first step</h3>
+<p>We begin by calculating the correlation between two randomly distributed <span class="math inline">\(N\)</span>-sized vectors, <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">N &lt;-<span class="st"> </span><span class="dv">1000</span>
+X &lt;-<span class="st"> </span><span class="kw">rnorm</span>(N)
+Y &lt;-<span class="st"> </span><span class="kw">rnorm</span>(N)
+<span class="kw">cor</span>(X, Y)</code></pre></div>
+<pre><code>## [1] 0.0106989</code></pre>
+<p>Yet, a single correlation coefficient is not sufficient to put Fisher’s z-transformation to the test. Instead, we must establish a distribution of correlation coefficients. For this, we replicate the above code chunk an arbitrarily large number of times to build a sample set of correlation coefficients between 5000 pairs of <span class="math inline">\(N\)</span>-sized vectors.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">N &lt;-<span class="st"> </span><span class="dv">1000</span>
+res &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="kw">rep</span>(N, <span class="dv">5000</span>), <span class="cf">function</span>(N) <span class="kw">cor</span>(<span class="kw">rnorm</span>(N), <span class="kw">rnorm</span>(N)))</code></pre></div>
+<p>To apply Fisher’s z-transformation, we simply calculate <span class="math inline">\(atanh(r)\)</span> for this sample set of correlation coefficients, yielding a normal distribution of sample statistics. The Shapiro-Wilk normality test confirms that these z-transformed data follow a normal distribution.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">density</span>(<span class="kw">atanh</span>(res)))</code></pre></div>
+<p><img src="reeling-in-fishers-z-transformation_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">shapiro.test</span>(<span class="kw">atanh</span>(res))</code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  atanh(res)
+## W = 0.99969, p-value = 0.6889</code></pre>
+<p>Finally, since the <em>standard error</em> of a statistic is defined as the <em>standard deviation of the sampling distribution</em> of that statistic, we would expect that the standard deviation of these z-transformed data approximately equals <span class="math inline">\(\frac{1}{\sqrt{N-3}}\)</span>. In other words, the empiric standard error should approximate the predicted standard error.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sd</span>(<span class="kw">atanh</span>(res))</code></pre></div>
+<pre><code>## [1] 0.03163743</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span><span class="op">/</span>(<span class="kw">sqrt</span>(N<span class="dv">-3</span>))</code></pre></div>
+<pre><code>## [1] 0.03167032</code></pre>
+</div>
+<div id="one-size-to-fit-them-all" class="section level3">
+<h3>One size to fit them all</h3>
+<p>Everything checks out so far, but does Fisher’s z-transformation rule hold true for all <span class="math inline">\(N\)</span>-sized vectors? To test this, we embed the code that calculates correlation between 5000 pairs of <span class="math inline">\(N\)</span>-sized vectors within a loop that iterates across several values of <span class="math inline">\(N\)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">N.all &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from =</span> <span class="dv">100</span>, <span class="dt">to =</span> <span class="dv">1000</span>, <span class="dt">by =</span> <span class="dv">100</span>)
+distrs &lt;-
+<span class="st">  </span><span class="kw">lapply</span>(N.all,
+         <span class="cf">function</span>(N){
+           
+           <span class="kw">sapply</span>(<span class="kw">rep</span>(N, <span class="dv">5000</span>), <span class="cf">function</span>(N) <span class="kw">cor</span>(<span class="kw">rnorm</span>(N), <span class="kw">rnorm</span>(N)))
+         })</code></pre></div>
+<p>Using this result, we can calculate both the empiric standard error and the predicted standard error for all <span class="math inline">\(N\)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sd.empiric &lt;-<span class="st"> </span><span class="kw">sapply</span>(distrs, <span class="cf">function</span>(d) <span class="kw">sd</span>(<span class="kw">atanh</span>(d)))
+sd.predict &lt;-<span class="st"> </span><span class="kw">sapply</span>(N.all, <span class="cf">function</span>(N) <span class="dv">1</span><span class="op">/</span>(<span class="kw">sqrt</span>(N<span class="dv">-3</span>)))</code></pre></div>
+<p>Finally, we compare these quantitatively by calculating the mean of the percent difference between them.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(<span class="kw">abs</span>(sd.empiric <span class="op">-</span><span class="st"> </span>sd.predict)<span class="op">/</span>sd.predict<span class="op">*</span><span class="dv">100</span>)</code></pre></div>
+<pre><code>## [1] 0.9554196</code></pre>
+</div>
+<div id="positively-certain" class="section level3">
+<h3>Positively certain</h3>
+<p>Now, all that is left to do is convince myself that the approximate equality between the empiric standard error and the predicted standard error is not just an artifact of the distribution of the random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>. To do this, we apply the pipeline established above to two positively correlated random variables. First, however, we need to define a function that creates the two positively correlated random variables, <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, containing <span class="math inline">\(N\)</span> elements each, and then calculates the correlation between them.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">newCor &lt;-<span class="st"> </span><span class="cf">function</span>(N){
+  
+  v &lt;-<span class="st"> </span><span class="kw">rnorm</span>(N, <span class="dt">mean =</span> <span class="dv">10</span>)
+  X &lt;-<span class="st"> </span>v <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(N, <span class="dt">sd =</span> <span class="fl">0.25</span>)
+  Y &lt;-<span class="st"> </span>v <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(N, <span class="dt">sd =</span> <span class="fl">0.25</span>)
+  <span class="kw">cor</span>(X, Y)
+}</code></pre></div>
+<p>Using this formula, we now have a tidy way of generating a distribution of positive correlation coefficients.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">N &lt;-<span class="st"> </span><span class="dv">1000</span>
+res &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="kw">rep</span>(N, <span class="dv">5000</span>), newCor)</code></pre></div>
+<p>Again, the Shapiro-Wilk normality test confirms that the z-transformed data follow a normal distribution.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">density</span>(<span class="kw">atanh</span>(res)))</code></pre></div>
+<p><img src="reeling-in-fishers-z-transformation_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">shapiro.test</span>(<span class="kw">atanh</span>(res))</code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  atanh(res)
+## W = 0.99961, p-value = 0.4322</code></pre>
+<p>Next, we generate a distribution of positive correlations between two <span class="math inline">\(N\)</span>-sized random variables across a range of <span class="math inline">\(N\)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">N.all &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">100</span>)
+distrs &lt;-
+<span class="st">  </span><span class="kw">lapply</span>(N.all,
+         <span class="cf">function</span>(N){
+           
+           <span class="kw">sapply</span>(<span class="kw">rep</span>(N, <span class="dv">5000</span>), newCor)
+         })</code></pre></div>
+<p>As above, we compare the empiric standard error with the predicted standard error…</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sd.empiric &lt;-<span class="st"> </span><span class="kw">sapply</span>(distrs, <span class="cf">function</span>(d) <span class="kw">sd</span>(<span class="kw">atanh</span>(d)))
+sd.predict &lt;-<span class="st"> </span><span class="kw">sapply</span>(N.all, <span class="cf">function</span>(N) <span class="dv">1</span><span class="op">/</span>(<span class="kw">sqrt</span>(N<span class="dv">-3</span>)))
+<span class="kw">mean</span>(<span class="kw">abs</span>(sd.empiric <span class="op">-</span><span class="st"> </span>sd.predict)<span class="op">/</span>sd.predict<span class="op">*</span><span class="dv">100</span>)</code></pre></div>
+<pre><code>## [1] 0.8095219</code></pre>
+<p>…and breathe a sigh of relief.</p>
+<p><br></p>
+</div>
+
+<div style="position: relative">
+  <p style="position: relative; bottom: 0; width:100%; text-align: center; font-size: small">
+    &copy; 2019 | <a href="mailto:thom@tpq.me">thom@tpq.me</a> |
+    <a href="http://twitter.com/tpq__">Twitter</a> |
+    <a href="http://github.com/tpq"> GitHub</a>
+  </p>
+</div>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

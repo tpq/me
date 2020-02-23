@@ -226,6 +226,10 @@ Lee SC+, **Quinn TP+**, et al., & Nguyen T. 2018. Solving for X: evidence for se
 
 ### Other Publications
 
+Bruxel EM, Moreira-Maia CR, Akutagava-Martins GC, **Quinn TP**, et al., & Hutz MH. 2020. Meta-analysis and systematic review of ADGRL3 (LPHN3) polymorphisms in ADHD susceptibility. Molecular Psychiatry (2020). http://doi.org/10.1038/s41380-020-0673-0.
+
+Nguyen T, Le H, **Quinn TP**, Le TD, & Venkatesh S. 2020. Predicting drug–target binding affinity with graph neural networks. bioRxiv 684662. http://doi.org/10.1101/684662.
+
 Nguyen T, Lee SC, **Quinn TP**, et al., & Le TD. 2019. Personalized Annotation-based Networks (PAN) for the Prediction of Breast Cancer Relapse. bioRxiv 534628. http://doi.org/10.1101/534628.
 
 Allnutt TR, Wade B, **Quinn TP**, Richardson MF, & Crowley TM. 2018. Shortlisting Aptamer Candidates from HT-SELEX data. Aptamers 2. http://japtamers.co.uk/shortlisting-aptamer-candidates-from-ht-selex-data.

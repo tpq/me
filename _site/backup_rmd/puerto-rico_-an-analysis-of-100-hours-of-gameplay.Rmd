@@ -1,0 +1,291 @@
+---
+title: "Puerto Rico: an Analysis of 100 Hours of Gameplay"
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(cache = TRUE)
+```
+
+### An American tradition
+
+Since moving to Australia, I have made it a point to stay connected with friends back home. For two of my old gaming buddies, we catch up regularly for a chat over a round of Puerto Rico, a resource management board game by Andreas Seyfarth. We play online through [Board Game Arena](https://en.boardgamearena.com/), a free platform that provides a clean interface for dozens of board games.
+
+As a coding project, I wrote a module in Python to scrape and parse logs from each of our games. Using this module, I retrieved data for (most) games played between the players 'buzzsnuzz' (me), 'Airjoe' (Joseph), and 'pmac135' (Patrick), excepting those that used expansion cards (or otherwise failed to download). This blog post is dedicated to these two who, being data fiends like myself, I hope will enjoy reading these results as much as I enjoyed generating them.
+
+### A game of quarry rock and roles
+
+The retrieved data exist in two parts. The first part is simple, listing which roles were called (and by whom). The second part is comprehensive, listing what pieces each player acquired on each turn. Here, we import the first part of the data.
+
+```{r, echo = FALSE, eval = TRUE}
+rm(list = ls())
+files <- list.files("/home/thom/Dropbox/R/projects/tpq/me/data/", full.names = TRUE)
+files.turns <- files[grepl("bga[0-9]+\\.csv", files)]
+```
+
+```{r, echo = TRUE, eval = FALSE}
+files <- list.files("data/", full.names = TRUE)
+files.turns <- files[grepl("bga[0-9]+\\.csv", files)]
+```
+
+How many games have we played?
+
+```{r}
+length(files.turns)
+```
+
+Each round, every player has a turn. How many turns are in a full game?
+
+```{r}
+library(yuck)
+turns <- lapply(files.turns, read.csv)
+players := for(turn in turns) t(turn)[2,,drop=FALSE]
+roles := for(turn in turns) t(turn)[1,,drop=FALSE]
+table("Turns" = sapply(roles, length))
+```
+
+Each turn, a player selects a role. Which roles are most popular?
+
+```{r}
+table("Role" = unlist(roles))
+```
+
+How does the popularity of each role change over time?
+
+```{r, warning = FALSE}
+rolesm := for(turn in roles) as.data.frame(turn)
+rolesm <- plyr::rbind.fill(rolesm)
+colnames(rolesm) <- paste0("Turn", 1:ncol(rolesm))
+rownames(rolesm) <- paste0("Game", 1:nrow(rolesm))
+df.r <- reshape2::melt(t(rolesm))
+colnames(df.r) <- c("Turn", "Game", "Role")
+df.r <- ggplot2::remove_missing(df.r)
+library(ggplot2)
+ggplot(df.r, aes(x = Turn, fill = Role)) + facet_wrap(~Role) +
+  geom_histogram(stat = "count") +
+  scale_fill_brewer(palette = "Set2") + theme_bw() +
+  xlab("Turn") + ylab("Frequency")
+```
+
+Which roles tend to follow other roles? Note, the number nearest the node indicates the outgoing probability.
+
+```{r, message = FALSE}
+library(markovchain)
+mcFit <- markovchainFit(sapply(roles, as.vector))
+plot(mcFit$estimate, col = "blue")
+```
+
+Which roles tend to follow other roles? Note, rows indicate the first state.
+
+```{r}
+mc <- mcFit$estimate@transitionMatrix
+mc
+```
+
+What is the most common transition for each role?
+
+```{r}
+L <- apply(mc, 1, function(x) rownames(mc)[which.max(x)])
+L := for(l in 1:length(L)) paste(names(L)[l], "->", L[l])
+L
+```
+
+### The winning positioned here
+
+Now, we import the second part of the data. We have one file per player per game.
+
+```{r}
+files.a <- files[grepl("Airjoe.csv", files)]
+data.a <- lapply(files.a, read.csv)
+files.t <- files[grepl("buzzsnuzz.csv", files)]
+data.t <- lapply(files.t, read.csv)
+files.p <- files[grepl("pmac135.csv", files)]
+data.p <- lapply(files.p, read.csv)
+```
+
+First, let us calculate the winners for each game (and their score).
+
+```{r}
+which.median <- function(x) (which(x == median(x)))[1]
+vp.a <- sapply(data.a, function(d) sum(colSums(d[, grepl("vp_", colnames(d))])))
+vp.t <- sapply(data.t, function(d) sum(colSums(d[, grepl("vp_", colnames(d))])))
+vp.p <- sapply(data.p, function(d) sum(colSums(d[, grepl("vp_", colnames(d))])))
+vp.atp <- data.frame(vp.a, vp.t, vp.p)
+Winner <- c("Airjoe", "buzzsnuzz", "pmac135")[apply(vp.atp, 1, which.max)]
+LoserM <- c("Airjoe", "buzzsnuzz", "pmac135")[apply(vp.atp, 1, which.median)]
+Loser <- c("Airjoe", "buzzsnuzz", "pmac135")[apply(vp.atp, 1, which.min)]
+```
+
+What player wins most often?
+
+```{r}
+table("Player" = Winner)
+```
+
+What is the spread?
+
+```{r, message = FALSE}
+gameorder <- order(as.numeric(gsub("(bga)|(\\.csv)", "", basename(files.turns))))
+s.atp <- apply(vp.atp, 1, function(x) x - median(x))
+rownames(s.atp) <- c("Airjoe", "buzzsnuzz", "pmac135")
+df.s <- reshape2::melt(t(s.atp))
+ggplot(df.s, aes(x = Var1, y = value, fill = Var2)) + geom_bar(stat = "identity") +
+  scale_fill_brewer(palette = "Set2") + theme_bw() +
+  xlab("Game") + ylab("Spread from Median") + labs(fill = "Player")
+```
+
+A game can change a lot depending on player order. Do some positions have an advantage?
+
+```{r}
+turn := for(turn in turns) t(turn)[2,1:3,drop=FALSE]
+WinnerPos := for(i in 1:length(turn)) which(turn[[i]] %in% Winner[i])
+table("Position" = WinnerPos)
+```
+
+How does position affect each player?
+
+```{r}
+table("Position" = WinnerPos, "Player" = Winner)
+```
+
+### Of yearnings and earnings
+
+For statistical modeling and visualization, we want the data in long format. Here, we convert a list of matrices into one very large matrix. You can download this data set [here](data/pr-frequency.csv).
+
+```{r}
+gameid <- sapply(strsplit(basename(files.a), "-"), function(f) f[1])
+data <- lapply(1:length(data.a), function(i){
+  data.frame(
+    "game" = gameid[i],
+    do.call("rbind",
+            list(
+              data.frame("name" = "Airjoe",
+                         "pos" = grep("Airjoe", players[[i]])[1],
+                         data.a[[i]]),
+              data.frame("name" = "buzzsnuzz",
+                         "pos" = grep("buzzsnuzz", players[[i]])[1],
+                         data.t[[i]]),
+              data.frame("name" = "pmac135",
+                         "pos" = grep("pmac135", players[[i]])[1],
+                         data.p[[i]])
+            )))})
+df <- do.call("rbind", data)
+df$vp <- df$vp_ship + df$vp_harbor + df$vp_bld + df$vp_bonus
+```
+
+The data above describe what pieces were acquired on each turn. However, we more often want to know whether a piece is held on a given turn. This means that we should arrange the data by the cumulative sum (per player per game). We do this with `aggregate` (followed by `lapply` to unnest the results). You can download this data set [here](data/pr-cumsum.csv).
+
+```{r}
+df.cumsum <- aggregate(. ~ game + name + pos, df, FUN = cumsum)
+df.cs <- lapply(1:nrow(df.cumsum), function(row){
+  df.i <- do.call(data.frame, df.cumsum[row,])
+  names(df.i) <- names(df.cumsum)
+  data.frame("X" = 1:nrow(df.i), df.i)
+})
+df.cs <- do.call("rbind", df.cs)
+```
+
+Now, we can easily visualize the average number of victory points (VP) earned over the course of a game for each player. We know that starting position can influence game outcomes, so we will separate the trends based on this factor.
+
+```{r}
+df.m <- aggregate(vp ~ name + X + pos, df.cs, mean)
+ggplot(df.m, aes(x = X, y = vp, col = factor(pos))) + facet_grid(~name) +
+  geom_line() + scale_fill_brewer(palette = "Set2") + theme_bw() +
+  xlab("Turn") + ylab("VP Earned (Average)") + labs(col = "Position")
+```
+
+We can also visualize how ownership of a building changes the rate of VP earnings (as further broken down by player and position). For example, we see below how ownership of the "Harbor" building can yield more VP.
+
+```{r}
+df.m <- aggregate(vp ~ name + X + pos + harbor, df.cs, mean)
+ggplot(df.m, aes(x = X, y = vp, col = factor(harbor))) + facet_grid(pos~name) +
+  geom_line() + scale_fill_brewer(palette = "Set2") + theme_bw() +
+  xlab("Turn") + ylab("VP Earned (Average)") + labs(col = "Harbor Ownership")
+```
+
+### Weighing in on the game
+
+As an analyst and player, I want to know which buildings provide the most value in terms of VP earnings. One way to assess this is by fitting a linear model to VP earnings, and then comparing the weight of the coefficients for each building. By modeling turn order as a covariate (labeled as "X"), the coefficients of the linear model should estimate how well building ownership correlates with VP earnings while adjusting for the natural course of the game.
+
+```{r}
+fit <- lm(vp ~ . + 0, df.cs[, c(1, 26:49)])
+coefTotal <- t(t(coefficients(fit)))
+colnames(coefTotal) <- "Weight"
+round(coefTotal, 2)
+```
+
+How does the value of buildings (in terms of VP earnings) change for each player?
+
+```{r}
+coefPerP <- lapply(unique(df.cs$name), function(name){
+  fit <- lm(vp ~ . + 0, df.cs[df.cs$name == name, c(1, 26:49)])
+  data.frame(name, t(coefficients(fit)))
+})
+coefPerP <- t(do.call("rbind", coefPerP)[,-1])
+colnames(coefPerP) <- unique(df.cs$name)
+round(coefPerP, 2)
+```
+
+How does the value of buildings (in terms of VP earnings) change for each player in first position?
+
+```{r}
+df.cs$np <- paste0(df.cs$name, "-", df.cs$pos)
+coefPerNP <- lapply(unique(df.cs$np), function(np){
+  fit <- lm(vp ~ . + 0, df.cs[df.cs$np == np, c(1, 26:49)])
+  data.frame(np, t(coefficients(fit)))
+})
+coefPerNP <- t(do.call("rbind", coefPerNP)[,-1])
+colnames(coefPerNP) <- unique(df.cs$np)
+round(coefPerNP, 2)[,1:3]
+```
+
+How does the value of buildings (in terms of VP earnings) change for each player in second position?
+
+```{r}
+round(coefPerNP, 2)[,4:6]
+```
+
+How does the value of buildings (in terms of VP earnings) change for each player in third position?
+
+```{r}
+round(coefPerNP, 2)[,7:9]
+```
+
+The linear models above implicitly assume that the ownership of each building contributes independently to VP earned. However, we might expect that the joint ownership of some building pairs could contribute more toward VP earnings than the ownernship of either building individually. We can estimate the synergistic value of joint ownership by fitting another linear model that considers the interaction effect between building ownership. For this, we fit 529 linear models (i.e., for all pairs of 23 buildings), wherein we replace each pair of two-level factors (i.e., ownership of building A or B as binary states) with a four-level factor (i.e., ownership of neither, the first, the second, or both). As above, we include turn order as a covariate. However, because we fit a separate model for each building pair, we should fix the turn order coefficient (chosen as 0.58 from above) to keep results comparable across the 529 models.
+
+```{r}
+df.b <- df.cs[, c(1, 26:49)]
+buildings <- names(df.b)[2:(length(df.b)-1)]
+outer <- lapply(buildings, function(b1){
+  inner <- lapply(buildings, function(b2){
+    form <- as.formula(paste0("vp ~ ", b1, " * ", b2, " + offset(I(0.58 * X)) + 0"))
+    fit <- lm(form, df.b)
+    coefTotal <- t(coefficients(fit))
+    if(b1 == b2){
+      colnames(coefTotal) <- "X11"
+    }else{
+      colnames(coefTotal) <- c("X10", "X01", "X11")
+    }
+    data.frame("A" = b1, "B" = b2, coefTotal)
+  })
+  do.call(plyr::rbind.fill, inner)
+})
+interactions <- do.call(plyr::rbind.fill, outer)
+```
+
+Here, the coefficient "X11" represents the benefit of joint ownership (i.e., the value added beyond owning each building individually "X10" and "X01"). As such, we can conceive of "X11" as a kind of synergy score which describes the amount of VP earned by owning both buildings together that is not simply explained by owning them separately.
+
+```{r}
+df.i <- reshape2::melt(interactions[,c("A", "B", "X11")])
+df.i$valuecut <- cut(df.i$value, seq(-25, 25, 5))
+ggplot(df.i, aes(x = B, y = A, fill = valuecut)) + geom_tile() +
+  scale_fill_brewer(palette = "Set2") + theme_bw() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  xlab("Building") + ylab("Building") + labs(fill = "VP Earned") +
+  ggtitle("The Synergy of Joint Building Ownership")
+```
+
+### Final remarks
+
+I have gained a few insights from this analysis, but will leave it to the reader to draw their own conclusions. However, I wish to say that I am a big fan of interpreting linear model weights directly, and I think this use case provides a good example of how coefficients can simplify the interpretation of multi-dimensional data. Still, these weights carry with them the age old problem of *post hoc ergo propter hoc*. This analysis only tells us whether building ownership correlates with VP earnings (and not whether it is causal). It is always possible that players who are not earning VP acquire certain buildings because they are already in a rut!
+
+<br>

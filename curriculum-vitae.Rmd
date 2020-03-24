@@ -190,6 +190,10 @@ NAR Genomics and Bioinformatics
 
 ### Lead Author Publications
 
+**Quinn TP** & Erb I. 2020. Amalgams: data-driven amalgamation for the reference-free dimensionality reduction of zero-laden compositional data. bioRxiv 968677. http://doi.org/10.1101/2020.02.27.968677.
+
+Beykikhoshk A+, **Quinn TP+**, Lee SC, Tran T, & Venkatesh S. 2020. DeepTRIAGE: Interpretable and Individualised Biomarker Scores using Attention Mechanism for the Classification of Breast Cancer Sub-types. BMC Medical Genomics 13(20). http://doi.org/10.1186/s12920-020-0658-5.
+
 **Quinn TP** & Erb I. 2019. Another look at microbe–metabolite interactions: how scale invariant correlations can outperform a neural network. bioRxiv 847475. http://doi.org/10.1101/847475.
 
 Harikumar H+, **Quinn TP+**, Rana S, Gupta S, & Venkatesh S. 2019. A random walk down personalized single-cell networks: predicting the response of any gene to any drug for any patient. bioRxiv 837807. http://doi.org/10.1101/837807.
@@ -205,8 +209,6 @@ Le V+, **Quinn TP+**, Tran T, & Venkatesh S. 2019. Deep in the Bowel: Highly Int
 **Quinn TP+**, Lee SC+, Venkatesh S, & Nguyen T. 2019. Improving the classification of neuropsychiatric conditions using gene ontology terms as features. American Journal of Medical Genetics B Neuropsychiatric Genetics 180(7):508-18. http://doi.org/10.1002/ajmg.b.32727.
 
 **Quinn TP** & Erb I. 2019. Using balances to engineer features for the classification of health biomarkers: a new approach to balance selection. bioRxiv 600122. http://doi.org/10.1101/600122.
-
-Beykikhoshk A+, **Quinn TP+**, Lee SC, Tran T, & Venkatesh S. 2019. DeepTRIAGE: Interpretable and Individualised Biomarker Scores using Attention Mechanism for the Classification of Breast Cancer Sub-types. bioRxiv 533406. http://doi.org/10.1101/533406.
 
 Lee SC+, **Quinn TP+**, et al., & Nguyen T. 2018. Solving for X: evidence for sex-specific autism biomarkers across multiple transcriptomic studies. American Journal of Medical Genetics B Neuropsychiatric Genetics 180(6):377-89. http://doi.org/10.1002/ajmg.b.32701.
 

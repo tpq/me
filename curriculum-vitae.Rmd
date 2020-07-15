@@ -1,20 +1,21 @@
 ---
 title: "Curriculum Vitae"
+output: pdf_document
 ---
 
 ### Education
 
 ## PhD
 
-###### **Deakin University:** September 2016 to present
+###### **Deakin University:** September 2016 to July 2020
 
-###### Thesis submitted for a Doctor of Philosophy with a concentration in bioinformatics and medical genomics
+###### Graduated with a Doctor of Philosophy, with a thesis titled "Understanding sequencing data as compositions"
 
 ## MD
 
 ###### **SUNY Upstate Medical University:** August 2011 to May 2016
 
-###### Graduated with a Medicinae Doctor, devoting credited hours to research in bioinformatics and medical genomics
+###### Graduated with a Medicinae Doctor, with credited research hours in bioinformatics and medical genomics
 
 ## BS
 
@@ -156,7 +157,15 @@ title: "Curriculum Vitae"
 
 ### Presentations
 
-**Quinn TP**. May 2020. The microbiome as compositions: a methodological survey. Invited talk presented at San Diego State University.
+**Quinn TP**. July 2020. DeepCoDA: Personalized Interpretability for Compositional Health Data. Invited talk presented at ICML 2020 in Vienna, Austria (online delivery).
+
+**Quinn TP**. July 2020. On Compositions and Deep Learning. Invited talk presented at Monash Bioinformatics Seminar Series in Melbourne, Australia (online delivery).
+
+**Quinn TP**. June 2020. DeepCoDA: Personalized Interpretability for Compositional Health Data. Invited talk presented at Gen(e)quality "Demystifying 'omic' Risk Scores" workshop in Geelong, Australia (online delivery).
+
+**Quinn TP**. June 2020. Risk Prediction: An Introduction. Invited talk presented at Gen(e)quality "Demystifying 'omic' Risk Scores" workshop in Geelong, Australia (online delivery).
+
+**Quinn TP**. May 2020. The microbiome as compositions: a methodological survey. Invited talk presented at San Diego State University in San Diego, California (online delivery).
 
 **Quinn TP**. December 2019. Deep in the Bowel: Highly Interpretable Neural Encoder-Decoder Networks Predict Gut Metabolites from Gut Microbiome. Invited talk presented at Joint GIW/ABACBS 2019 in Sydney, Australia.
 
@@ -191,6 +200,8 @@ NAR Genomics and Bioinformatics
 <br>
 
 ### Lead Author Publications
+
+**Quinn TP+**, Nguyen D+, Rana S, Gupta S, & Venkatesh S. 2020. DeepCoDA: personalized interpretability for compositional health data. ICML 2020 (A* conference, acceptance rate = 21.8%). http://arxiv.org/abs/2006.01392.
 
 Loughman A+, **Quinn TP+**, et al., & Tang ML. 2020. Infant microbiota in colic: predictive associations with problem crying and subsequent child behavior. Journal of Developmental Origins of Health and Disease. Online ahead of print. http://doi.org/10.1017/S2040174420000227.
 
@@ -251,5 +262,9 @@ Tylee DS, Hess JL, **Quinn TP**, et al., & Glatt SJ. 2016. Blood transcriptomic 
 Bichindaritz IB, Cole E, et al., & **Quinn TP**. 2016. Machine Learning Based Automatic Multilevel Stress Detection from ECG Signals. IJCAI 2016: Workshop on Knowledge Discovery in Healthcare Data. http://sites.google.com/site/ijcai2016kdhealth/accepted-papers.
 
 Hess JL, **Quinn TP**, Akbarian S, & Glatt SJ. 2015. Bioinformatic analyses and conceptual synthesis of evidence linking ZNF804A to risk for schizophrenia and bipolar disorder. American Journal of Medical Genetics B Neuropsychiatric Genetics 168(1):14-35. http://dx.doi.org/10.1002/ajmg.b.32284.
+
+### Funding
+
+Project: "How does the gut microbiome contribute to individual responses to psychobiotics?". Provisioner: Deakin IMPACT Seed Fund. Award: $15,000. Role: AI. Contribution: Design and implementation of statistical and machine learning analyses.
 
 <br>

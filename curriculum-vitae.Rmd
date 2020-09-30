@@ -115,13 +115,17 @@ output: pdf_document
 
 ### Community engagement
 
+##### **ABACBS:** October 2020
+
+###### Reviewed abstracts as part of the ABACBS 2020 Program Committee.
+
 ##### **Geelong Hacky Hour:** October 2017 to October 2019
 
 ###### Co-founder of the Geelong Hacky Hour chapter where researchers help other researchers learn to program.
 
-##### **ABACBS & COMBINE:** October 2018
+##### **COMBINE:** October 2018
 
-###### Reviewed abstracts as part of the ABACBS & COMBINE 2018 Program Committee.
+###### Reviewed abstracts as part of the COMBINE 2018 Program Committee.
 
 ##### **NAR Genomics and Bioinformatics:** December 2019 to present
 
@@ -130,6 +134,8 @@ output: pdf_document
 <br>
 
 ### Awards and scholarships
+
+2020 Shortlisted for Alfred Deakin Medal for Doctoral Thesis
 
 2019 People's Choice Award for Outstanding Talk at Joint GIW/ABACBS 2019
 
@@ -157,7 +163,9 @@ output: pdf_document
 
 ### Presentations
 
-**Quinn TP**. July 2020. DeepCoDA: Personalized Interpretability for Compositional Health Data. Invited talk presented at ICML 2020 in Vienna, Austria (online delivery).
+**Quinn TP**. September 2020. Risk Prediction: An Introduction. Invited talk presented at Victoria University Bioinformatics Seminar in Melbourne, Australia (online delivery).
+
+**Quinn TP**. July 2020. DeepCoDA: Personalized Interpretability for Compositional Health Data. Accepted talk presented at ICML 2020 in Vienna, Austria (online delivery).
 
 **Quinn TP**. July 2020. On Compositions and Deep Learning. Invited talk presented at Monash Bioinformatics Seminar Series in Melbourne, Australia (online delivery).
 
@@ -167,21 +175,23 @@ output: pdf_document
 
 **Quinn TP**. May 2020. The microbiome as compositions: a methodological survey. Invited talk presented at San Diego State University in San Diego, California (online delivery).
 
-**Quinn TP**. December 2019. Deep in the Bowel: Highly Interpretable Neural Encoder-Decoder Networks Predict Gut Metabolites from Gut Microbiome. Invited talk presented at Joint GIW/ABACBS 2019 in Sydney, Australia.
+**Quinn TP**. December 2019. Deep in the Bowel: Highly Interpretable Neural Encoder-Decoder Networks Predict Gut Metabolites from Gut Microbiome. Accepted talk presented at Joint GIW/ABACBS 2019 in Sydney, Australia.
 
-**Quinn TP**. December 2019. DeepTRIAGE: Interpretable and Individualised Biomarker Scores using Attention Mechanism for the Classification of Breast Cancer Sub-types. Invited talk presented at Joint GIW/ABACBS 2019 in Sydney, Australia.
+**Quinn TP**. December 2019. DeepTRIAGE: Interpretable and Individualised Biomarker Scores using Attention Mechanism for the Classification of Breast Cancer Sub-types. Accepted talk presented at Joint GIW/ABACBS 2019 in Sydney, Australia.
 
-**Quinn TP**. June 2019. Using balances to engineer features for the classification of health biomarkers: a new approach to balance selection. Invited talk presented at CoDaWork 2019 in Terrassa, Spain.
+**Quinn TP**. June 2019. Using balances to engineer features for the classification of health biomarkers: a new approach to balance selection. Accepted talk presented at CoDaWork 2019 in Terrassa, Spain.
 
 **Quinn TP**. March 2019. A practical guide to (supervised) machine learning using the exprso R package. Invited talk presented at Deakin University in Geelong, Victoria.
 
 **Quinn TP**. October 2018. Understanding sequencing data as compositions: theory and application. Invited talk presented at Centre for Genomic Regulation in Barcelona, Spain.
 
-**Quinn TP**. October 2017. A compositionally valid pipeline for any-omics data. Invited talk presented at Australasian Genomic Technologies Association in Hobart, Tasmania.
+**Quinn TP**. October 2017. A compositionally valid pipeline for any-omics data. Accepted talk presented at Australasian Genomic Technologies Association in Hobart, Tasmania.
 
 <br>
 
 ### Peer-review contributions
+
+[Publons](https://publons.com/researcher/1557877/thom-quinn/)
 
 Wellcome Trust
 
@@ -197,9 +207,19 @@ Applied Computing and Geosciences
 
 NAR Genomics and Bioinformatics
 
+PLoS Computational Biology
+
 <br>
 
 ### Lead Author Publications
+
+**Quinn TP**, Le V, & Cardilini APA. 2020. Test Set Verification Is An Essential Step in Model Building. Methods in Ecology and Evolution. Forum Article. http://doi.org/10.1111/2041-210X.13495.
+
+**Quinn TP**, Senadeera M, Jacobs S, Coghlan S, & Le V. 2020. Trust and Medical AI: The challenges we face and the expertise needed to overcome them. arXiv. http://arxiv.org/abs/2008.07734.
+
+Le V+, **Quinn TP+**, Tran T, & Venkatesh S. 2020. Deep in the Bowel: Highly Interpretable Neural Encoder-Decoder Networks Predict Gut Metabolites from Gut Microbiome. BMC Genomics 21(256). http://doi.org/10.1186/s12864-020-6652-7.
+
+**Quinn TP**, Nguyen D, Nguyen P, Gupta S, & Venkatesh S. 2020. Learning distance-dependent motif interactions: an interpretable CNN model of genomic events. bioRxiv 270967. http://doi.org/10.1101/2020.08.27.270967.
 
 **Quinn TP+**, Nguyen D+, Rana S, Gupta S, & Venkatesh S. 2020. DeepCoDA: personalized interpretability for compositional health data. ICML 2020 (A* conference, acceptance rate = 21.8%). http://arxiv.org/abs/2006.01392.
 
@@ -218,8 +238,6 @@ Harikumar H+, **Quinn TP+**, Rana S, Gupta S, & Venkatesh S. 2019. A random walk
 **Quinn TP**, Erb I, Gloor G, Notredame C, Richardson MF, & Crowley TM. 2019. A field guide for the compositional analysis of any-omics data. GigaScience giz107. http://doi.org/10.1093/gigascience/giz107.
 
 Lee SC+, Quinn A, Nguyen T, Venkatesh S, & **Quinn TP+**. 2019. A cross-cancer metastasis signature in the microRNA-mRNA axis of paired tissue samples. Molecular Biology Reports. http://doi.org/10.1007/s11033-019-05025-w.
-
-Le V+, **Quinn TP+**, Tran T, & Venkatesh S. 2019. Deep in the Bowel: Highly Interpretable Neural Encoder-Decoder Networks Predict Gut Metabolites from Gut Microbiome. bioRxiv 686394. http://doi.org/10.1101/686394.
 
 **Quinn TP**, Nguyen T, Lee SC, & Venkatesh S. 2019. Cancer as a tissue anomaly: classifying tumor transcriptomes based only on healthy data. Frontiers in Genetics 10:599. http://doi.org/10.3389/fgene.2019.00599.
 
@@ -265,6 +283,8 @@ Hess JL, **Quinn TP**, Akbarian S, & Glatt SJ. 2015. Bioinformatic analyses and 
 
 ### Funding
 
-Project: "How does the gut microbiome contribute to individual responses to psychobiotics?". Provisioner: Deakin IMPACT Seed Fund. Award: $15,000. Role: AI. Contribution: Design and implementation of statistical and machine learning analyses.
+Project: "Optimising treatments in mental health using AI". Year: 2020. Provisioner: MRFF Applied Artificial Intelligence Research in Health Fund. Award: $4,995,434. Role: CI. Contribution: Design and implementation of trial analysis protocol.
+
+Project: "How does the gut microbiome contribute to individual responses to psychobiotics?". Year: 2020. Provisioner: Deakin IMPACT Seed Fund. Award: $15,000. Role: AI. Contribution: Design and implementation of statistical and machine learning analyses.
 
 <br>

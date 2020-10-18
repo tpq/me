@@ -281,6 +281,8 @@ Bichindaritz IB, Cole E, et al., & **Quinn TP**. 2016. Machine Learning Based Au
 
 Hess JL, **Quinn TP**, Akbarian S, & Glatt SJ. 2015. Bioinformatic analyses and conceptual synthesis of evidence linking ZNF804A to risk for schizophrenia and bipolar disorder. American Journal of Medical Genetics B Neuropsychiatric Genetics 168(1):14-35. http://dx.doi.org/10.1002/ajmg.b.32284.
 
+<br>
+
 ### Funding
 
 Project: "Optimising treatments in mental health using AI". Year: 2020. Provisioner: MRFF Applied Artificial Intelligence Research in Health Fund. Award: $4,995,434. Role: CI. Contribution: Design and implementation of trial analysis protocol.

@@ -65,12 +65,6 @@ output: pdf_document
 
 ### Professional experience
 
-#### In industry,
-
-##### **Adveq Management:** April 2016 to August 2017
-
-###### Employed as a **Data Scientist** to develop an object-oriented back-end in R for organizing, modeling, and analyzing transactions between financial institutions. Position held as a short-term, free-lance contract.
-
 #### In research,
 
 ##### **Deakin University:** October 2019 to present
@@ -111,6 +105,12 @@ output: pdf_document
 
 ###### Employed as a **Tutor** in a university math learning center.
 
+#### In industry,
+
+##### **Adveq Management:** April 2016 to August 2017
+
+###### Employed as a **Data Scientist** to develop an object-oriented back-end in R for organizing, modeling, and analyzing transactions between financial institutions. Position held as a short-term, free-lance contract.
+
 <br>
 
 ### Community engagement
@@ -119,17 +119,17 @@ output: pdf_document
 
 ###### Reviewed abstracts as part of the ABACBS 2020 Program Committee.
 
-##### **Geelong Hacky Hour:** October 2017 to October 2019
+##### **NAR Genomics and Bioinformatics:** December 2019 to December 2020
 
-###### Co-founder of the Geelong Hacky Hour chapter where researchers help other researchers learn to program.
+###### Served as guest editor for special issue on compositional data analysis.
 
 ##### **COMBINE:** October 2018
 
 ###### Reviewed abstracts as part of the COMBINE 2018 Program Committee.
 
-##### **NAR Genomics and Bioinformatics:** December 2019 to present
+##### **Geelong Hacky Hour:** October 2017 to October 2019
 
-###### Served as guest editor for special issue on compositional data analysis.
+###### Co-founder of the Geelong Hacky Hour chapter where researchers help other researchers learn to program.
 
 <br>
 
@@ -162,6 +162,12 @@ output: pdf_document
 <br>
 
 ### Presentations
+
+**Quinn TP**. December 2020. Deep learning: The quest for interpretability. Invited talk presented at Centre for Genomic Regulation in Barcelona, Spain (online delivery).
+
+**Quinn TP**. November 2020. Deep learning: The quest for interpretability. Invited talk presented at WEHI ML Interest Group Seminar Series in Melbourne, Australia (online delivery).
+
+**Quinn TP**. November 2020. HyperXPair: Learning distance-dependent motif interactions. Accepted talk presented at ABACBS 2020 Virtual Conference (online delivery).
 
 **Quinn TP**. September 2020. Risk Prediction: An Introduction. Invited talk presented at Victoria University Bioinformatics Seminar in Melbourne, Australia (online delivery).
 
@@ -213,9 +219,13 @@ PLoS Computational Biology
 
 ### Lead Author Publications
 
-**Quinn TP**, Le V, & Cardilini APA. 2020. Test Set Verification Is An Essential Step in Model Building. Methods in Ecology and Evolution. Forum Article. http://doi.org/10.1111/2041-210X.13495.
+**Quinn TP**, Jacobs S, Senadeera M, Le V, & Coghlan S. 2020. The Three Ghosts of Medical AI: Can the Black-Box Present Deliver? arXiv. http://arxiv.org/abs/2012.06000.
 
-**Quinn TP**, Senadeera M, Jacobs S, Coghlan S, & Le V. 2020. Trust and Medical AI: The challenges we face and the expertise needed to overcome them. arXiv. http://arxiv.org/abs/2008.07734.
+**Quinn TP**, Senadeera M, Jacobs S, Coghlan S, & Le V. 2020. Trust and Medical AI: The challenges we face and the expertise needed to overcome them. JAMIA. Online ahead of print. http://doi.org/10.1093/jamia/ocaa268.
+
+**Quinn TP** & Erb I. 2020. Amalgams: data-driven amalgamation for the dimensionality reduction of compositional data. NAR Genomics and Bioinformatics 2(4). http://doi.org/10.1093/nargab/lqaa076.
+
+**Quinn TP**, Le V, & Cardilini APA. 2020. Test Set Verification Is An Essential Step in Model Building. Methods in Ecology and Evolution. Forum Article. http://doi.org/10.1111/2041-210X.13495.
 
 Le V+, **Quinn TP+**, Tran T, & Venkatesh S. 2020. Deep in the Bowel: Highly Interpretable Neural Encoder-Decoder Networks Predict Gut Metabolites from Gut Microbiome. BMC Genomics 21(256). http://doi.org/10.1186/s12864-020-6652-7.
 
@@ -226,8 +236,6 @@ Le V+, **Quinn TP+**, Tran T, & Venkatesh S. 2020. Deep in the Bowel: Highly Int
 Loughman A+, **Quinn TP+**, et al., & Tang ML. 2020. Infant microbiota in colic: predictive associations with problem crying and subsequent child behavior. Journal of Developmental Origins of Health and Disease. Online ahead of print. http://doi.org/10.1017/S2040174420000227.
 
 **Quinn TP** & Erb I. 2020. Interpretable Log Contrasts for the Classification of Health Biomarkers: a New Approach to Balance Selection. mSystems 5(2). http://doi.org/10.1128/mSystems.00230-19.
-
-**Quinn TP** & Erb I. 2020. Amalgams: data-driven amalgamation for the reference-free dimensionality reduction of zero-laden compositional data. bioRxiv 968677. http://doi.org/10.1101/2020.02.27.968677.
 
 Beykikhoshk A+, **Quinn TP+**, Lee SC, Tran T, & Venkatesh S. 2020. DeepTRIAGE: Interpretable and Individualised Biomarker Scores using Attention Mechanism for the Classification of Breast Cancer Sub-types. BMC Medical Genomics 13(20). http://doi.org/10.1186/s12920-020-0658-5.
 
@@ -261,9 +269,13 @@ Lee SC+, **Quinn TP+**, et al., & Nguyen T. 2018. Solving for X: evidence for se
 
 ### Other Publications
 
-Bruxel EM, Moreira-Maia CR, Akutagava-Martins GC, **Quinn TP**, et al., & Hutz MH. 2020. Meta-analysis and systematic review of ADGRL3 (LPHN3) polymorphisms in ADHD susceptibility. Molecular Psychiatry (2020). http://doi.org/10.1038/s41380-020-0673-0.
+Erb I, Gloor GB, & **Quinn TP**. 2020. Editorial: Compositional data analysis and related methods applied to genomics—a first special issue from NAR Genomics and Bioinformatics. NAR Genomics and Bioinformatics 2(4). http://doi.org/10.1093/nargab/lqaa103.
 
-Nguyen T, Le H, **Quinn TP**, Le TD, & Venkatesh S. 2020. Predicting drug–target binding affinity with graph neural networks. bioRxiv 684662. http://doi.org/10.1101/684662.
+Nguyen T, Le H, **Quinn TP**, Le TD, & Venkatesh S. 2020. GraphDTA: Predicting drug–target binding affinity with graph neural networks. Bioinformatics. Online ahead of print. http://doi.org/10.1093/bioinformatics/btaa921.
+
+Hess JL, Chen S, **Quinn TP**, et al., & Glatt SJ. 2020. BrainGENIE: The Brain Gene Expression and Network Imputation Engine. bioRxiv 356766. http://doi.org/10.1101/2020.10.27.356766.
+
+Bruxel EM, Moreira-Maia CR, Akutagava-Martins GC, **Quinn TP**, et al., & Hutz MH. 2020. Meta-analysis and systematic review of ADGRL3 (LPHN3) polymorphisms in ADHD susceptibility. Molecular Psychiatry (2020). http://doi.org/10.1038/s41380-020-0673-0.
 
 Nguyen T, Lee SC, **Quinn TP**, et al., & Le TD. 2019. Personalized Annotation-based Networks (PAN) for the Prediction of Breast Cancer Relapse. bioRxiv 534628. http://doi.org/10.1101/534628.
 

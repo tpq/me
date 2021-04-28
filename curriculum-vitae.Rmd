@@ -67,7 +67,11 @@ output: pdf_document
 
 #### In research,
 
-##### **Deakin University:** October 2019 to present
+##### **Deakin University:** March 2021 to present
+
+###### Employed as an **Alfred Deakin Postdoctoral Fellow** in the Applied Artificial Intelligence Institute (A2I2) lab under Dr. Svetha Venkatesh to study interpretable deep models of RNA splicing.
+
+##### **Deakin University:** October 2019 to March 2021
 
 ###### Employed as an **Associate Research Fellow** in the Applied Artificial Intelligence Institute (A2I2) lab under Dr. Svetha Venkatesh to study XAI for health applications. This role involved close collaboration with computer science experts to design and implement neural network architectures that enable the interpretable analysis of high-dimensional genomic data.
 
@@ -163,6 +167,8 @@ output: pdf_document
 
 ### Presentations
 
+**Quinn TP**. April 2021. Appropriate statistics and data transformations for compositional data. Invited talk presented at Australasian Human Microbiome Research Network Virtual Conference (online delivery).
+
 **Quinn TP**. December 2020. Deep learning: The quest for interpretability. Invited talk presented at Centre for Genomic Regulation in Barcelona, Spain (online delivery).
 
 **Quinn TP**. November 2020. Deep learning: The quest for interpretability. Invited talk presented at WEHI ML Interest Group Seminar Series in Melbourne, Australia (online delivery).
@@ -215,9 +221,17 @@ NAR Genomics and Bioinformatics
 
 PLoS Computational Biology
 
+BMC Genomics
+
+Science Engineering Ethics
+
 <br>
 
 ### Lead Author Publications
+
+**Quinn TP**, Gordon-Rodriguez E, & Erb I. 2021. A Critique of Differential Abundance Analysis, and Advocacy for an Alternative. arXiv. http://arxiv.org/abs/2104.07266.
+
+**Quinn TP** & Erb I. 2021. Examining microbe–metabolite correlations by linear methods. Nature Methods 18:37-39. http://doi.org/10.1038/s41592-020-01006-1.
 
 **Quinn TP**, Jacobs S, Senadeera M, Le V, & Coghlan S. 2020. The Three Ghosts of Medical AI: Can the Black-Box Present Deliver? arXiv. http://arxiv.org/abs/2012.06000.
 
@@ -238,8 +252,6 @@ Loughman A+, **Quinn TP+**, et al., & Tang ML. 2020. Infant microbiota in colic:
 **Quinn TP** & Erb I. 2020. Interpretable Log Contrasts for the Classification of Health Biomarkers: a New Approach to Balance Selection. mSystems 5(2). http://doi.org/10.1128/mSystems.00230-19.
 
 Beykikhoshk A+, **Quinn TP+**, Lee SC, Tran T, & Venkatesh S. 2020. DeepTRIAGE: Interpretable and Individualised Biomarker Scores using Attention Mechanism for the Classification of Breast Cancer Sub-types. BMC Medical Genomics 13(20). http://doi.org/10.1186/s12920-020-0658-5.
-
-**Quinn TP** & Erb I. 2019. Another look at microbe–metabolite interactions: how scale invariant correlations can outperform a neural network. bioRxiv 847475. http://doi.org/10.1101/847475.
 
 Harikumar H+, **Quinn TP+**, Rana S, Gupta S, & Venkatesh S. 2019. A random walk down personalized single-cell networks: predicting the response of any gene to any drug for any patient. bioRxiv 837807. http://doi.org/10.1101/837807.
 
@@ -269,6 +281,10 @@ Lee SC+, **Quinn TP+**, et al., & Nguyen T. 2018. Solving for X: evidence for se
 
 ### Other Publications
 
+Nguyen TM, **Quinn TP**, Nguyen T, & Tran T. 2021. Counterfactual Explanation with Multi-Agent Reinforcement Learning for Drug Target Prediction. arXiv. http://arxiv.org/abs/2103.12983.
+
+Gordon-Rodriguez E, **Quinn TP**, & Cunningham JP. 2021. Learning Sparse Log-Ratios for High-Throughput Sequencing Data. bioRxiv 430695. http://doi.org/10.1101/2021.02.11.430695v1.
+
 Erb I, Gloor GB, & **Quinn TP**. 2020. Editorial: Compositional data analysis and related methods applied to genomics—a first special issue from NAR Genomics and Bioinformatics. NAR Genomics and Bioinformatics 2(4). http://doi.org/10.1093/nargab/lqaa103.
 
 Nguyen T, Le H, **Quinn TP**, Le TD, & Venkatesh S. 2020. GraphDTA: Predicting drug–target binding affinity with graph neural networks. Bioinformatics. Online ahead of print. http://doi.org/10.1093/bioinformatics/btaa921.
@@ -296,6 +312,8 @@ Hess JL, **Quinn TP**, Akbarian S, & Glatt SJ. 2015. Bioinformatic analyses and 
 <br>
 
 ### Funding
+
+Project: "An Interpretable Deep Learning Model of RNA Splicing". Year: 2021. Provisioner: Alfred Deakin Postdoctoral Fellowship. Award: $203,994. Role: Awardee. Contribution: Project lead.
 
 Project: "Optimising treatments in mental health using AI". Year: 2020. Provisioner: MRFF Applied Artificial Intelligence Research in Health Fund. Award: $4,995,434. Role: CI. Contribution: Design and implementation of trial analysis protocol.
 
